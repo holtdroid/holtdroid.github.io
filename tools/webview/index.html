@@ -1,0 +1,645 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-hwk3awhx"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Holtdroid WebView | Holtdroid</title><link rel="canonical" href="https://holtdroid.github.io/tools/webview/"/><link rel="alternate" hreflang="en" href="https://holtdroid.github.io/tools/webview/"/><link rel="alternate" hreflang="uk" href="https://holtdroid.github.io/uk/tools/webview/"/><link rel="alternate" hreflang="ru" href="https://holtdroid.github.io/ru/tools/webview/"/><link rel="alternate" hreflang="x-default" href="https://holtdroid.github.io/tools/webview/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="Holtdroid WebView"/><meta property="og:type" content="article"/><meta property="og:url" content="https://holtdroid.github.io/tools/webview/"/><meta property="og:locale" content="en"/><meta property="og:description" content="A WebView test browser with DevTools unlocked, presets, several engines and live control over adb."/><meta property="og:site_name" content="Holtdroid"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="A WebView test browser with DevTools unlocked, presets, several engines and live control over adb."/><script type="module" src="/_astro/MermaidZoom.astro_astro_type_script_index_0_lang.DpUBnOV7.js"></script><script>
+  document.documentElement.dataset.theme = "dark"
+  window.StarlightThemeProvider = { updatePickers() {} }
+</script><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><style>@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-cyrillic-ext-wght-normal.DjL33-gN.woff2)format("woff2-variations");unicode-range:U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-cyrillic-wght-normal.BEAKL7Jp.woff2)format("woff2-variations");unicode-range:U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-vietnamese-wght-normal.6IgcOCM7.woff2)format("woff2-variations");unicode-range:U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-latin-ext-wght-normal.DC-KSUi6.woff2)format("woff2-variations");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-latin-wght-normal.BgDaEnEv.woff2)format("woff2-variations");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.hd-ai:where(.astro-jxl35hpc){color:#f4f1ea;background:radial-gradient(18rem 10rem at 3.5rem,#f5b4462e,#0000 70%),linear-gradient(135deg,#15110a,#0d0e0b);border:1px solid #f5b44666;border-radius:1.1rem;align-items:center;gap:1.25rem;margin-block:1.5rem;padding:1.25rem 1.5rem;font-family:Geist Variable,ui-sans-serif,system-ui,sans-serif;display:flex;position:relative;overflow:hidden}.box:where(.astro-jxl35hpc){flex-shrink:0;width:4.5rem;height:4.5rem}.lid:where(.astro-jxl35hpc){transform-box:fill-box;transform-origin:0 100%;animation:4s ease-in-out infinite lid}.sparks:where(.astro-jxl35hpc){animation:4s ease-in-out infinite sparks}.halo:where(.astro-jxl35hpc){transform-box:fill-box;transform-origin:50%;animation:4s ease-in-out infinite halo}.copy:where(.astro-jxl35hpc){gap:.3rem;display:grid}.copy:where(.astro-jxl35hpc) p:where(.astro-jxl35hpc){margin:0}.label:where(.astro-jxl35hpc){color:#f5b446;letter-spacing:.12em;text-transform:uppercase;font-family:ui-monospace,SF Mono,Menlo,Consolas,monospace;font-size:.75rem}.title:where(.astro-jxl35hpc){letter-spacing:-.02em;font-size:1.15rem;font-weight:650}.text:where(.astro-jxl35hpc){color:#c9c2b4;font-size:.92rem;line-height:1.55}@keyframes lid{0%,to{transform:rotate(0)}45%,60%{transform:rotate(-9deg)}}@keyframes sparks{0%,to{opacity:.4;transform:translateY(2px)}50%{opacity:1;transform:translateY(-3px)}}@keyframes halo{50%{transform:scale(1.12)}}.compact:where(.astro-jxl35hpc){background:radial-gradient(6rem 4rem at 1.2rem 1.2rem,#f5b44629,#0000 70%),linear-gradient(135deg,#15110a,#0d0e0b);border-radius:.75rem;align-items:flex-start;gap:.6rem;margin-block:0;padding:.6rem .75rem}.compact:where(.astro-jxl35hpc) .box:where(.astro-jxl35hpc){width:1.9rem;height:1.9rem}.compact:where(.astro-jxl35hpc) .copy:where(.astro-jxl35hpc){gap:.1rem}.compact:where(.astro-jxl35hpc) .title:where(.astro-jxl35hpc){font-size:.8rem;line-height:1.3}.compact:where(.astro-jxl35hpc) .text:where(.astro-jxl35hpc){font-size:.72rem;line-height:1.35}@media (width<=36rem){.hd-ai:where(.astro-jxl35hpc):not(.compact){flex-direction:column;align-items:flex-start}}@media (prefers-reduced-motion:reduce){.lid:where(.astro-jxl35hpc),.sparks:where(.astro-jxl35hpc),.halo:where(.astro-jxl35hpc){animation:none}}
+</style><link rel="stylesheet" href="/_astro/common.DwkjWTIC.css"><style>@layer starlight.components{svg:where(.astro-hlzwxtvd){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em;overflow:visible}}
+@layer starlight.components{.sl-steps{--bullet-size:calc(var(--sl-line-height) * 1rem);--bullet-margin:.375rem;counter-reset:steps-counter var(--sl-steps-start,0);padding-inline-start:0;list-style:none}.sl-steps>li{counter-increment:steps-counter;padding-inline-start:calc(var(--bullet-size) + 1rem);min-height:calc(var(--bullet-size) + var(--bullet-margin));padding-bottom:1px;position:relative}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);top:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);box-shadow:inset 0 0 0 1px var(--sl-color-gray-5);border-radius:99rem;font-weight:600;position:absolute;inset-inline-start:0}.sl-steps>li:after{--guide-width:1px;content:"";top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);width:var(--guide-width);background-color:var(--sl-color-hairline-light);position:absolute;inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2)}}@layer starlight.content{.sl-steps>li>:first-child{--lh:calc(1em * var(--sl-line-height));--shift-y:calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh:calc(1em * var(--sl-line-height-headings))}@supports (--prop:1lh){.sl-steps>li>:first-child{--lh:1lh}}}
+</style><script type="module" src="/_astro/page.C6UiXXts.js"></script></head><body class="astro-hwk3awhx"><a class="sl-skip-link astro-ecdj6xll" href="#_top">Skip to content</a><div class="page sl-flex astro-xcg6nxcz"><header class="header astro-xcg6nxcz"><div class="header astro-azubnz3w"><div class="title-wrapper sl-flex astro-azubnz3w"><a href="/" class="site-title sl-flex astro-mjdjz25a"><img class="astro-mjdjz25a" alt src="/_astro/logo.BRLVoKOr.svg" width="64" height="64"><span class="astro-mjdjz25a" translate="no">Holtdroid</span></a></div><div class="sl-flex print:hidden astro-azubnz3w"><site-search class="astro-azubnz3w astro-n2w6z7vl" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-n2w6z7vl"><svg aria-hidden="true" class="astro-n2w6z7vl astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-n2w6z7vl" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-n2w6z7vl" style="display: none;"><kbd class="astro-n2w6z7vl">Ctrl</kbd><kbd class="astro-n2w6z7vl">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-n2w6z7vl"><div class="dialog-frame sl-flex astro-n2w6z7vl"><button data-close-modal class="sl-flex md:sl-hidden astro-n2w6z7vl">Cancel</button><div class="search-container astro-n2w6z7vl"><div id="starlight__search" class="astro-n2w6z7vl"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.BOTS06Pe.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-azubnz3w"><div class="sl-flex social-icons astro-azubnz3w"><a href="https://github.com/holtdroid/holtdroid" rel="me" class="sl-flex astro-pacogggv"><span class="sr-only astro-pacogggv">GitHub</span><svg aria-hidden="true" class="astro-pacogggv astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div></div></div></header><nav class="sidebar print:hidden astro-xcg6nxcz" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-qxlgrixp"><svg aria-hidden="true" class="open-menu astro-qxlgrixp astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-qxlgrixp astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-qxlgrixp">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-xcg6nxcz"><div class="sidebar-content sl-flex astro-xcg6nxcz"><ul class="hd-topics"><li><a href="/start/introduction/" aria-current="page"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.17 2.06A13.1 13.1 0 0 0 19 1.87a12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2 13.1 13.1 0 0 0-2.17.19 1 1 0 0 0-.83 1v12a1 1 0 0 0 1.17 1 10.9 10.9 0 0 1 8.25 1.91l.12.07h.11a.91.91 0 0 0 .7 0h.11l.12-.07A10.899 10.899 0 0 1 20.83 16 1 1 0 0 0 22 15V3a1 1 0 0 0-.83-.94ZM11 15.35a12.87 12.87 0 0 0-6-1.48H4v-10c.333-.02.667-.02 1 0a10.86 10.86 0 0 1 6 1.8v9.68Zm9-1.44h-1a12.87 12.87 0 0 0-6 1.48V5.67a10.86 10.86 0 0 1 6-1.8c.333-.02.667-.02 1 0v10.04Zm1.17 4.15a13.098 13.098 0 0 0-2.17-.19 12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2.05c-.727.003-1.453.066-2.17.19A1 1 0 0 0 2 19.21a1 1 0 0 0 1.17.79 10.9 10.9 0 0 1 8.25 1.91 1 1 0 0 0 1.16 0A10.9 10.9 0 0 1 20.83 20a1 1 0 0 0 1.17-.79 1 1 0 0 0-.83-1.15Z"/></svg></span>Documentation</a></li><li><a href="/guides/first-steps/launch-app/"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.72 8.79-4.29 4.3-1.65-1.65a1 1 0 1 0-1.41 1.41l2.35 2.36a1 1 0 0 0 1.41 0l5-5a1.002 1.002 0 1 0-1.41-1.42ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg></span>Guides</a></li><li><a href="https://github.com/holtdroid" rel="noopener"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></span>GitHub</a></li><li><a href="/#repositories" rel="noopener"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg></span>Repositories</a></li></ul><p class="hd-nav-title">Documentation</p><sl-sidebar-state-persist data-hash="0397967" class="astro-4xjstbt3"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="hd-nav"><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg><span>Start here</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/start/introduction/"><span>Introduction</span></a></li><li><a href="/start/installation/"><span>Installation</span></a></li><li><a href="/start/local-development/"><span>Local development</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg><span>Concepts</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/concepts/architecture/"><span>Architecture</span></a></li><li><a href="/concepts/sessions/"><span>Sessions and slots</span></a></li><li><a href="/concepts/devtools/"><span>WebView DevTools</span></a></li><li><a href="/concepts/webview-versions/"><span>WebView versions</span></a></li><li><a href="/concepts/vpn/"><span>Per-session VPN</span></a></li><li><a href="/concepts/ssh/"><span>Connecting your computer</span></a></li><li><a href="/concepts/adb/"><span>ADB tools</span></a></li><li><a href="/concepts/recordings/"><span>Recordings</span></a></li><li><a href="/concepts/microphone/"><span>Microphone</span></a></li><li><a href="/concepts/camera/"><span>Camera</span></a></li><li><a href="/concepts/app-data/"><span>App data</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><span>Session tools</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/session-tools/overview/"><span>Overview</span></a></li><li><a href="/session-tools/pixel-perfect/"><span>Pixel perfect</span></a></li><li><a href="/session-tools/websockets/"><span>WebSockets</span></a></li><li><a href="/session-tools/cache/"><span>Cache</span></a></li><li><a href="/session-tools/images/"><span>Images</span></a></li><li><a href="/session-tools/svg/"><span>SVG</span></a></li><li><a href="/session-tools/network/"><span>Network</span></a></li><li><a href="/session-tools/dns/"><span>DNS log and rewrites</span></a></li><li><a href="/session-tools/routes/"><span>Routes</span></a></li><li><a href="/session-tools/logcat/"><span>Logcat</span></a></li><li><a href="/session-tools/files/"><span>Files</span></a></li><li><a href="/session-tools/terminal/"><span>Terminal</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m21.32 9.55-1.89-.63.89-1.78A1 1 0 0 0 20.13 6L18 3.87a1 1 0 0 0-1.15-.19l-1.78.89-.63-1.89A1 1 0 0 0 13.5 2h-3a1 1 0 0 0-.95.68l-.63 1.89-1.78-.89A1 1 0 0 0 6 3.87L3.87 6a1 1 0 0 0-.19 1.15l.89 1.78-1.89.63a1 1 0 0 0-.68.94v3a1 1 0 0 0 .68.95l1.89.63-.89 1.78A1 1 0 0 0 3.87 18L6 20.13a1 1 0 0 0 1.15.19l1.78-.89.63 1.89a1 1 0 0 0 .95.68h3a1 1 0 0 0 .95-.68l.63-1.89 1.78.89a1 1 0 0 0 1.13-.19L20.13 18a1 1 0 0 0 .19-1.15l-.89-1.78 1.89-.63a1 1 0 0 0 .68-.94v-3a1 1 0 0 0-.68-.95ZM20 12.78l-1.2.4A2 2 0 0 0 17.64 16l.57 1.14-1.1 1.1-1.11-.6a2 2 0 0 0-2.79 1.16l-.4 1.2h-1.59l-.4-1.2A2 2 0 0 0 8 17.64l-1.14.57-1.1-1.1.6-1.11a2 2 0 0 0-1.16-2.82l-1.2-.4v-1.56l1.2-.4A2 2 0 0 0 6.36 8l-.57-1.11 1.1-1.1L8 6.36a2 2 0 0 0 2.82-1.16l.4-1.2h1.56l.4 1.2A2 2 0 0 0 16 6.36l1.14-.57 1.1 1.1-.6 1.11a2 2 0 0 0 1.16 2.79l1.2.4v1.59ZM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg><span>Configuration</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/configuration/overview/"><span>Configuration files</span></a></li><li><a href="/configuration/storage/"><span>Artifact storage</span></a></li><li><a href="/configuration/database/"><span>Database</span></a></li><li><a href="/configuration/authentication/"><span>Authentication</span></a></li><li><a href="/configuration/secrets/"><span>Secrets</span></a></li><li><a href="/configuration/emulator/"><span>Emulator provider</span></a></li><li><a href="/configuration/phones/"><span>Phone provider</span></a></li><li><a href="/configuration/rooting/"><span>Rooting a phone</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M14.29 17.29 13 18.59V13a1 1 0 0 0-2 0v5.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l3 3a1 1 0 0 0 .33.21.94.94 0 0 0 .76 0 1 1 0 0 0 .33-.21l3-3a1 1 0 0 0-1.42-1.42Zm4.13-11.07A7 7 0 0 0 5.06 8.11 4 4 0 0 0 6 16a1 1 0 0 0 0-2 2 2 0 0 1 0-4 1 1 0 0 0 1-1 5 5 0 0 1 9.73-1.61 1 1 0 0 0 .78.67 3 3 0 0 1 .24 5.84 1 1 0 1 0 .5 1.94 5 5 0 0 0 .17-9.62Z"/></svg><span>APK sources</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/sources/overview/"><span>Overview</span></a></li><li><a href="/sources/slack/"><span>Slack</span></a></li><li><a href="/sources/s3/"><span>S3 bucket</span></a></li><li><a href="/sources/github/"><span>GitHub releases</span></a></li><li><a href="/sources/chromium/"><span>Chromium versions</span></a></li><li><a href="/sources/custom/"><span>Writing your own</span></a></li></ul></details></li><li><details open><summary class="hd-has-current"><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m12.71 16.29-.15-.12-.18-.09-.18-.08a1 1 0 0 0-.91.27 1 1 0 0 0-.21.33 1 1 0 0 0 1.3 1.31l.33-.22a1 1 0 0 0 .21-1.09 1 1 0 0 0-.21-.31M16 2H8a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3m1 17a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1Z"/></svg><span>Tools</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/tools/webview/" aria-current="page"><span>Holtdroid WebView</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M15 17a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9 0a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-3-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m0 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m4-6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 11v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 17v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a3 3 0 0 0-.78-2 3 3 0 0 0 .78-2v-2a3 3 0 0 0-.78-2A3 3 0 0 0 22 7Zm-2 14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm-5-2a1 1 0 1 0 1 1 1 1 0 0 0-1-1M9 5H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2"/></svg><span>Operations</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/operations/security/"><span>Security</span></a></li><li><a href="/operations/troubleshooting/"><span>Troubleshooting</span></a></li><li><a href="/operations/vpn-gateway/"><span>Shared VPN gateway</span></a></li><li><a href="/operations/monitoring/"><span>Monitoring and audit</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg><span>Extending</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/extending/contracts/"><span>Contracts</span></a></li><li><a href="/extending/provider/"><span>Writing a provider</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="hd-sidebar-note"><aside class="hd-ai not-content compact astro-jxl35hpc" aria-label="Disclaimer"><svg class="box astro-jxl35hpc" viewBox="0 0 64 64" aria-hidden="true"><circle class="halo astro-jxl35hpc" cx="32" cy="24" r="20" fill="#f5b446" opacity=".18"></circle><circle cx="32" cy="26" r="11" fill="#f5b446" opacity=".22" class="astro-jxl35hpc"></circle><path d="M12 34h40v18a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z" fill="#8a5a3c" class="astro-jxl35hpc"></path><path d="M12 40h40v4H12z" fill="#6d4630" class="astro-jxl35hpc"></path><rect x="28.5" y="41" width="7" height="8" rx="1.5" fill="#d9b48f" class="astro-jxl35hpc"></rect><g class="lid astro-jxl35hpc"><path d="M10 31.5 45.5 17l2.4 5.6L12.4 37z" fill="#a06b48" class="astro-jxl35hpc"></path><path d="M10 31.5 45.5 17" stroke="#c4875c" stroke-width="1.4" stroke-linecap="round" class="astro-jxl35hpc"></path></g><g class="sparks astro-jxl35hpc"><circle cx="24" cy="14" r="1.8" fill="#f5b446" class="astro-jxl35hpc"></circle><circle cx="34" cy="7" r="1.4" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="40" cy="27" r="1.6" fill="#3ddc84" class="astro-jxl35hpc"></circle><circle cx="29" cy="21" r="1.2" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="19" cy="24" r="1" fill="#3ddc84" class="astro-jxl35hpc"></circle><path d="M44 9l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" fill="#ffe08a" class="astro-jxl35hpc"></path></g></svg><div class="copy astro-jxl35hpc"><p class="title astro-jxl35hpc">Fully AI-generated. Use at your own risk.</p><p class="text astro-jxl35hpc">Not written or reviewed by a human.</p></div></aside></div><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-wiurj2sw"><div class="social-icons astro-wiurj2sw"><a href="https://github.com/holtdroid/holtdroid" rel="me" class="sl-flex astro-pacogggv"><span class="sr-only astro-pacogggv">GitHub</span><svg aria-hidden="true" class="astro-pacogggv astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-xcg6nxcz"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-a422hx3e"><aside class="right-sidebar-container print:hidden astro-a422hx3e"><div class="right-sidebar astro-a422hx3e"><div class="lg:sl-hidden astro-rflzrhp5"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-uccvt52g"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-uccvt52g"><details id="starlight__mobile-toc" class="astro-uccvt52g"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-uccvt52g"><span class="toggle sl-flex astro-uccvt52g">On this page<svg aria-hidden="true" class="caret astro-uccvt52g astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-uccvt52g"></span></summary><div class="dropdown astro-uccvt52g"><ul class="isMobile astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Overview</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#install" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Install</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-start-screen" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The start screen</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-page" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The page</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#on-screen-keyboard" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">On-screen keyboard</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#engines" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Engines</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#settings" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Settings</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#control-from-adb" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Control from adb</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#devtools" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">DevTools</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-rflzrhp5"><div class="sl-container astro-rflzrhp5"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Overview</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#install" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Install</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-start-screen" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The start screen</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-page" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The page</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#on-screen-keyboard" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">On-screen keyboard</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#engines" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Engines</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#settings" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Settings</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#control-from-adb" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Control from adb</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#devtools" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">DevTools</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-a422hx3e"><main data-pagefind-body class="astro-hwk3awhx" lang="en" dir="ltr"><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="hd-title"><p class="hd-eyebrow">Tools</p><h1 id="_top">Holtdroid WebView</h1><p class="hd-description">A WebView test browser with DevTools unlocked, presets, several engines and live control over adb.</p></div></div></div><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="sl-markdown-content"><p><a href="https://github.com/holtdroid/holtdroid-webview">Holtdroid WebView</a> is a small
+Android app for testing web pages inside a WebView. It is made for Holtdroid
+sessions but works on any phone or emulator on its own.</p>
+<p>It opens a page in the system WebView (or GeckoView), lets you change how the
+WebView is set up, and keeps remote debugging on, so every page shows up in
+Holtdroid’s DevTools tab and in <code dir="auto">chrome://inspect</code>. Settings are grouped into
+presets on the start screen, and everything — presets, single settings and
+actions like resize or freeze — can be driven from adb while the page is open.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="install">Install</h2><a class="sl-anchor-link" href="#install"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Install”</span></a></div>
+<p>Releases are on
+<a href="https://github.com/holtdroid/holtdroid-webview/releases">GitHub</a>:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">holtdroid-webview-&lt;version&gt;.apk</code></td>
+<td>WebView and Custom Tabs, about 2 MB, any ABI</td>
+</tr>
+<tr>
+<td><code dir="auto">holtdroid-webview-gecko-&lt;version&gt;-x86_64.apk</code></td>
+<td>plus GeckoView, for emulators (Holtdroid sessions)</td>
+</tr>
+<tr>
+<td><code dir="auto">holtdroid-webview-gecko-&lt;version&gt;-arm64-v8a.apk</code></td>
+<td>plus GeckoView, for phones</td>
+</tr>
+</tbody>
+</table>
+<p>Both builds use the package name <code dir="auto">io.github.holtdroid.webview</code>, so
+installing one replaces the other. In Holtdroid, upload the APK or publish it
+into a source (for example with the <a href="/sources/github/">GitHub sync</a>)
+and launch it like any other app; through <a href="/concepts/adb/">ADB</a>
+<code dir="auto">adb install -r holtdroid-webview-&lt;version&gt;.apk</code> works too.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-start-screen">The start screen</h2><a class="sl-anchor-link" href="#the-start-screen"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The start screen”</span></a></div>
+<ul>
+<li><strong>Open a page</strong>: type an address or a search and pick the preset to open it
+with. Recent addresses sit under the field.</li>
+<li><strong>Engines</strong>: the active WebView provider with its version. Tap it to see the
+installed providers and copy the command that switches between them.</li>
+<li><strong>Presets</strong>: tap a card to open its start address (or the address you typed)
+with its settings. The menu edits, duplicates, reorders, deletes a preset or
+makes it the default for links and adb. Tags on the card summarise what the
+preset changes; the risky ones are red.</li>
+<li>The top bar switches the theme (system, light, dark) and opens app settings:
+Material You colours, external control on/off, restoring the built-in
+presets, clearing every engine’s data.</li>
+<li><strong>Documentation</strong> opens this page.</li>
+</ul>
+<p>The built-in presets:</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browse</td>
+<td>A plain browser window: toolbar, strict TLS, DevTools on</td>
+</tr>
+<tr>
+<td>Unlocked</td>
+<td>TLS errors ignored, mixed content, file access, popups, permissions granted, Eruda, autoplay, screen kept on</td>
+</tr>
+<tr>
+<td>Kiosk</td>
+<td>Full screen without browser UI, navigation locked to the start host, Back opens the controls, no zoom, popups or long press</td>
+</tr>
+<tr>
+<td>App shell</td>
+<td>Edge to edge like an app’s own WebView, with a floating handle</td>
+</tr>
+<tr>
+<td>Small phone</td>
+<td>A 360 × 640 viewport framed in the middle of the screen</td>
+</tr>
+<tr>
+<td>Desktop site</td>
+<td>Desktop user agent, overview viewport, landscape</td>
+</tr>
+<tr>
+<td>Fresh start</td>
+<td>Wipes cookies, storage, cache and history on every launch, no HTTP cache</td>
+</tr>
+<tr>
+<td>Proxy</td>
+<td>All traffic through <code dir="auto">127.0.0.1:8080</code> with TLS errors ignored</td>
+</tr>
+</tbody>
+</table>
+<p>The Proxy preset fits Holtdroid’s <a href="/concepts/ssh/">connected computers</a>:
+run mitmproxy or Charles on port 8080 of your computer, publish that port on
+the Computers page and watch the traffic. User-installed CA
+certificates are trusted too, so a strict preset also works once the proxy’s
+CA is installed on the device.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-page">The page</h2><a class="sl-anchor-link" href="#the-page"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The page”</span></a></div>
+<p>In Standard and Immersive mode a toolbar shows back, the address (tap to
+edit), the keyboard button, reload and the controls button. Edge-to-edge and Kiosk modes hide it;
+the floating handle (draggable) opens the controls instead. Back goes back in
+history and then to the start screen, or opens the controls when <strong>Back opens
+controls</strong> is on.</p>
+<p>The control panel holds:</p>
+<ul>
+<li><strong>Freeze</strong>: pauses timers, animations and rendering of the page and blocks
+input until you resume. Useful to inspect a transient state in DevTools.</li>
+<li><strong>Hard reload</strong>: clears the HTTP cache and reloads.</li>
+<li><strong>Desktop</strong>: toggles the desktop user agent and overview mode.</li>
+<li><strong>Dark</strong>: switches the app theme; pages see it through
+<code dir="auto">prefers-color-scheme</code>.</li>
+<li><strong>Console</strong>: messages the page logged, and a prompt that evaluates
+JavaScript in the page.</li>
+<li><strong>Eruda</strong>: injects the <a href="https://github.com/liriliri/eruda">Eruda</a> in-page
+DevTools. Eruda is bundled into the APK and injected the way DevTools runs
+scripts, so it works offline and on pages with a strict Content Security
+Policy (only its icon font may be blocked there).</li>
+<li><strong>Keyboard</strong>: shows or hides the on-screen keyboard for the focused field
+(see below).</li>
+<li><strong>Rotate</strong> and <strong>Settings</strong>: swap the frame’s width and height; edit every
+setting of the open page, apply it, or save it as a preset.</li>
+<li><strong>Display</strong>: the display mode and the toolbar position.</li>
+<li><strong>Viewport</strong>: frame presets from 320 × 568 to 1280 × 800, and the scale.
+The badge under a framed page shows its size in CSS pixels and its scale.</li>
+<li><strong>Clear data</strong>: cache, cookies, storage or everything.</li>
+<li><strong>DevTools</strong>: remote debugging on/off and the <code dir="auto">adb forward</code> command for the
+page’s DevTools socket.</li>
+<li><strong>Engine</strong>: WebView, GeckoView or a Custom Tab.</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="on-screen-keyboard">On-screen keyboard</h2><a class="sl-anchor-link" href="#on-screen-keyboard"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “On-screen keyboard”</span></a></div>
+<p>Android hides the on-screen keyboard while a hardware keyboard is attached.
+Holtdroid’s emulators report one (<code dir="auto">hw.keyboard=yes</code>), so tapping a field
+there brings up no keyboard; you type through the session’s keyboard instead.
+To get the on-screen one, focus the field and press the keyboard button. If
+the system still hides it, the app shows two fixes:</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.31loo.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#8B949E"># show the on-screen keyboard next to a hardware one, for every app</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">settings</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">put</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">secure</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">show_ime_with_hard_keyboard</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">1</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#8B949E"># or let the app switch that setting on by itself when you press the button</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">pm</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">grant</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">io.github.holtdroid.webview</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">android.permission.WRITE_SECURE_SETTINGS</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="adb shell settings put secure show_ime_with_hard_keyboard 1adb shell pm grant io.github.holtdroid.webview android.permission.WRITE_SECURE_SETTINGS"><div></div></button></div></figure></div>
+<p>The same setting is <strong>Use on-screen keyboard</strong> in the system’s physical
+keyboard settings, which the dialog opens.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="engines">Engines</h2><a class="sl-anchor-link" href="#engines"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Engines”</span></a></div>
+<ul>
+<li><strong>WebView</strong> is Android’s system WebView. Android uses one provider for every
+app, and only the system can change it: run
+<code dir="auto">adb shell cmd webviewupdate set-webview-implementation &lt;package&gt;</code> (the
+Engines dialog copies it for each installed provider), or use Developer
+options → WebView implementation. Holtdroid’s
+<a href="/concepts/adb/">device card</a> switches it too.</li>
+<li><strong>GeckoView</strong> is Firefox’s engine, built into the <code dir="auto">-gecko</code> APK. Settings
+marked “WebView only” don’t apply to it; the console can’t evaluate
+scripts. Debug it from Firefox on a computer: <code dir="auto">about:debugging</code> → USB
+devices.</li>
+<li><strong>Custom Tab</strong> opens the page in the default browser’s Custom Tab, which
+shares that browser’s cookies. None of the app’s settings apply there.</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="settings">Settings</h2><a class="sl-anchor-link" href="#settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Settings”</span></a></div>
+<p>Every setting has a key. The editor shows it under the description, and the
+same key works in adb commands and in the <code dir="auto">holtdroid-webview://</code> link.
+Booleans take <code dir="auto">true</code>/<code dir="auto">false</code> (also <code dir="auto">1</code>/<code dir="auto">0</code>, <code dir="auto">on</code>/<code dir="auto">off</code>, <code dir="auto">yes</code>/<code dir="auto">no</code>), choices
+are case-insensitive, numbers are plain integers.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Values</th>
+<th>Default</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">url</code></td>
+<td>address</td>
+<td><code dir="auto">https://www.google.com/</code></td>
+<td>Start address</td>
+</tr>
+<tr>
+<td><code dir="auto">engine</code></td>
+<td><code dir="auto">webview</code> <code dir="auto">gecko</code> <code dir="auto">custom-tabs</code></td>
+<td><code dir="auto">webview</code></td>
+<td>Engine</td>
+</tr>
+<tr>
+<td><code dir="auto">display</code></td>
+<td><code dir="auto">standard</code> <code dir="auto">immersive</code> <code dir="auto">edge</code> <code dir="auto">kiosk</code></td>
+<td><code dir="auto">standard</code></td>
+<td>Display mode</td>
+</tr>
+<tr>
+<td><code dir="auto">toolbar</code></td>
+<td><code dir="auto">top</code> <code dir="auto">bottom</code></td>
+<td><code dir="auto">top</code></td>
+<td>Toolbar position</td>
+</tr>
+<tr>
+<td><code dir="auto">handle</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Floating handle when the toolbar is hidden</td>
+</tr>
+<tr>
+<td><code dir="auto">lockBack</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Back opens the controls instead of leaving</td>
+</tr>
+<tr>
+<td><code dir="auto">orientation</code></td>
+<td><code dir="auto">auto</code> <code dir="auto">portrait</code> <code dir="auto">landscape</code> <code dir="auto">locked</code></td>
+<td><code dir="auto">auto</code></td>
+<td>Orientation lock (<code dir="auto">locked</code> keeps the current one)</td>
+</tr>
+<tr>
+<td><code dir="auto">keepScreenOn</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Keep the screen on</td>
+</tr>
+<tr>
+<td><code dir="auto">width</code>, <code dir="auto">height</code></td>
+<td>dp, <code dir="auto">0</code> = fill</td>
+<td><code dir="auto">0</code></td>
+<td>Viewport frame</td>
+</tr>
+<tr>
+<td><code dir="auto">scale</code></td>
+<td>percent, <code dir="auto">0</code> = fit</td>
+<td><code dir="auto">0</code></td>
+<td>Frame scale</td>
+</tr>
+<tr>
+<td><code dir="auto">javaScript</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>JavaScript</td>
+</tr>
+<tr>
+<td><code dir="auto">domStorage</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>localStorage and sessionStorage</td>
+</tr>
+<tr>
+<td><code dir="auto">zoom</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Pinch to zoom</td>
+</tr>
+<tr>
+<td><code dir="auto">zoomControls</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>On-screen zoom buttons</td>
+</tr>
+<tr>
+<td><code dir="auto">wideViewport</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Honour <code dir="auto">&lt;meta name=viewport&gt;</code></td>
+</tr>
+<tr>
+<td><code dir="auto">overviewMode</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Fit the page width to the screen</td>
+</tr>
+<tr>
+<td><code dir="auto">textZoom</code></td>
+<td>25–400</td>
+<td><code dir="auto">100</code></td>
+<td>Text size, percent</td>
+</tr>
+<tr>
+<td><code dir="auto">darkening</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Algorithmic darkening of light pages in the dark theme</td>
+</tr>
+<tr>
+<td><code dir="auto">mediaAutoplay</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Play media without a gesture</td>
+</tr>
+<tr>
+<td><code dir="auto">blockImages</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Don’t load images</td>
+</tr>
+<tr>
+<td><code dir="auto">offline</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Block every network load</td>
+</tr>
+<tr>
+<td><code dir="auto">cacheMode</code></td>
+<td><code dir="auto">default</code> <code dir="auto">no-cache</code> <code dir="auto">cache-first</code> <code dir="auto">cache-only</code></td>
+<td><code dir="auto">default</code></td>
+<td>HTTP cache</td>
+</tr>
+<tr>
+<td><code dir="auto">userAgent</code></td>
+<td><code dir="auto">default</code> <code dir="auto">desktop</code> <code dir="auto">custom</code></td>
+<td><code dir="auto">default</code></td>
+<td>User agent</td>
+</tr>
+<tr>
+<td><code dir="auto">customUserAgent</code></td>
+<td>text</td>
+<td></td>
+<td>Used with <code dir="auto">userAgent=custom</code></td>
+</tr>
+<tr>
+<td><code dir="auto">userAgentSuffix</code></td>
+<td>text</td>
+<td></td>
+<td>Appended to the user agent</td>
+</tr>
+<tr>
+<td><code dir="auto">headers</code></td>
+<td><code dir="auto">Name: value</code> lines</td>
+<td></td>
+<td>Extra headers on loads you start (not on subresources)</td>
+</tr>
+<tr>
+<td><code dir="auto">proxy</code></td>
+<td><code dir="auto">host:port</code> or <code dir="auto">scheme://host:port</code></td>
+<td></td>
+<td>Proxy for all WebView traffic</td>
+</tr>
+<tr>
+<td><code dir="auto">proxyBypass</code></td>
+<td>hosts, comma separated</td>
+<td></td>
+<td>Hosts that skip the proxy</td>
+</tr>
+<tr>
+<td><code dir="auto">ssl</code></td>
+<td><code dir="auto">strict</code> <code dir="auto">ask</code> <code dir="auto">ignore</code></td>
+<td><code dir="auto">strict</code></td>
+<td>TLS certificate errors</td>
+</tr>
+<tr>
+<td><code dir="auto">mixedContent</code></td>
+<td><code dir="auto">never</code> <code dir="auto">compatible</code> <code dir="auto">always</code></td>
+<td><code dir="auto">compatible</code></td>
+<td>http resources on https pages</td>
+</tr>
+<tr>
+<td><code dir="auto">safeBrowsing</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Safe Browsing</td>
+</tr>
+<tr>
+<td><code dir="auto">cookies</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Cookies</td>
+</tr>
+<tr>
+<td><code dir="auto">thirdPartyCookies</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Third-party cookies</td>
+</tr>
+<tr>
+<td><code dir="auto">permissions</code></td>
+<td><code dir="auto">ask</code> <code dir="auto">grant</code> <code dir="auto">deny</code></td>
+<td><code dir="auto">ask</code></td>
+<td>Camera, microphone and location requests</td>
+</tr>
+<tr>
+<td><code dir="auto">allowedHosts</code></td>
+<td>hosts, comma separated</td>
+<td></td>
+<td>Pages may only navigate to these hosts and their subdomains</td>
+</tr>
+<tr>
+<td><code dir="auto">externalApps</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Follow <code dir="auto">tel:</code>, <code dir="auto">mailto:</code>, <code dir="auto">intent:</code>, <code dir="auto">market:</code> links</td>
+</tr>
+<tr>
+<td><code dir="auto">popups</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td><code dir="auto">window.open</code> and <code dir="auto">target=_blank</code> (opened in the same view)</td>
+</tr>
+<tr>
+<td><code dir="auto">jsDialogs</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td><code dir="auto">alert</code>, <code dir="auto">confirm</code>, <code dir="auto">prompt</code>, <code dir="auto">beforeunload</code></td>
+</tr>
+<tr>
+<td><code dir="auto">longPress</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Text selection and context menu</td>
+</tr>
+<tr>
+<td><code dir="auto">fileAccess</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td><code dir="auto">file://</code> URLs</td>
+</tr>
+<tr>
+<td><code dir="auto">universalFileAccess</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td><code dir="auto">file://</code> pages may read anything</td>
+</tr>
+<tr>
+<td><code dir="auto">contentAccess</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td><code dir="auto">content://</code> URLs</td>
+</tr>
+<tr>
+<td><code dir="auto">clearOnStart</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Wipe all data whenever the page opens</td>
+</tr>
+<tr>
+<td><code dir="auto">debugging</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Remote debugging</td>
+</tr>
+<tr>
+<td><code dir="auto">eruda</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Inject the bundled Eruda</td>
+</tr>
+<tr>
+<td><code dir="auto">console</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Keep console messages</td>
+</tr>
+<tr>
+<td><code dir="auto">userScript</code></td>
+<td>JavaScript</td>
+<td></td>
+<td>Injected at document start into every frame</td>
+</tr>
+<tr>
+<td><code dir="auto">hardwareAcceleration</code></td>
+<td>boolean</td>
+<td><code dir="auto">true</code></td>
+<td>Off renders in software</td>
+</tr>
+<tr>
+<td><code dir="auto">offscreenPreRaster</code></td>
+<td>boolean</td>
+<td><code dir="auto">false</code></td>
+<td>Draw tiles outside the viewport ahead of time</td>
+</tr>
+</tbody>
+</table>
+<p><code dir="auto">allowedHosts</code> limits navigation the page starts; addresses you load yourself
+(the address bar, <code dir="auto">cmd=load</code>) always open.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="control-from-adb">Control from adb</h2><a class="sl-anchor-link" href="#control-from-adb"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Control from adb”</span></a></div>
+<p>The app listens to two entry points:</p>
+<ul>
+<li><code dir="auto">am start</code> opens a page, starting the app if needed.</li>
+<li><code dir="auto">am broadcast</code> acts on the page that is open now. The app must be running.
+The broadcast prints the result: <code dir="auto">result=-1</code> means success, <code dir="auto">result=1</code> an
+error, and <code dir="auto">data</code> carries the message or the requested value.</li>
+</ul>
+<p>Every command is also logged under the <code dir="auto">HoltdroidWebView</code> tag
+(<code dir="auto">adb logcat -s HoltdroidWebView</code>).</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#E6EDF3">P</span><span style="--0:#FF7B72">=</span><span style="--0:#A5D6FF">io.github.holtdroid.webview</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#8B949E"># open with the default preset</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">am</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">start</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-n</span><span style="--0:#E6EDF3"> $P</span><span style="--0:#A5D6FF">/.MainActivity</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-d</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">https://example.com</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#8B949E"># open with a preset (id or name) and overrides</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">am</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">start</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-n</span><span style="--0:#E6EDF3"> $P</span><span style="--0:#A5D6FF">/.MainActivity</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">preset</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">unlocked</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">url</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">https://example.com</span><span style="--0:#E6EDF3"> </span><span style="--0:#FF7B72">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">display</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">kiosk</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">--ez</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">keepScreenOn</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">true</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#8B949E"># change settings of the open page</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">am</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">broadcast</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-a</span><span style="--0:#E6EDF3"> $P</span><span style="--0:#A5D6FF">.CONTROL</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-p</span><span style="--0:#E6EDF3"> $P </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">ssl</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">ignore</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">userAgent</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">desktop</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#8B949E"># resize the viewport, then back to full size</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">am</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">broadcast</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-a</span><span style="--0:#E6EDF3"> $P</span><span style="--0:#A5D6FF">.CONTROL</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-p</span><span style="--0:#E6EDF3"> $P </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">cmd</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">resize</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">size</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">390x844</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">am</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">broadcast</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-a</span><span style="--0:#E6EDF3"> $P</span><span style="--0:#A5D6FF">.CONTROL</span><span style="--0:#E6EDF3"> </span><span style="--0:#79C0FF">-p</span><span style="--0:#E6EDF3"> $P </span><span style="--0:#79C0FF">--es</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">cmd</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">resize</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#8B949E"># run JavaScript and print the result (quote the whole command for the device shell)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">"am broadcast -a </span><span style="--0:#E6EDF3">$P</span><span style="--0:#A5D6FF">.CONTROL -p </span><span style="--0:#E6EDF3">$P</span><span style="--0:#A5D6FF"> --es cmd eval --es js 'document.title'"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="P=io.github.holtdroid.webviewadb shell am start -n $P/.MainActivity -d https://example.comadb shell am start -n $P/.MainActivity --es preset unlocked --es url https://example.com \  --es display kiosk --ez keepScreenOn trueadb shell am broadcast -a $P.CONTROL -p $P --es ssl ignore --es userAgent desktopadb shell am broadcast -a $P.CONTROL -p $P --es cmd resize --es size 390x844adb shell am broadcast -a $P.CONTROL -p $P --es cmd resizeadb shell &quot;am broadcast -a $P.CONTROL -p $P --es cmd eval --es js &#x27;document.title&#x27;&quot;"><div></div></button></div></figure></div>
+<p><code dir="auto">--es</code>, <code dir="auto">--ei</code> and <code dir="auto">--ez</code> all work; values are converted to the setting’s
+type. Commands go in <code dir="auto">cmd</code>; without one, <code dir="auto">am start</code> opens a page and
+<code dir="auto">am broadcast</code> applies the settings to the open page.</p>
+<table>
+<thead>
+<tr>
+<th><code dir="auto">cmd</code></th>
+<th>Arguments</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">open</code></td>
+<td><code dir="auto">preset</code>, <code dir="auto">url</code>, any setting</td>
+<td>Open a page with a preset (default preset if omitted) and overrides</td>
+</tr>
+<tr>
+<td><code dir="auto">set</code></td>
+<td>any setting, <code dir="auto">url</code></td>
+<td>Change settings of the open page; <code dir="auto">url</code> also loads it</td>
+</tr>
+<tr>
+<td><code dir="auto">load</code></td>
+<td><code dir="auto">url</code></td>
+<td>Load an address in the open page</td>
+</tr>
+<tr>
+<td><code dir="auto">resize</code></td>
+<td><code dir="auto">width</code>, <code dir="auto">height</code> or <code dir="auto">size=WxH</code>, <code dir="auto">scale</code></td>
+<td>Frame the viewport; no arguments returns to full size</td>
+</tr>
+<tr>
+<td><code dir="auto">rotate</code></td>
+<td></td>
+<td>Swap width and height</td>
+</tr>
+<tr>
+<td><code dir="auto">freeze</code>, <code dir="auto">unfreeze</code>, <code dir="auto">toggle-freeze</code></td>
+<td></td>
+<td>Pause or resume the page</td>
+</tr>
+<tr>
+<td><code dir="auto">reload</code></td>
+<td><code dir="auto">hard=true</code></td>
+<td>Reload, optionally clearing the HTTP cache first</td>
+</tr>
+<tr>
+<td><code dir="auto">back</code>, <code dir="auto">forward</code>, <code dir="auto">stop</code></td>
+<td></td>
+<td>Navigation</td>
+</tr>
+<tr>
+<td><code dir="auto">home</code></td>
+<td></td>
+<td>Close the page and return to the start screen</td>
+</tr>
+<tr>
+<td><code dir="auto">clear</code></td>
+<td><code dir="auto">what=cache|cookies|storage|history|all</code></td>
+<td>Clear data (default <code dir="auto">all</code>)</td>
+</tr>
+<tr>
+<td><code dir="auto">eval</code></td>
+<td><code dir="auto">js</code></td>
+<td>Evaluate JavaScript; prints the JSON result</td>
+</tr>
+<tr>
+<td><code dir="auto">console</code></td>
+<td><code dir="auto">lines</code> (default 50)</td>
+<td>Print the latest console messages</td>
+</tr>
+<tr>
+<td><code dir="auto">theme</code></td>
+<td><code dir="auto">theme=system|light|dark</code></td>
+<td>Switch the app theme</td>
+</tr>
+<tr>
+<td><code dir="auto">keyboard</code></td>
+<td><code dir="auto">show=true|false</code></td>
+<td>Show, hide or toggle the on-screen keyboard for the focused field</td>
+</tr>
+<tr>
+<td><code dir="auto">state</code></td>
+<td></td>
+<td>Print the screen, page, viewport and every setting as JSON</td>
+</tr>
+<tr>
+<td><code dir="auto">presets</code></td>
+<td></td>
+<td>Print preset ids and names</td>
+</tr>
+</tbody>
+</table>
+<p>Links do the same: <code dir="auto">holtdroid-webview://&lt;cmd&gt;?&lt;key&gt;=&lt;value&gt;&amp;…</code> opens the app
+and runs the command, for example
+<code dir="auto">holtdroid-webview://open?preset=kiosk&amp;url=https%3A%2F%2Fexample.com</code>. The app
+is also offered as a browser for <code dir="auto">http</code> and <code dir="auto">https</code> links, which then open
+with the default preset.</p>
+<p>Any app on the device can send these broadcasts and links. Turn <strong>External
+control</strong> off in app settings to accept only plain <code dir="auto">url</code> links.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="devtools">DevTools</h2><a class="sl-anchor-link" href="#devtools"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “DevTools”</span></a></div>
+<p>With <code dir="auto">debugging</code> on, the WebView exposes the DevTools socket
+<code dir="auto">webview_devtools_remote_&lt;pid&gt;</code>. In a Holtdroid session it appears in the
+DevTools target list like any other app’s WebView (see
+<a href="/concepts/devtools/">WebView DevTools</a>). On your own computer:</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">forward</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">tcp:9222</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">localabstract:webview_devtools_remote_</span><span style="--0:#E6EDF3">$(</span><span style="--0:#FFA657">adb</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">shell</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">pidof</span><span style="--0:#E6EDF3"> </span><span style="--0:#A5D6FF">io.github.holtdroid.webview</span><span style="--0:#E6EDF3">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="adb forward tcp:9222 localabstract:webview_devtools_remote_$(adb shell pidof io.github.holtdroid.webview)"><div></div></button></div></figure></div>
+<p>then open <code dir="auto">chrome://inspect</code>, or <code dir="auto">http://localhost:9222/json</code>. The control
+panel copies the exact command.</p>
+</div><footer class="sl-flex astro-k7w37ldv"><div class="meta sl-flex astro-k7w37ldv"><a href="https://github.com/holtdroid/holtdroid/edit/main/docs/src/content/docs/tools/webview.md" class="sl-flex print:hidden astro-brmikds2"><svg aria-hidden="true" class="astro-brmikds2 astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a><p>Last updated: <time datetime="2026-10-29T19:46:33.000Z">Oct 29, 2026</time></p></div><div class="pagination-links print:hidden astro-kgi7sqvr" dir="ltr"><a href="/sources/custom/" rel="prev" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-kgi7sqvr">Previous<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">Writing your own</span></span></a><a href="/operations/security/" rel="next" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-kgi7sqvr">Next<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">Security</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

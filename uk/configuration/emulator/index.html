@@ -1,0 +1,649 @@
+<!DOCTYPE html><html lang="uk" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-hwk3awhx"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Emulator provider | Holtdroid</title><link rel="canonical" href="https://holtdroid.github.io/uk/configuration/emulator/"/><link rel="alternate" hreflang="en" href="https://holtdroid.github.io/configuration/emulator/"/><link rel="alternate" hreflang="uk" href="https://holtdroid.github.io/uk/configuration/emulator/"/><link rel="alternate" hreflang="ru" href="https://holtdroid.github.io/ru/configuration/emulator/"/><link rel="alternate" hreflang="x-default" href="https://holtdroid.github.io/configuration/emulator/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="Emulator provider"/><meta property="og:type" content="article"/><meta property="og:url" content="https://holtdroid.github.io/uk/configuration/emulator/"/><meta property="og:locale" content="uk"/><meta property="og:description" content="Run sessions as redroid Pods (Android on the node's kernel) on Kubernetes, several per node."/><meta property="og:site_name" content="Holtdroid"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Run sessions as redroid Pods (Android on the node's kernel) on Kubernetes, several per node."/><script type="module" src="/_astro/MermaidZoom.astro_astro_type_script_index_0_lang.DpUBnOV7.js"></script><script>
+  document.documentElement.dataset.theme = "dark"
+  window.StarlightThemeProvider = { updatePickers() {} }
+</script><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><style>@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-cyrillic-ext-wght-normal.DjL33-gN.woff2)format("woff2-variations");unicode-range:U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-cyrillic-wght-normal.BEAKL7Jp.woff2)format("woff2-variations");unicode-range:U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-vietnamese-wght-normal.6IgcOCM7.woff2)format("woff2-variations");unicode-range:U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-latin-ext-wght-normal.DC-KSUi6.woff2)format("woff2-variations");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-latin-wght-normal.BgDaEnEv.woff2)format("woff2-variations");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.hd-ai:where(.astro-jxl35hpc){color:#f4f1ea;background:radial-gradient(18rem 10rem at 3.5rem,#f5b4462e,#0000 70%),linear-gradient(135deg,#15110a,#0d0e0b);border:1px solid #f5b44666;border-radius:1.1rem;align-items:center;gap:1.25rem;margin-block:1.5rem;padding:1.25rem 1.5rem;font-family:Geist Variable,ui-sans-serif,system-ui,sans-serif;display:flex;position:relative;overflow:hidden}.box:where(.astro-jxl35hpc){flex-shrink:0;width:4.5rem;height:4.5rem}.lid:where(.astro-jxl35hpc){transform-box:fill-box;transform-origin:0 100%;animation:4s ease-in-out infinite lid}.sparks:where(.astro-jxl35hpc){animation:4s ease-in-out infinite sparks}.halo:where(.astro-jxl35hpc){transform-box:fill-box;transform-origin:50%;animation:4s ease-in-out infinite halo}.copy:where(.astro-jxl35hpc){gap:.3rem;display:grid}.copy:where(.astro-jxl35hpc) p:where(.astro-jxl35hpc){margin:0}.label:where(.astro-jxl35hpc){color:#f5b446;letter-spacing:.12em;text-transform:uppercase;font-family:ui-monospace,SF Mono,Menlo,Consolas,monospace;font-size:.75rem}.title:where(.astro-jxl35hpc){letter-spacing:-.02em;font-size:1.15rem;font-weight:650}.text:where(.astro-jxl35hpc){color:#c9c2b4;font-size:.92rem;line-height:1.55}@keyframes lid{0%,to{transform:rotate(0)}45%,60%{transform:rotate(-9deg)}}@keyframes sparks{0%,to{opacity:.4;transform:translateY(2px)}50%{opacity:1;transform:translateY(-3px)}}@keyframes halo{50%{transform:scale(1.12)}}.compact:where(.astro-jxl35hpc){background:radial-gradient(6rem 4rem at 1.2rem 1.2rem,#f5b44629,#0000 70%),linear-gradient(135deg,#15110a,#0d0e0b);border-radius:.75rem;align-items:flex-start;gap:.6rem;margin-block:0;padding:.6rem .75rem}.compact:where(.astro-jxl35hpc) .box:where(.astro-jxl35hpc){width:1.9rem;height:1.9rem}.compact:where(.astro-jxl35hpc) .copy:where(.astro-jxl35hpc){gap:.1rem}.compact:where(.astro-jxl35hpc) .title:where(.astro-jxl35hpc){font-size:.8rem;line-height:1.3}.compact:where(.astro-jxl35hpc) .text:where(.astro-jxl35hpc){font-size:.72rem;line-height:1.35}@media (width<=36rem){.hd-ai:where(.astro-jxl35hpc):not(.compact){flex-direction:column;align-items:flex-start}}@media (prefers-reduced-motion:reduce){.lid:where(.astro-jxl35hpc),.sparks:where(.astro-jxl35hpc),.halo:where(.astro-jxl35hpc){animation:none}}
+</style><link rel="stylesheet" href="/_astro/common.DwkjWTIC.css"><style>@layer starlight.components{svg:where(.astro-hlzwxtvd){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em;overflow:visible}}
+@layer starlight.components{.sl-steps{--bullet-size:calc(var(--sl-line-height) * 1rem);--bullet-margin:.375rem;counter-reset:steps-counter var(--sl-steps-start,0);padding-inline-start:0;list-style:none}.sl-steps>li{counter-increment:steps-counter;padding-inline-start:calc(var(--bullet-size) + 1rem);min-height:calc(var(--bullet-size) + var(--bullet-margin));padding-bottom:1px;position:relative}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);top:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);box-shadow:inset 0 0 0 1px var(--sl-color-gray-5);border-radius:99rem;font-weight:600;position:absolute;inset-inline-start:0}.sl-steps>li:after{--guide-width:1px;content:"";top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);width:var(--guide-width);background-color:var(--sl-color-hairline-light);position:absolute;inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2)}}@layer starlight.content{.sl-steps>li>:first-child{--lh:calc(1em * var(--sl-line-height));--shift-y:calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh:calc(1em * var(--sl-line-height-headings))}@supports (--prop:1lh){.sl-steps>li>:first-child{--lh:1lh}}}
+</style><script type="module" src="/_astro/page.C6UiXXts.js"></script></head><body class="astro-hwk3awhx"><a class="sl-skip-link astro-ecdj6xll" href="#_top">Перейти до вмісту</a><div class="page sl-flex astro-xcg6nxcz"><header class="header astro-xcg6nxcz"><div class="header astro-azubnz3w"><div class="title-wrapper sl-flex astro-azubnz3w"><a href="/" class="site-title sl-flex astro-mjdjz25a"><img class="astro-mjdjz25a" alt src="/_astro/logo.BRLVoKOr.svg" width="64" height="64"><span class="astro-mjdjz25a" translate="no">Holtdroid</span></a></div><div class="sl-flex print:hidden astro-azubnz3w"><site-search class="astro-azubnz3w astro-n2w6z7vl" data-translations="{&quot;placeholder&quot;:&quot;Пошук&quot;}"><button data-open-modal disabled aria-label="Пошук" aria-keyshortcuts="Control+K" class="astro-n2w6z7vl"><svg aria-hidden="true" class="astro-n2w6z7vl astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-n2w6z7vl" aria-hidden="true">Пошук</span><kbd class="sl-hidden md:sl-flex astro-n2w6z7vl" style="display: none;"><kbd class="astro-n2w6z7vl">Ctrl</kbd><kbd class="astro-n2w6z7vl">K</kbd></kbd></button><dialog style="padding:0" aria-label="Пошук" class="astro-n2w6z7vl"><div class="dialog-frame sl-flex astro-n2w6z7vl"><button data-close-modal class="sl-flex md:sl-hidden astro-n2w6z7vl">Скасувати</button><div class="search-container astro-n2w6z7vl"><div id="starlight__search" class="astro-n2w6z7vl"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.BOTS06Pe.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-azubnz3w"><div class="sl-flex social-icons astro-azubnz3w"><a href="https://github.com/holtdroid/holtdroid" rel="me" class="sl-flex astro-pacogggv"><span class="sr-only astro-pacogggv">GitHub</span><svg aria-hidden="true" class="astro-pacogggv astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div></div></div></header><nav class="sidebar print:hidden astro-xcg6nxcz" aria-label="Головне"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-qxlgrixp"><svg aria-hidden="true" class="open-menu astro-qxlgrixp astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-qxlgrixp astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-qxlgrixp">Меню</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-xcg6nxcz"><div class="sidebar-content sl-flex astro-xcg6nxcz"><ul class="hd-topics"><li><a href="/start/introduction/" aria-current="page"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.17 2.06A13.1 13.1 0 0 0 19 1.87a12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2 13.1 13.1 0 0 0-2.17.19 1 1 0 0 0-.83 1v12a1 1 0 0 0 1.17 1 10.9 10.9 0 0 1 8.25 1.91l.12.07h.11a.91.91 0 0 0 .7 0h.11l.12-.07A10.899 10.899 0 0 1 20.83 16 1 1 0 0 0 22 15V3a1 1 0 0 0-.83-.94ZM11 15.35a12.87 12.87 0 0 0-6-1.48H4v-10c.333-.02.667-.02 1 0a10.86 10.86 0 0 1 6 1.8v9.68Zm9-1.44h-1a12.87 12.87 0 0 0-6 1.48V5.67a10.86 10.86 0 0 1 6-1.8c.333-.02.667-.02 1 0v10.04Zm1.17 4.15a13.098 13.098 0 0 0-2.17-.19 12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2.05c-.727.003-1.453.066-2.17.19A1 1 0 0 0 2 19.21a1 1 0 0 0 1.17.79 10.9 10.9 0 0 1 8.25 1.91 1 1 0 0 0 1.16 0A10.9 10.9 0 0 1 20.83 20a1 1 0 0 0 1.17-.79 1 1 0 0 0-.83-1.15Z"/></svg></span>Документація</a></li><li><a href="/uk/guides/first-steps/launch-app/"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.72 8.79-4.29 4.3-1.65-1.65a1 1 0 1 0-1.41 1.41l2.35 2.36a1 1 0 0 0 1.41 0l5-5a1.002 1.002 0 1 0-1.41-1.42ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg></span>Посібники</a></li><li><a href="https://github.com/holtdroid" rel="noopener"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></span>GitHub</a></li><li><a href="/#repositories" rel="noopener"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg></span>Repositories</a></li></ul><p class="hd-nav-title">Документація</p><sl-sidebar-state-persist data-hash="0bxvewy" class="astro-4xjstbt3"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="hd-nav"><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg><span>Start here</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/start/introduction/"><span>Introduction</span></a></li><li><a href="/uk/start/installation/"><span>Installation</span></a></li><li><a href="/uk/start/local-development/"><span>Local development</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg><span>Concepts</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/concepts/architecture/"><span>Architecture</span></a></li><li><a href="/uk/concepts/sessions/"><span>Sessions and slots</span></a></li><li><a href="/uk/concepts/devtools/"><span>WebView DevTools</span></a></li><li><a href="/uk/concepts/webview-versions/"><span>WebView versions</span></a></li><li><a href="/uk/concepts/vpn/"><span>Per-session VPN</span></a></li><li><a href="/uk/concepts/ssh/"><span>Connecting your computer</span></a></li><li><a href="/uk/concepts/adb/"><span>ADB tools</span></a></li><li><a href="/uk/concepts/recordings/"><span>Recordings</span></a></li><li><a href="/uk/concepts/microphone/"><span>Microphone</span></a></li><li><a href="/uk/concepts/camera/"><span>Camera</span></a></li><li><a href="/uk/concepts/app-data/"><span>App data</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><span>Інструменти сесії</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/session-tools/overview/"><span>Overview</span></a></li><li><a href="/uk/session-tools/pixel-perfect/"><span>Pixel perfect</span></a></li><li><a href="/uk/session-tools/websockets/"><span>WebSockets</span></a></li><li><a href="/uk/session-tools/cache/"><span>Cache</span></a></li><li><a href="/uk/session-tools/images/"><span>Images</span></a></li><li><a href="/uk/session-tools/svg/"><span>SVG</span></a></li><li><a href="/uk/session-tools/network/"><span>Network</span></a></li><li><a href="/uk/session-tools/dns/"><span>DNS log and rewrites</span></a></li><li><a href="/uk/session-tools/routes/"><span>Routes</span></a></li><li><a href="/uk/session-tools/logcat/"><span>Logcat</span></a></li><li><a href="/uk/session-tools/files/"><span>Files</span></a></li><li><a href="/uk/session-tools/terminal/"><span>Terminal</span></a></li></ul></details></li><li><details open><summary class="hd-has-current"><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m21.32 9.55-1.89-.63.89-1.78A1 1 0 0 0 20.13 6L18 3.87a1 1 0 0 0-1.15-.19l-1.78.89-.63-1.89A1 1 0 0 0 13.5 2h-3a1 1 0 0 0-.95.68l-.63 1.89-1.78-.89A1 1 0 0 0 6 3.87L3.87 6a1 1 0 0 0-.19 1.15l.89 1.78-1.89.63a1 1 0 0 0-.68.94v3a1 1 0 0 0 .68.95l1.89.63-.89 1.78A1 1 0 0 0 3.87 18L6 20.13a1 1 0 0 0 1.15.19l1.78-.89.63 1.89a1 1 0 0 0 .95.68h3a1 1 0 0 0 .95-.68l.63-1.89 1.78.89a1 1 0 0 0 1.13-.19L20.13 18a1 1 0 0 0 .19-1.15l-.89-1.78 1.89-.63a1 1 0 0 0 .68-.94v-3a1 1 0 0 0-.68-.95ZM20 12.78l-1.2.4A2 2 0 0 0 17.64 16l.57 1.14-1.1 1.1-1.11-.6a2 2 0 0 0-2.79 1.16l-.4 1.2h-1.59l-.4-1.2A2 2 0 0 0 8 17.64l-1.14.57-1.1-1.1.6-1.11a2 2 0 0 0-1.16-2.82l-1.2-.4v-1.56l1.2-.4A2 2 0 0 0 6.36 8l-.57-1.11 1.1-1.1L8 6.36a2 2 0 0 0 2.82-1.16l.4-1.2h1.56l.4 1.2A2 2 0 0 0 16 6.36l1.14-.57 1.1 1.1-.6 1.11a2 2 0 0 0 1.16 2.79l1.2.4v1.59ZM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg><span>Configuration</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/configuration/overview/"><span>Configuration files</span></a></li><li><a href="/uk/configuration/storage/"><span>Artifact storage</span></a></li><li><a href="/uk/configuration/database/"><span>Database</span></a></li><li><a href="/uk/configuration/authentication/"><span>Authentication</span></a></li><li><a href="/uk/configuration/secrets/"><span>Secrets</span></a></li><li><a href="/uk/configuration/emulator/" aria-current="page"><span>Emulator provider</span></a></li><li><a href="/uk/configuration/phones/"><span>Phone provider</span></a></li><li><a href="/uk/configuration/rooting/"><span>Rooting a phone</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M14.29 17.29 13 18.59V13a1 1 0 0 0-2 0v5.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l3 3a1 1 0 0 0 .33.21.94.94 0 0 0 .76 0 1 1 0 0 0 .33-.21l3-3a1 1 0 0 0-1.42-1.42Zm4.13-11.07A7 7 0 0 0 5.06 8.11 4 4 0 0 0 6 16a1 1 0 0 0 0-2 2 2 0 0 1 0-4 1 1 0 0 0 1-1 5 5 0 0 1 9.73-1.61 1 1 0 0 0 .78.67 3 3 0 0 1 .24 5.84 1 1 0 1 0 .5 1.94 5 5 0 0 0 .17-9.62Z"/></svg><span>APK sources</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/sources/overview/"><span>Overview</span></a></li><li><a href="/uk/sources/slack/"><span>Slack</span></a></li><li><a href="/uk/sources/s3/"><span>S3 bucket</span></a></li><li><a href="/uk/sources/github/"><span>GitHub releases</span></a></li><li><a href="/uk/sources/chromium/"><span>Chromium versions</span></a></li><li><a href="/uk/sources/custom/"><span>Writing your own</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m12.71 16.29-.15-.12-.18-.09-.18-.08a1 1 0 0 0-.91.27 1 1 0 0 0-.21.33 1 1 0 0 0 1.3 1.31l.33-.22a1 1 0 0 0 .21-1.09 1 1 0 0 0-.21-.31M16 2H8a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3m1 17a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1Z"/></svg><span>Tools</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/tools/webview/"><span>Holtdroid WebView</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M15 17a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9 0a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-3-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m0 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m4-6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 11v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 17v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a3 3 0 0 0-.78-2 3 3 0 0 0 .78-2v-2a3 3 0 0 0-.78-2A3 3 0 0 0 22 7Zm-2 14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm-5-2a1 1 0 1 0 1 1 1 1 0 0 0-1-1M9 5H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2"/></svg><span>Operations</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/operations/security/"><span>Security</span></a></li><li><a href="/uk/operations/troubleshooting/"><span>Troubleshooting</span></a></li><li><a href="/uk/operations/vpn-gateway/"><span>Shared VPN gateway</span></a></li><li><a href="/uk/operations/monitoring/"><span>Monitoring and audit</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg><span>Extending</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/uk/extending/contracts/"><span>Contracts</span></a></li><li><a href="/uk/extending/provider/"><span>Writing a provider</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="hd-sidebar-note"><aside class="hd-ai not-content compact astro-jxl35hpc" aria-label="Disclaimer"><svg class="box astro-jxl35hpc" viewBox="0 0 64 64" aria-hidden="true"><circle class="halo astro-jxl35hpc" cx="32" cy="24" r="20" fill="#f5b446" opacity=".18"></circle><circle cx="32" cy="26" r="11" fill="#f5b446" opacity=".22" class="astro-jxl35hpc"></circle><path d="M12 34h40v18a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z" fill="#8a5a3c" class="astro-jxl35hpc"></path><path d="M12 40h40v4H12z" fill="#6d4630" class="astro-jxl35hpc"></path><rect x="28.5" y="41" width="7" height="8" rx="1.5" fill="#d9b48f" class="astro-jxl35hpc"></rect><g class="lid astro-jxl35hpc"><path d="M10 31.5 45.5 17l2.4 5.6L12.4 37z" fill="#a06b48" class="astro-jxl35hpc"></path><path d="M10 31.5 45.5 17" stroke="#c4875c" stroke-width="1.4" stroke-linecap="round" class="astro-jxl35hpc"></path></g><g class="sparks astro-jxl35hpc"><circle cx="24" cy="14" r="1.8" fill="#f5b446" class="astro-jxl35hpc"></circle><circle cx="34" cy="7" r="1.4" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="40" cy="27" r="1.6" fill="#3ddc84" class="astro-jxl35hpc"></circle><circle cx="29" cy="21" r="1.2" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="19" cy="24" r="1" fill="#3ddc84" class="astro-jxl35hpc"></circle><path d="M44 9l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" fill="#ffe08a" class="astro-jxl35hpc"></path></g></svg><div class="copy astro-jxl35hpc"><p class="title astro-jxl35hpc">Fully AI-generated. Use at your own risk.</p><p class="text astro-jxl35hpc">Not written or reviewed by a human.</p></div></aside></div><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-wiurj2sw"><div class="social-icons astro-wiurj2sw"><a href="https://github.com/holtdroid/holtdroid" rel="me" class="sl-flex astro-pacogggv"><span class="sr-only astro-pacogggv">GitHub</span><svg aria-hidden="true" class="astro-pacogggv astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-xcg6nxcz"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-a422hx3e"><aside class="right-sidebar-container print:hidden astro-a422hx3e"><div class="right-sidebar astro-a422hx3e"><div class="lg:sl-hidden astro-rflzrhp5"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-uccvt52g"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-uccvt52g"><details id="starlight__mobile-toc" class="astro-uccvt52g"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-uccvt52g"><span class="toggle sl-flex astro-uccvt52g">На цій сторінці<svg aria-hidden="true" class="caret astro-uccvt52g astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-uccvt52g"></span></summary><div class="dropdown astro-uccvt52g"><ul class="isMobile astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Огляд</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#sizing" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Sizing</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#node-requirements" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Node requirements</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#pod-layout" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Pod layout</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#session-devices" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Session devices</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#screens-and-android-versions" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Screens and Android versions</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#users-adb-inside-android" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Users’ ADB inside Android</span></a><ul class="isMobile astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#device-controls" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Device controls</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#inventory-and-maintenance" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Inventory and maintenance</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#helm-chart" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Helm chart</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#vpn" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">VPN</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#network-conditions" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Network conditions</span></a><ul class="isMobile astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#regions" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Regions</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#the-sessions-route" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">The session’s route</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#how-it-works" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">How it works</span></a></li></ul></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-rflzrhp5"><div class="sl-container astro-rflzrhp5"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">На цій сторінці</h2><ul class="astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Огляд</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#sizing" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Sizing</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#node-requirements" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Node requirements</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#pod-layout" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Pod layout</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#session-devices" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Session devices</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#screens-and-android-versions" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Screens and Android versions</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#users-adb-inside-android" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Users’ ADB inside Android</span></a><ul class="astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#device-controls" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Device controls</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#inventory-and-maintenance" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Inventory and maintenance</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#helm-chart" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Helm chart</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#vpn" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">VPN</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#network-conditions" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Network conditions</span></a><ul class="astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#regions" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Regions</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#the-sessions-route" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">The session’s route</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#how-it-works" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">How it works</span></a></li></ul></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-a422hx3e"><main data-pagefind-body class="astro-hwk3awhx" lang="en" dir="ltr"><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="hd-title"><p class="hd-eyebrow">Configuration</p><h1 id="_top">Emulator provider</h1><p class="hd-description">Run sessions as redroid Pods (Android on the node&#39;s kernel) on Kubernetes, several per node.</p></div><p class="sl-flex astro-dvjxtoj3"><svg aria-hidden="true" class="astro-dvjxtoj3 astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-color: var(--sl-color-orange-high);--sl-icon-size: 1.5em;"><path d="M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z"/></svg><span class="astro-dvjxtoj3">Цей контент ще не доступний вашою мовою.</span></p></div></div><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="sl-markdown-content"><p>The <code dir="auto">provider-emulator</code> service runs every session as a Pod with
+<a href="https://github.com/remote-android/redroid-doc">redroid</a>, Android 15 in a
+container on the node’s own kernel, so several sessions share a node. It
+creates the Pods in its own namespace and needs a ServiceAccount allowed to
+manage Pods and Secrets there, to create and update its maintenance
+ConfigMap, and to list Nodes cluster-wide (the Helm chart creates all of it).</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.31loo.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="yaml"><code><div class="ec-line"><div class="code"><span style="--0:#7EE787">listen</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">":8080"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">kubeconfig</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">""</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># empty: the Pod's service account</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">namespace</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">holtdroid</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">slots</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">0</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># cap over all nodes; 0: no cap</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">slotsPerNode</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">1</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">nodeSelector</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">"holtdroid/sessions=true"</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># a label selector</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">tolerations</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E6EDF3">  </span></span><span style="--0:#E6EDF3">- { </span><span style="--0:#7EE787">key</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">dedicated</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">operator</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">Equal</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">value</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">nas</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">effect</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">NoSchedule</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">image</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">ghcr.io/holtdroid/holtdroid-session:0.1.0</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># the agent</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">imagePullPolicy</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">IfNotPresent</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">imagePullSecrets</span><span style="--0:#E6EDF3">: []</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">agentPort</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">18580</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">tunnelPort</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">18581</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">redroid</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">images</span><span style="--0:#E6EDF3">: </span><span style="--0:#8B949E"># Android version → image; the newest is the default</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#A5D6FF">"15"</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">ghcr.io/holtdroid/holtdroid-redroid:15</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">screens</span><span style="--0:#E6EDF3">: [] </span><span style="--0:#8B949E"># the built-in presets; see below</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">fps</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">60</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">gpu</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">/dev/dri/renderD128</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">dataSize</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">8Gi</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">shell</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">allowlist</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># what users' ADB may run inside Android: allowlist | full | off</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">privileged</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">false</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># true: a privileged Android container, for runtimes without NRI</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">args</span><span style="--0:#E6EDF3">: [] </span><span style="--0:#8B949E"># more redroid boot arguments</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">resources</span><span style="--0:#E6EDF3">: </span><span style="--0:#8B949E"># the Android container</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">requests</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">cpu</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">500m</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">1536Mi</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">limits</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">3Gi</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">agentResources</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">requests</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">cpu</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">100m</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">256Mi</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">limits</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">1Gi</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">nodes</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">big-node</span><span style="--0:#E6EDF3">: </span><span style="--0:#8B949E"># a node name</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">slots</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">6</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">resources</span><span style="--0:#E6EDF3">: </span><span style="--0:#8B949E"># replaces resources above on this node</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">requests</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">cpu</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">"1"</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">2Gi</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">limits</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">4Gi</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">vpn</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">locations</span><span style="--0:#E6EDF3">: [] </span><span style="--0:#8B949E"># see below; empty means no VPN sidecar</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">maintenance</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">holtdroid-emulator-maintenance</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># ConfigMap for maintenance holds; empty turns them off</span></div></div><div class="ec-line"><div class="code"><span style="--0:#7EE787">nodeInfo</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">selector</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">"app.kubernetes.io/component=node-info"</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># node-info Pods in the namespace; empty: none</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">port</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">8090</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="listen: &quot;:8080&quot;kubeconfig: &quot;&quot; # empty: the Pod&#x27;s service accountnamespace: holtdroidslots: 0 # cap over all nodes; 0: no capslotsPerNode: 1nodeSelector: &quot;holtdroid/sessions=true&quot; # a label selectortolerations:  - { key: dedicated, operator: Equal, value: nas, effect: NoSchedule }image: ghcr.io/holtdroid/holtdroid-session:0.1.0 # the agentimagePullPolicy: IfNotPresentimagePullSecrets: []agentPort: 18580tunnelPort: 18581redroid:  images: # Android version → image; the newest is the default    &quot;15&quot;: ghcr.io/holtdroid/holtdroid-redroid:15  screens: [] # the built-in presets; see below  fps: 60  gpu: /dev/dri/renderD128  dataSize: 8Gi  shell: allowlist # what users&#x27; ADB may run inside Android: allowlist | full | off  privileged: false # true: a privileged Android container, for runtimes without NRI  args: [] # more redroid boot argumentsresources: # the Android container  requests: { cpu: 500m, memory: 1536Mi }  limits: { memory: 3Gi }agentResources:  requests: { cpu: 100m, memory: 256Mi }  limits: { memory: 1Gi }nodes:  big-node: # a node name    slots: 6    resources: # replaces resources above on this node      requests: { cpu: &quot;1&quot;, memory: 2Gi }      limits: { memory: 4Gi }vpn:  locations: [] # see below; empty means no VPN sidecarmaintenance: holtdroid-emulator-maintenance # ConfigMap for maintenance holds; empty turns them offnodeInfo:  selector: &quot;app.kubernetes.io/component=node-info&quot; # node-info Pods in the namespace; empty: none  port: 8090"><div></div></button></div></figure></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">kubeconfig</code></td>
+<td>Path to a kubeconfig. Empty uses the in-cluster service account</td>
+</tr>
+<tr>
+<td><code dir="auto">namespace</code></td>
+<td>Where session Pods and their Secrets are created</td>
+</tr>
+<tr>
+<td><code dir="auto">nodeSelector</code></td>
+<td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Label selector</a> for nodes that may run sessions. See <a href="#node-requirements">Node requirements</a></td>
+</tr>
+<tr>
+<td><code dir="auto">tolerations</code></td>
+<td>Taints session Pods tolerate. Nodes with other <code dir="auto">NoSchedule</code>/<code dir="auto">NoExecute</code> taints are not used</td>
+</tr>
+<tr>
+<td><code dir="auto">slots</code></td>
+<td>Maximum concurrent sessions over all nodes; <code dir="auto">0</code> means no cap</td>
+</tr>
+<tr>
+<td><code dir="auto">fillOrder</code></td>
+<td>Node names, one per slot, in the order free slots are handed out: the nth occurrence of a node is its slot n. <code dir="auto">[core, core, k3s-1, k3s-2, k3s-3, core, core, core, core]</code> fills two slots on <code dir="auto">core</code>, then one on each k3s node, then the rest of <code dir="auto">core</code>. Slots beyond the list follow, by node name</td>
+</tr>
+<tr>
+<td><code dir="auto">slotsPerNode</code></td>
+<td>Sessions per node, unless <code dir="auto">nodes.&lt;name&gt;.slots</code> says otherwise</td>
+</tr>
+<tr>
+<td><code dir="auto">image</code>, <code dir="auto">imagePullPolicy</code></td>
+<td>Session image: the agent with adb, Frida, scrcpy-server and ffmpeg (the replaced microphone and camera). The pull policy applies to the redroid image too</td>
+</tr>
+<tr>
+<td><code dir="auto">imagePullSecrets</code></td>
+<td>Secret names for pulling the images</td>
+</tr>
+<tr>
+<td><code dir="auto">agentPort</code></td>
+<td>Port the agent listens on inside the Pod; the api reaches it at the Pod IP. Android shares the Pod’s network, so a device can’t use this port (decision #161)</td>
+</tr>
+<tr>
+<td><code dir="auto">tunnelPort</code></td>
+<td>Port of the agent’s tunnel endpoints, reachable only by the ssh-gateway; taken on the device as well</td>
+</tr>
+<tr>
+<td><code dir="auto">redroid.images</code></td>
+<td>Android version → image, <a href="https://github.com/holtdroid/holtdroid-redroid">holtdroid-redroid</a> tagged by version: redroid with software video encoders and ARM64 translation. The launch dialog offers the versions; the newest is the default</td>
+</tr>
+<tr>
+<td><code dir="auto">redroid.screens</code></td>
+<td>Screens the launch dialog offers (<code dir="auto">id</code>, <code dir="auto">label</code>, <code dir="auto">like</code>, <code dir="auto">width</code>, <code dir="auto">height</code>, <code dir="auto">dpi</code>, <code dir="auto">cutout</code>); the first is the default. Empty takes the built-in presets, see <a href="#screens-and-android-versions">Screens</a></td>
+</tr>
+<tr>
+<td><code dir="auto">redroid.fps</code></td>
+<td>Refresh rate, fixed at boot</td>
+</tr>
+<tr>
+<td><code dir="auto">redroid.shell</code></td>
+<td>What users’ ADB may run inside Android: <code dir="auto">allowlist</code> (default), <code dir="auto">full</code> or <code dir="auto">off</code>, see <a href="#users-adb-inside-android">Users’ ADB</a></td>
+</tr>
+<tr>
+<td><code dir="auto">redroid.gpu</code></td>
+<td>DRI render node Android renders on</td>
+</tr>
+<tr>
+<td><code dir="auto">redroid.dataSize</code></td>
+<td>Size limit of the <code dir="auto">emptyDir</code> holding Android’s <code dir="auto">/data</code></td>
+</tr>
+<tr>
+<td><code dir="auto">redroid.privileged</code></td>
+<td><code dir="auto">false</code> (default): the Android container gets a fixed set of capabilities, a default seccomp profile and only the devices Android needs, from the <a href="#session-devices">session-devices plugin</a>. <code dir="auto">true</code>: a privileged container, for runtimes without NRI</td>
+</tr>
+<tr>
+<td><code dir="auto">resources</code></td>
+<td>Android container resources. Leave out a CPU limit: a busy session may borrow idle cores</td>
+</tr>
+<tr>
+<td><code dir="auto">agentResources</code></td>
+<td>Agent container resources</td>
+</tr>
+<tr>
+<td><code dir="auto">nodes</code></td>
+<td>Per-node overrides by node name: <code dir="auto">slots</code> and <code dir="auto">resources</code></td>
+</tr>
+<tr>
+<td><code dir="auto">vpn</code></td>
+<td>Per-session VPN, see below</td>
+</tr>
+<tr>
+<td><code dir="auto">sessionTelemetry</code></td>
+<td>Metrics port and tracing settings passed to session agents, see <a href="/operations/monitoring/">Monitoring</a></td>
+</tr>
+<tr>
+<td><code dir="auto">maintenance</code></td>
+<td>Name of the ConfigMap in <code dir="auto">namespace</code> that keeps maintenance holds. The provider creates it on the first hold. Empty turns holds off</td>
+</tr>
+<tr>
+<td><code dir="auto">nodeInfo</code></td>
+<td>Label <code dir="auto">selector</code> and <code dir="auto">port</code> of the <code dir="auto">holtdroid node-info</code> Pods that describe session nodes on the Inventory page. Empty selector: Node objects only</td>
+</tr>
+</tbody>
+</table>
+<p>Every matching node has <code dir="auto">slotsPerNode</code> slots, named <code dir="auto">&lt;node&gt;-1</code>, <code dir="auto">&lt;node&gt;-2</code>,
+…. A session takes the first free slot, or the one picked in the launch
+dialog, and its Pod is pinned to that slot’s node; slots of nodes that are
+not Ready or are cordoned show as offline. Session state lives on the Pod,
+so restarting the provider loses nothing. Run one provider replica per
+namespace.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="sizing">Sizing</h2><a class="sl-anchor-link" href="#sizing"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Sizing”</span></a></div>
+<p>An idle session takes about 1 GB of memory and 0.05 of a core. Streaming a
+screen that keeps changing costs about one core per 720p stream (video is
+encoded in software inside Android), and WebGL in all sessions of a node
+shares its GPU evenly. Measured on a Ryzen 7 5825U with Radeon graphics: six
+sessions run side by side. Count on 1 core and 1.5 GB per slot, plus room for
+whatever else the node runs.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="node-requirements">Node requirements</h2><a class="sl-anchor-link" href="#node-requirements"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Node requirements”</span></a></div>
+<ul>
+<li>Linux with binder (<code dir="auto">CONFIG_ANDROID_BINDERFS</code>); ashmem is not needed.</li>
+<li>A GPU with a Mesa driver and a render node (<code dir="auto">/dev/dri/renderD128</code>): Intel
+and AMD integrated graphics work. WebGL runs on it; WebGPU is not
+available in WebView.</li>
+<li>For <a href="#network-conditions">network conditions</a>: the <code dir="auto">sch_netem</code>, <code dir="auto">sch_htb</code>, <code dir="auto">ifb</code>, <code dir="auto">cls_u32</code>,
+<code dir="auto">act_mirred</code> and <code dir="auto">cls_matchall</code> kernel modules (stock distribution kernels
+have them; they load on first use).</li>
+<li>containerd and Kubernetes that support
+<code dir="auto">securityContext.supplementalGroupsPolicy</code> (1.31 or newer); the pre-pull
+DaemonSet also uses an image volume (1.35, or the <code dir="auto">ImageVolume</code> feature
+gate).</li>
+<li>A runtime with <a href="https://github.com/containerd/nri">NRI</a> enabled for the
+<a href="#session-devices">session-devices plugin</a>: containerd 2.0 or newer (on
+by default), or CRI-O 1.26 or newer. Without it set
+<code dir="auto">redroid.privileged: true</code>.</li>
+<li><strong>Nodes dedicated to sessions.</strong> The Android container shares the node’s
+kernel and keeps <code dir="auto">CAP_SYS_ADMIN</code> in the node’s user namespace, which
+Android’s init and zygote need for their mounts, so root inside a
+session — frida-server, the agent’s adb, and users’ ADB with
+<code dir="auto">redroid.shell: full</code> — can still reach the node (by mounting a fresh
+<code dir="auto">/proc</code> and changing node-wide settings, for one). Keep session nodes free
+of anything else (taint them and set <code dir="auto">nodeSelector</code>/<code dir="auto">tolerations</code>). The
+provider narrows what Android gets and keeps the rest of the cluster out
+of its reach: the Android container isn’t privileged (see
+<a href="#session-devices">Session devices</a>), the chart’s egress NetworkPolicy
+lets sessions reach only cluster DNS, the api and the internet (the LAN,
+node IPs and other Pods are carved out), the agent container runs without
+privileges (only <code dir="auto">NET_ADMIN</code> in the Pod’s network namespace, for network
+conditions), users’ ADB runs only allowlisted commands by default, and the
+image’s init wrapper keeps Android from rewriting the node’s sysctls. See
+<a href="/operations/security/">Security</a>.</li>
+</ul>
+<p>Sessions run <code dir="auto">x86_64</code> and 32-bit <code dir="auto">x86</code> apps natively. Apps with only
+<code dir="auto">arm64-v8a</code> native code run through <code dir="auto">libndk_translation</code>; separate ARM
+executables don’t (that would need <code dir="auto">binfmt_misc</code> on the node). When a
+version of an app has both an x86 and an ARM build, a launch on a virtual
+device takes the x86 one; an ARM-only version of an app that has x86 builds
+(Chrome 157 from APKMirror, say) can’t be launched there.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="pod-layout">Pod layout</h2><a class="sl-anchor-link" href="#pod-layout"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Pod layout”</span></a></div>
+<p>Each session Pod has three containers sharing one network namespace:</p>
+<ul>
+<li><code dir="auto">android</code>: the redroid image of the launch’s Android version, as root,
+with an <code dir="auto">emptyDir</code> on <code dir="auto">/data</code>. Its boot arguments set the GPU and the
+launch’s screen. It isn’t privileged: see <a href="#session-devices">Session devices</a>.</li>
+<li><code dir="auto">agent</code>: the session image, without privileges (all capabilities dropped,
+except <code dir="auto">NET_ADMIN</code> when VPN locations are configured: it shapes the VPN
+tunnel for <a href="#network-conditions">network conditions</a>).
+It reaches Android’s adbd at <code dir="auto">127.0.0.1:5555</code> and frida-server at
+<code dir="auto">127.0.0.1:27042</code>, roots adbd, enables the screen’s cutout overlay,
+installs and instruments the app and serves the Agent API. The node’s
+<code dir="auto">/sys/fs/cgroup</code> is mounted read-only at <code dir="auto">/host/cgroup</code> so the device card
+shows the <code dir="auto">android</code> container’s CPU and memory (its limits, or the node’s
+without them), and <code dir="auto">/data</code> against <code dir="auto">redroid.dataSize</code> rather than the
+node’s disk.</li>
+<li><code dir="auto">vpn</code>: the sing-box sidecar, when locations are configured.</li>
+</ul>
+<p>adbd listens on every address of the Pod; keep <code dir="auto">networkPolicy</code> on so only
+the api and the ssh-gateway reach the Pod, and its <code dir="auto">egress</code> rules on so
+Android reaches only cluster DNS, the api and the internet. Anything
+in-cluster a sidecar needs, such as a shared VPN gateway, goes into
+<code dir="auto">networkPolicy.egress.extraEgress</code>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="session-devices">Session devices</h2><a class="sl-anchor-link" href="#session-devices"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Session devices”</span></a></div>
+<p>Unless <code dir="auto">redroid.privileged</code> is set, the Android container runs with:</p>
+<ul>
+<li>the capabilities Android’s init and services ask for, and no others:
+<code dir="auto">CHOWN</code>, <code dir="auto">DAC_OVERRIDE</code>, <code dir="auto">DAC_READ_SEARCH</code>, <code dir="auto">FOWNER</code>, <code dir="auto">FSETID</code>, <code dir="auto">KILL</code>,
+<code dir="auto">SETGID</code>, <code dir="auto">SETUID</code>, <code dir="auto">SETPCAP</code>, <code dir="auto">NET_BIND_SERVICE</code>, <code dir="auto">NET_ADMIN</code>, <code dir="auto">NET_RAW</code>,
+<code dir="auto">IPC_LOCK</code>, <code dir="auto">SYS_CHROOT</code>, <code dir="auto">SYS_PTRACE</code>, <code dir="auto">SYS_ADMIN</code>, <code dir="auto">SYS_BOOT</code>,
+<code dir="auto">SYS_NICE</code>, <code dir="auto">SYS_RESOURCE</code>, <code dir="auto">WAKE_ALARM</code>, <code dir="auto">BLOCK_SUSPEND</code> and <code dir="auto">BPF</code>. It
+can’t load kernel modules, set the clock, read the kernel log or use raw
+I/O, and holtdroid-redroid trims every init service’s capabilities to
+this set (logd runs without its kernel-log and audit readers);</li>
+<li>Docker’s default seccomp profile for these capabilities plus
+<code dir="auto">userfaultfd</code>, which ART’s garbage collector on Android 15 and 16 needs
+(without it every Java process rebuilds the boot image in memory and the
+container runs out of it); AppArmor unconfined (Android mounts filesystems
+all the time);</li>
+<li><code dir="auto">/sys</code> read-only except the virtual block devices’ queues, which APEX
+activation tunes;</li>
+<li>only these devices, which <code dir="auto">holtdroid session-devices</code> adds when the
+container is created: binder (any minor, since every container mounts its
+own binderfs), <code dir="auto">/dev/loop-control</code> and <code dir="auto">/dev/loop0</code>…<code dir="auto">/dev/loop511</code> (APEX
+activation takes about 36 loop devices per session, numbered across the
+node), <code dir="auto">/dev/fuse</code>, <code dir="auto">/dev/net/tun</code>, <code dir="auto">redroid.gpu</code>, and <code dir="auto">/dev/kmsg</code> pointed
+at <code dir="auto">/dev/null</code> so Android’s logging stays out of the node’s kernel log.</li>
+</ul>
+<p><code dir="auto">holtdroid session-devices</code> is an <a href="https://github.com/containerd/nri">NRI</a>
+plugin: the chart runs it as a DaemonSet on the session nodes, as root
+without capabilities, with the runtime’s NRI socket (<code dir="auto">/var/run/nri</code>) and
+the GPU’s render node mounted. It only touches the <code dir="auto">android</code> container of
+session Pods in the provider’s namespace that carry the
+<code dir="auto">holtdroid/devices</code> annotation, which the provider sets on unprivileged
+sessions, and replaces that container’s seccomp profile with the one above
+(the Pod asks for <code dir="auto">RuntimeDefault</code>, which blocks <code dir="auto">userfaultfd</code>). A session started while the plugin isn’t running gets no devices
+and fails to boot.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="screens-and-android-versions">Screens and Android versions</h2><a class="sl-anchor-link" href="#screens-and-android-versions"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Screens and Android versions”</span></a></div>
+<p>The launch dialog offers the provider’s screens and Android versions
+(<code dir="auto">Screen</code> and <code dir="auto">Android</code> selects, remembered per provider). Versions older
+than the build’s <code dir="auto">minSdk</code> or <code dir="auto">requiresSdk</code> tag are greyed out with the
+reason in a tooltip, and the newest one it runs on is picked instead. Quick
+launch does the same: it keeps the Android version used last when the build
+runs on it, otherwise takes the newest one that fits, and shows the version
+in its tooltip; when no version fits, the button is disabled and says why. A screen is fixed
+for the session: width, height and density in pixels, as a popular phone
+reports them, plus an emulated display cutout. Android ships overlays for
+cutouts — <code dir="auto">corner</code> (a hole in the top-left corner), <code dir="auto">double</code> (notches top
+and bottom), <code dir="auto">hole</code> (a centered punch hole), <code dir="auto">tall</code> (a tall notch) and
+<code dir="auto">waterfall</code> (curved edges) — which the agent enables after boot with
+<code dir="auto">cmd overlay</code>, so apps see <code dir="auto">WindowInsets</code> with a real cutout. Android doesn’t
+draw the black shape in the stream, so the session page paints it over the
+screen (with a speaker and camera) together with the display’s rounded
+corners; the cutout fades to 30% under the pointer and passes clicks through
+to the device.</p>
+<p>In the launch dialog five screens show as cards and “More devices” opens a
+searchable list of all of them; a star marks a favorite (kept in your
+browser), and favorites come first in both places. Besides the generic
+screens below, the provider ships a catalog of about fifty
+real phones and tablets (Pixel, Galaxy A and S, Redmi, Poco, Moto, OnePlus,
+Realme, Fairphone and others), searchable in the launch dialog. Each has its
+size, density, corner radius and a cutout shape: a punch hole, a capsule, a
+waterdrop or a wide notch, placed in dp from the top edge. The numbers
+are approximations from public specifications and measurements, good enough
+to see how an app’s header sits next to a cutout, not to the pixel. A screen
+in <code dir="auto">redroid.screens</code> takes the same fields: <code dir="auto">brand</code>, <code dir="auto">radius</code> (dp) and
+<code dir="auto">shape</code> (<code dir="auto">kind</code> <code dir="auto">circle</code>, <code dir="auto">pill</code>, <code dir="auto">drop</code> or <code dir="auto">notch</code>, <code dir="auto">align</code>, <code dir="auto">offset</code>, <code dir="auto">top</code>,
+<code dir="auto">width</code>, <code dir="auto">height</code>); the Android overlay is derived from the shape unless
+<code dir="auto">cutout</code> names one. The built-in
+presets, used when <code dir="auto">redroid.screens</code> is empty:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Screen</th>
+<th>Density</th>
+<th>Cutout</th>
+<th>Like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">classic</code></td>
+<td>1080×1920 (360×640 CSS px, the default)</td>
+<td>480</td>
+<td>none</td>
+<td>Galaxy S5, Nexus 5X, Moto G4</td>
+</tr>
+<tr>
+<td><code dir="auto">hd</code></td>
+<td>720×1600 (6.7″ HD+)</td>
+<td>280</td>
+<td><code dir="auto">tall</code></td>
+<td>Galaxy A05, Redmi 13C</td>
+</tr>
+<tr>
+<td><code dir="auto">fhd-samsung</code></td>
+<td>1080×2340 (6.5″ FHD+)</td>
+<td>420</td>
+<td><code dir="auto">tall</code></td>
+<td>Galaxy A15, A25, A35</td>
+</tr>
+<tr>
+<td><code dir="auto">fhd</code></td>
+<td>1080×2400 (6.1–6.7″ FHD+)</td>
+<td>420</td>
+<td><code dir="auto">hole</code></td>
+<td>Pixel 6a–8a, Moto G54, Realme C67</td>
+</tr>
+<tr>
+<td><code dir="auto">fhd-tall</code></td>
+<td>1080×2460 (6.8″ FHD+)</td>
+<td>420</td>
+<td><code dir="auto">hole</code></td>
+<td>Infinix Hot 40</td>
+</tr>
+<tr>
+<td><code dir="auto">1.5k</code></td>
+<td>1220×2712 (6.7″ 1.5K)</td>
+<td>480</td>
+<td><code dir="auto">hole</code></td>
+<td>Redmi Note 13 Pro, Poco X6</td>
+</tr>
+<tr>
+<td><code dir="auto">compact</code></td>
+<td>720×1440 (360×720 CSS px)</td>
+<td>320</td>
+<td>none</td>
+<td>Redmi 6A, Galaxy J4+</td>
+</tr>
+<tr>
+<td><code dir="auto">flat</code></td>
+<td>1080×2400 (6.5″)</td>
+<td>420</td>
+<td>none</td>
+<td>Under-display camera, sliders</td>
+</tr>
+<tr>
+<td><code dir="auto">tablet</code></td>
+<td>1200×1920 (11″)</td>
+<td>240</td>
+<td>none</td>
+<td>Galaxy Tab A9+</td>
+</tr>
+</tbody>
+</table>
+<p>Streaming a bigger screen costs more CPU in the session (about one core for
+a changing 1080p screen) and bandwidth in the browser; the default is
+Classic 16:9, the 360×640 CSS px viewport most mobile layouts are drawn for. Density can still be changed in a session’s display card.</p>
+<p>Android versions are the keys of <code dir="auto">redroid.images</code> (the chart: <code dir="auto">versions</code>,
+each pulled from <code dir="auto">&lt;repository&gt;:&lt;version&gt;</code>). holtdroid-redroid publishes one
+tag per Android major version it supports (11 to 16). Android 16 expects
+an Android kernel, so its image carries shims for a mainline one (a BPF
+loader that accepts only LTS kernels it knows, ashmem through memfd); the
+nodes need nothing extra for it. The Android 13 and 14 images have no
+Bluetooth: redroid’s simulated Bluetooth controller crashes there as soon
+as Android enables it, so the images drop the feature and apps see a device
+without Bluetooth. Android 11, 12, 15 and 16 keep a simulated one.</p>
+<p>Every image runs 32-bit x86 apps next to 64-bit ones (<code dir="auto">zygote64_32</code>).
+Google Chrome’s x86 builds run their browser in 32 bits and keep only
+WebView in the 64-bit library, so on a 64-bit-only Android they abort at
+startup with “WebView cannot be started with a browser process type”. ARM
+translation is 64-bit only: the Android 12 to 16 images list <code dir="auto">arm64-v8a</code>
+but not <code dir="auto">armeabi-v7a</code>, so an app whose native libraries are only 32-bit ARM
+doesn’t install there (Android 11 lists it and the app crashes instead).
+Android warns that an app with only 32-bit libraries “isn’t compatible with
+the latest version of Android” when it starts; the agent turns that
+warning off (<code dir="auto">debug.wm.disable_deprecated_abi_dialog</code>) on every device, so
+APKMirror’s <code dir="auto">x86</code> Chrome builds open without it.</p>
+<p>With a WebView catalog (<code dir="auto">webview.storage</code>), the launch dialog also offers a
+WebView build for the chosen Android version, which the agent installs over
+the built-in one. This needs holtdroid-redroid images that re-sign the
+built-in WebView with Chromium’s debug key, which every published tag does.
+See <a href="/concepts/webview-versions/">WebView versions</a>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="users-adb-inside-android">Users’ ADB inside Android</h2><a class="sl-anchor-link" href="#users-adb-inside-android"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Users’ ADB inside Android”</span></a></div>
+<p>Android in redroid is a userdebug build whose adbd runs as root on the
+node’s kernel. <code dir="auto">redroid.shell</code> says what users’ ADB — the browser tabs and
+the <code dir="auto">holtdroid</code> client — may run there:</p>
+<ul>
+<li><code dir="auto">allowlist</code> (default): only the read-only commands and package operations
+behind the Logcat tab and the app and device cards (<code dir="auto">getprop</code>, <code dir="auto">logcat</code>, <code dir="auto">pm</code>,
+<code dir="auto">am</code>, <code dir="auto">cmd package</code>, <code dir="auto">settings get</code>, a few <code dir="auto">dumpsys</code>), plus file transfer
+and port forwards. The Files tab browses, downloads and uploads, without
+its Delete and New folder buttons. The Terminal tab is not shown.</li>
+<li><code dir="auto">full</code>: any command; the Terminal tab and the Files tab’s Delete and New
+folder appear. Only for clusters whose
+session nodes run nothing else and whose users are trusted with them.</li>
+<li><code dir="auto">off</code>: no shell commands at all; file transfer and forwards still work.</li>
+</ul>
+<p>The agent’s own adb is not affected. Requests that would cut the agent off
+(<code dir="auto">reboot</code>, <code dir="auto">unroot</code>, <code dir="auto">remount</code>, <code dir="auto">tcpip</code>, <code dir="auto">usb</code>, <code dir="auto">sideload</code>, verity) are
+always refused.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="device-controls">Device controls</h3><a class="sl-anchor-link" href="#device-controls"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Device controls”</span></a></div>
+<p>Without an emulator console, the GPS goes through Android’s test location
+providers (on Android 11, whose <code dir="auto">cmd location</code> has no providers command,
+through a small <code dir="auto">app_process</code> helper) and the battery through <code dir="auto">dumpsys battery</code>. The brightness slider shows the same percentage as the device’s
+own shade, which is on Android’s gamma curve rather than linear.</p>
+<p>Android in a session has a real Wi-Fi when its node loads
+<code dir="auto">mac80211_hwsim</code> with <code dir="auto">radios=0</code> (<code dir="auto">options mac80211_hwsim radios=0</code> in
+the node’s modprobe configuration, and the module in its boot modules).
+The holtdroid-redroid image then creates two simulated radios in the
+session’s own network namespace: Android joins the open network
+<code dir="auto">HoltdroidWifi</code>, whose access point and DHCP run in a private namespace
+of the session, and the status bar, quick settings and the Wi-Fi tile
+behave as on a phone. Sessions can’t see or join each other’s radios, and
+the radios disappear with the session. The Wi-Fi toggle in the portal and
+the tile in Android’s shade are the same switch.</p>
+<p>redroid has no modem. Mobile data is a second uplink that Android takes
+for Ethernet and the app under test sees as mobile data (the Frida script
+relabels it); it carries traffic only while Wi-Fi is off, as a phone
+prefers Wi-Fi, so with Wi-Fi off and mobile data on the status bar shows
+Ethernet.</p>
+<p>Without the module the Wi-Fi and mobile data toggles are the session’s
+own: a session starts with both on, the app under test sees Android’s
+Ethernet as the radio that is on, and with both off or in airplane mode it
+sees no network and only root keeps a route. Android’s own status bar and
+quick settings show Ethernet then.</p>
+<p>The module is a kernel test driver: anything on the node with
+<code dir="auto">CAP_NET_ADMIN</code> can create radios in its own network namespace. Load it on
+the nodes that run sessions.</p>
+<p>Android in redroid runs on the node’s kernel and its clock is the node’s: a
+session can change its time zone but not its time, and the date and time
+card says so.</p>
+<p>Android 12 doesn’t get the <code dir="auto">corner</code>, <code dir="auto">hole</code> and <code dir="auto">tall</code> cutouts emulated:
+they crash its SystemUI. The portal still draws them on the phone frame.</p>
+<p>redroid builds Android with the lock screen off. Locking the screen from
+the power key turns it on: an overlay on Android 12 and later (swipe up to
+unlock), a temporary PIN <code dir="auto">0000</code> on Android 11, which <strong>Wake and unlock</strong>
+enters and removes. Since the overlay is turned on at boot, Android 12 and
+later boot onto the lock screen; the agent wakes and unlocks the device
+before it starts the app, so a session opens unlocked.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="inventory-and-maintenance">Inventory and maintenance</h2><a class="sl-anchor-link" href="#inventory-and-maintenance"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Inventory and maintenance”</span></a></div>
+<p>Admins see every slot on the <strong>Inventory</strong> page with its node: its OS image,
+kernel, kubelet and container runtime, CPU and memory from the Node object,
+the conditions it reports (<code dir="auto">NotReady</code>, <code dir="auto">DiskPressure</code>, …) and the session on
+it. With <code dir="auto">nodeInfo</code> set, a small <code dir="auto">holtdroid node-info</code> Pod on each node adds
+the CPU model, load, free memory, uptime and every temperature sensor the
+node exposes (thermal zones and hwmon: CPU package and cores, NVMe drives,
+chipsets). It reads <code dir="auto">/proc</code> and <code dir="auto">/sys</code>, which are host-wide inside an
+ordinary container, so it runs unprivileged as non-root. Each slot’s row
+also shows the session on it (owner, age, idle time, when it stops on its
+own, VPN location, WebView), and the page’s <strong>Sessions</strong> tab lists
+everyone’s devices with a <strong>Stop</strong> button.</p>
+<p><strong>Hold for maintenance</strong> keeps new sessions off a slot (or, from the
+provider’s header, off every slot) until an admin releases it; a session
+running there keeps going. Holds live in the <code dir="auto">maintenance</code> ConfigMap, so a
+restart keeps them. Cordoning the node in Kubernetes still works too: it
+shows as offline.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="helm-chart">Helm chart</h2><a class="sl-anchor-link" href="#helm-chart"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Helm chart”</span></a></div>
+<p><code dir="auto">providers.emulator.enabled: true</code> deploys the provider (one replica) with its
+ServiceAccount, a Role for Pods and Secrets in the release namespace and a
+ClusterRole to list Nodes. The chart fills <code dir="auto">namespace</code>, <code dir="auto">image</code> and
+<code dir="auto">imagePullSecrets</code> itself:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="yaml"><code><div class="ec-line"><div class="code"><span style="--0:#7EE787">providers</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">emulator</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">enabled</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">slots</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">0</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">slotsPerNode</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">1</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">nodeSelector</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">holtdroid/sessions</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">"true"</span><span style="--0:#E6EDF3"> } </span><span style="--0:#8B949E"># a map here; the chart turns it into a selector</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">tolerations</span><span style="--0:#E6EDF3">: []</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">session</span><span style="--0:#E6EDF3">: </span><span style="--0:#8B949E"># the agent</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">image</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">repository</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">ghcr.io/holtdroid/holtdroid-session</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">tag</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">""</span><span style="--0:#E6EDF3"> } </span><span style="--0:#8B949E"># tag defaults to image.tag</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">resources</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">requests</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">cpu</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">100m</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">256Mi</span><span style="--0:#E6EDF3"> }, </span><span style="--0:#7EE787">limits</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">1Gi</span><span style="--0:#E6EDF3"> } }</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">redroid</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">image</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">repository</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">ghcr.io/holtdroid/holtdroid-redroid</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">versions</span><span style="--0:#E6EDF3">: [</span><span style="--0:#A5D6FF">"15"</span><span style="--0:#E6EDF3">] </span><span style="--0:#8B949E"># tags of the repository, offered at launch</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">screens</span><span style="--0:#E6EDF3">: [] </span><span style="--0:#8B949E"># the built-in presets</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">fps</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">60</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">gpu</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">/dev/dri/renderD128</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">dataSize</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">8Gi</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">shell</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">allowlist</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">privileged</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">false</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># true: no session-devices DaemonSet, a privileged Android container</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">resources</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">requests</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">cpu</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">500m</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">1536Mi</span><span style="--0:#E6EDF3"> }, </span><span style="--0:#7EE787">limits</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">memory</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">3Gi</span><span style="--0:#E6EDF3"> } }</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">nodes</span><span style="--0:#E6EDF3">: {} </span><span style="--0:#8B949E"># per-node overrides, as above</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">vpn</span><span style="--0:#E6EDF3">: {} </span><span style="--0:#8B949E"># the vpn section below</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">networkPolicy</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">enabled</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># only the api and the provider reach session agents</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">egress</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">enabled</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># Android reaches only cluster DNS, the api and the internet</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">privateRanges</span><span style="--0:#E6EDF3">: [</span><span style="--0:#A5D6FF">10.0.0.0/8</span><span style="--0:#E6EDF3">, </span><span style="--0:#A5D6FF">172.16.0.0/12</span><span style="--0:#E6EDF3">, </span><span style="--0:#A5D6FF">192.168.0.0/16</span><span style="--0:#E6EDF3">, </span><span style="--0:#A5D6FF">100.64.0.0/10</span><span style="--0:#E6EDF3">, </span><span style="--0:#A5D6FF">169.254.0.0/16</span><span style="--0:#E6EDF3">]</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">extraEgress</span><span style="--0:#E6EDF3">: [] </span><span style="--0:#8B949E"># e.g. the VPN gateway's Pods: [{ to: [{ namespaceSelector: {...}, podSelector: {...} }], ports: [{ protocol: TCP, port: 1080 }] }]</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">prepull</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">enabled</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># DaemonSet that pulls the session and redroid images onto session nodes</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">refresh</span><span style="--0:#E6EDF3">: { </span><span style="--0:#7EE787">enabled</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span><span style="--0:#E6EDF3">, </span><span style="--0:#7EE787">interval</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">5m</span><span style="--0:#E6EDF3"> }</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">nodeInfo</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">enabled</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># DaemonSet of holtdroid node-info for the Inventory page</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">sessionDevices</span><span style="--0:#E6EDF3">: </span><span style="--0:#8B949E"># DaemonSet of holtdroid session-devices, unless redroid.privileged</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">socket</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">/var/run/nri/nri.sock</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># the runtime's NRI socket on the nodes</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="providers:  emulator:    enabled: true    slots: 0    slotsPerNode: 1    nodeSelector: { holtdroid/sessions: &quot;true&quot; } # a map here; the chart turns it into a selector    tolerations: []    session: # the agent      image: { repository: ghcr.io/holtdroid/holtdroid-session, tag: &quot;&quot; } # tag defaults to image.tag      resources: { requests: { cpu: 100m, memory: 256Mi }, limits: { memory: 1Gi } }    redroid:      image: { repository: ghcr.io/holtdroid/holtdroid-redroid }      versions: [&quot;15&quot;] # tags of the repository, offered at launch      screens: [] # the built-in presets      fps: 60      gpu: /dev/dri/renderD128      dataSize: 8Gi      shell: allowlist      privileged: false # true: no session-devices DaemonSet, a privileged Android container      resources: { requests: { cpu: 500m, memory: 1536Mi }, limits: { memory: 3Gi } }    nodes: {} # per-node overrides, as above    vpn: {} # the vpn section below    networkPolicy:      enabled: true # only the api and the provider reach session agents      egress:        enabled: true # Android reaches only cluster DNS, the api and the internet        privateRanges: [10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 100.64.0.0/10, 169.254.0.0/16]        extraEgress: [] # e.g. the VPN gateway&#x27;s Pods: [{ to: [{ namespaceSelector: {...}, podSelector: {...} }], ports: [{ protocol: TCP, port: 1080 }] }]    prepull:      enabled: true # DaemonSet that pulls the session and redroid images onto session nodes      refresh: { enabled: true, interval: 5m }    nodeInfo:      enabled: true # DaemonSet of holtdroid node-info for the Inventory page    sessionDevices: # DaemonSet of holtdroid session-devices, unless redroid.privileged      socket: /var/run/nri/nri.sock # the runtime&#x27;s NRI socket on the nodes"><div></div></button></div></figure></div>
+<p>The chart names the maintenance ConfigMap
+<code dir="auto">&lt;release&gt;-provider-emulator-maintenance</code> and lets the provider’s Role create
+it and update only that one. The node-info DaemonSet runs on the same nodes
+as sessions (<code dir="auto">nodeSelector</code>, <code dir="auto">tolerations</code>) and, with <code dir="auto">networkPolicy</code> on, only
+the provider may reach it. So does the session-devices DaemonSet, which has
+no ports.</p>
+<p>The redroid image is about 1.5 GB. The pre-pull DaemonSet runs on the same
+nodes as sessions and keeps the current tags of both images on disk (the
+redroid one as an image volume), so the first launch after an upgrade
+doesn’t wait for the download.</p>
+<p>With a moving tag (<code dir="auto">tag: main</code>) and <code dir="auto">pullPolicy: Always</code>, an upgrade of the
+image doesn’t change the chart, so the DaemonSet wouldn’t notice it. With
+<code dir="auto">prepull.refresh</code> on (the default), the provider asks the registry for the
+tags’ digests every <code dir="auto">interval</code> and, when one moves, restarts the DaemonSet:
+the nodes pull the new layers in the background, before the next session
+needs them. The registry is queried anonymously, which works for public
+images; with a pinned tag or <code dir="auto">IfNotPresent</code> the refresh does nothing.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="vpn">VPN</h2><a class="sl-anchor-link" href="#vpn"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “VPN”</span></a></div>
+<p>With at least one location, every session Pod gets a <code dir="auto">vpn</code> sidecar (see
+<a href="/concepts/vpn/">Per-session VPN</a>). Each location is a sing-box
+outbound; the usual one points at a
+<a href="/operations/vpn-gateway/">shared VPN gateway</a>:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="yaml"><code><div class="ec-line"><div class="code"><span style="--0:#7EE787">vpn</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">image</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">ghcr.io/sagernet/sing-box:v1.14.2</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">bypassCIDRs</span><span style="--0:#E6EDF3">: [</span><span style="--0:#A5D6FF">10.0.0.0/8</span><span style="--0:#E6EDF3">, </span><span style="--0:#A5D6FF">172.16.0.0/12</span><span style="--0:#E6EDF3">, </span><span style="--0:#A5D6FF">192.168.0.0/16</span><span style="--0:#E6EDF3">, </span><span style="--0:#A5D6FF">fc00::/7</span><span style="--0:#E6EDF3">]</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">dns</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">1.1.1.1</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">resolver</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">10.43.0.10</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># cluster DNS; needed for *.cluster.local names</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">direct</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">default</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">direct</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">locations</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E6EDF3">    </span></span><span style="--0:#E6EDF3">- </span><span style="--0:#7EE787">id</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">de</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">label</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">Germany</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">outbound</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">type</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">socks</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">server</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">vpn-gateway.vpn.svc.cluster.local</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">server_port</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">1080</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">username</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">de</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">password</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">env:VPN_GATEWAY_PASSWORD</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># any string field may be a secret reference</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#7EE787">udp_over_tcp</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#E6EDF3">    </span></span><span style="--0:#E6EDF3">- </span><span style="--0:#7EE787">id</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">nl</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">label</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">Netherlands</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">defaultFor</span><span style="--0:#E6EDF3">: [</span><span style="--0:#A5D6FF">com.example.app</span><span style="--0:#E6EDF3">] </span><span style="--0:#8B949E"># this app starts here instead of vpn.default</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">outbound</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">openbao:secret/holtdroid#vpn_nl</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># the outbound as JSON</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="vpn:  image: ghcr.io/sagernet/sing-box:v1.14.2  bypassCIDRs: [10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, fc00::/7]  dns: 1.1.1.1  resolver: 10.43.0.10 # cluster DNS; needed for *.cluster.local names  direct: true  default: direct  locations:    - id: de      label: Germany      outbound:        type: socks        server: vpn-gateway.vpn.svc.cluster.local        server_port: 1080        username: de        password: env:VPN_GATEWAY_PASSWORD # any string field may be a secret reference        udp_over_tcp: true    - id: nl      label: Netherlands      defaultFor: [com.example.app] # this app starts here instead of vpn.default      outbound: openbao:secret/holtdroid#vpn_nl # the outbound as JSON"><div></div></button></div></figure></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">vpn.image</code></td>
+<td>sing-box image for the sidecar (1.12 or newer)</td>
+</tr>
+<tr>
+<td><code dir="auto">vpn.bypassCIDRs</code></td>
+<td>Ranges that never go through the tunnel. Must include your Pod and Service CIDRs, and the gateway’s address</td>
+</tr>
+<tr>
+<td><code dir="auto">vpn.dns</code></td>
+<td>Resolver (IP) for the device’s DNS, queried through the selected location</td>
+</tr>
+<tr>
+<td><code dir="auto">vpn.resolver</code></td>
+<td>Resolver (IP) for host names inside outbounds. Empty uses the Pod’s <code dir="auto">/etc/resolv.conf</code>, but sing-box sends <code dir="auto">*.local</code> names to mDNS, so set your cluster DNS here when outbounds use <code dir="auto">*.cluster.local</code></td>
+</tr>
+<tr>
+<td><code dir="auto">vpn.direct</code></td>
+<td>Offer a <code dir="auto">direct</code> location (no VPN). Default <code dir="auto">true</code>; set <code dir="auto">false</code> so every session always goes out through a VPN location. Apps then have no network at all while the tunnel is down, instead of falling back to the Pod’s own address</td>
+</tr>
+<tr>
+<td><code dir="auto">vpn.default</code></td>
+<td>Location a session starts in when the user picks none. Default: <code dir="auto">direct</code>, or the first location</td>
+</tr>
+<tr>
+<td><code dir="auto">vpn.locations</code></td>
+<td><code dir="auto">id</code> (lowercase letters, digits, <code dir="auto">-</code>; quote ids YAML reads as booleans, such as <code dir="auto">"no"</code> for Norway), <code dir="auto">label</code>, <code dir="auto">outbound</code>, and optionally <code dir="auto">defaultFor</code></td>
+</tr>
+<tr>
+<td><code dir="auto">…[].defaultFor</code></td>
+<td>Package names whose sessions start in this location instead of <code dir="auto">vpn.default</code>, e.g. <code dir="auto">[com.example.app]</code>. A package may be listed under one location only</td>
+</tr>
+<tr>
+<td><code dir="auto">…[].outbound</code></td>
+<td>A sing-box outbound or endpoint object without <code dir="auto">tag</code>, or a <a href="/configuration/secrets/">secret reference</a> whose value is that object as JSON. Inside an object, any string value that is a secret reference (<code dir="auto">env:</code>, <code dir="auto">file:</code>, <code dir="auto">openbao:</code>) is replaced by the secret, at any depth: use that for passwords and keys</td>
+</tr>
+</tbody>
+</table>
+<p>Any outbound works, for example a WireGuard endpoint straight in the sidecar
+(set <code dir="auto">mtu: 1280</code> on overlay networks such as flannel VXLAN). But a WireGuard
+key used by several session Pods at once breaks, so prefer the gateway.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="network-conditions">Network conditions</h2><a class="sl-anchor-link" href="#network-conditions"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Network conditions”</span></a></div>
+<p>With VPN locations configured, a session’s <strong>Network</strong> tab (next to
+DevTools) offers emulated network conditions; the network card next to the
+phone shows which are on and links there. The access link is one of the named networks (5G, typical and weak 4G, 3G,
+2G, GPRS, busy public Wi-Fi, a crowded venue, satellite links, a slow
+upload, a lossy link, a far away server) and scenarios that change them over
+time (subway, driving, elevator, a fading signal, a flapping link, Starlink’s
+satellite switches). Each shows its latency, bandwidth and loss next to a
+short description. The numbers are rough medians of public mobile network
+reports, not measurements of a specific operator.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="regions">Regions</h3><a class="sl-anchor-link" href="#regions"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Regions”</span></a></div>
+<p>On top of the access link, a <strong>region</strong> stands in for the app’s users in a
+country (Germany, the United States, Ukraine, Kazakhstan, Bangladesh, India,
+Pakistan, Indonesia, the Philippines, Nigeria, Kenya, Egypt, Brazil) and
+splits traffic into two paths:</p>
+<ul>
+<li><strong>CDN edge and DNS</strong>: the published address ranges of Cloudflare, Fastly
+and Google, and DNS, get the round trip from the region’s operators to the
+CDN edge that serves them (in Bangladesh: Dhaka or Singapore, by operator).</li>
+<li><strong>Servers</strong>: everything else, and the hosts listed as <strong>backends behind a
+CDN</strong> (such as an API on Cloudflare, whose requests go through to the
+servers), gets the round trip from the region to the chosen server
+location (Frankfurt, N. Virginia, N. California, São Paulo, Mumbai,
+Singapore, Tokyo).</li>
+</ul>
+<p>With the access link left at no limits, the region’s typical mobile link is
+used. The numbers are rounded estimates from public speed reports and
+latency maps, plausible rather than measured per operator.</p>
+<p>Emulation can only add delay, and the session’s own route through its VPN
+location already takes some. Only the rest of each path is added; the tab
+shows the region’s round trip, the session’s route and what is added. When
+the route is already slower than the region (a VPN location far from the
+servers), it says so: a closer location, or none, gets nearer.
+Backends are host names, <code dir="auto">*.example.com</code> for every name below it, or IPv4
+addresses. The agent answers the device’s DNS, so it takes the addresses
+the device gets when it looks a backend up, and shapes them about a second
+later; exact names are also resolved up front. The tab lists the addresses
+found so far. The list is saved per user and app, in the database when it
+is <a href="/configuration/database/">persistent</a> (<code dir="auto">sqlite</code>) and in the
+browser otherwise, and filled in when a region is picked in the app’s next
+session. A CDN often puts many of its
+customers’ hosts on the same addresses, and those take the servers’ path
+too once one of them is a backend.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="the-sessions-route">The session’s route</h3><a class="sl-anchor-link" href="#the-sessions-route"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The session’s route”</span></a></div>
+<p>Every emulated network comes on top of the session’s own route through its
+VPN location, so the agent measures that route all the time, through the
+VPN sidecar (the shaping doesn’t touch it): the round trip to Cloudflare’s
+nearest edge (<code dir="auto">https://1.1.1.1/cdn-cgi/trace</code>) and to each server location
+(AWS’s regional DynamoDB endpoints), the quickest of three requests on a
+kept-alive connection, from the moment the agent starts (while Android
+still boots) and every minute; then the bandwidth, a 10 MB download from
+<code dir="auto">speed.cloudflare.com</code> cut off after 10 seconds, after each location change
+and whenever the last test is over six hours old. Every 5 minutes the api
+keeps the route of each ready session per VPN location, and a new session
+starts from the last one measured through its location: the tab shows it
+right away (with its age), a region subtracts it from the first second, and
+a bandwidth test younger than six hours isn’t repeated. The Network tab
+shows the route at the top, and marks what it spoils:</p>
+<ul>
+<li>a network whose own round trip is shorter than the route’s (5G or good
+4G behind a far VPN location): the route already takes longer than the
+network would, so the delay ends up larger than named. Each network also
+shows the expected round trip to a CDN edge.</li>
+<li>a network or a region’s typical link faster than the route’s bandwidth:
+it is capped at about the route’s rate.</li>
+<li>a region or a server location the route is slower to than the region’s
+users are (<code dir="auto">VPN slower: CDN, servers, bandwidth</code>).</li>
+</ul>
+<p>They can still be picked: loss, jitter and the slower links are unaffected.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="how-it-works">How it works</h3><a class="sl-anchor-link" href="#how-it-works"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “How it works”</span></a></div>
+<p>The agent applies them with <code dir="auto">tc</code> on the VPN tunnel: the tunnel’s egress
+(what apps send) gets the upload half, its ingress is redirected to an
+<code dir="auto">ifb</code> device for the download half. An <code dir="auto">htb</code> class per direction holds the
+link’s bandwidth, and <code dir="auto">netem</code> classes under it add half of each path’s
+round trip, jitter and loss; <code dir="auto">u32</code> filters pick the path by address.
+sing-box’s own NAT traffic inside the tunnel’s network is left alone, so
+TCP is shaped once per direction.
+Losses are random or in bursts (a Gilbert model). An outage drops every
+packet while Android still sees a connected network, so requests hang until
+they time out, the way a dead cell behaves; turn on airplane mode or switch
+Wi-Fi and mobile data off for a disconnected network instead.</p>
+<p>Only apps’ traffic is shaped: the screen, DevTools, ADB, the agent and
+destinations in <code dir="auto">vpn.bypassCIDRs</code> are not. Without VPN locations there is no
+tunnel and no network conditions.</p>
+</div><footer class="sl-flex astro-k7w37ldv"><div class="meta sl-flex astro-k7w37ldv"><a href="https://github.com/holtdroid/holtdroid/edit/main/docs/src/content/docs/configuration/emulator.md" class="sl-flex print:hidden astro-brmikds2"><svg aria-hidden="true" class="astro-brmikds2 astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Редагувати сторінку</a><p>Останнє оновлення: <time datetime="2026-10-29T19:46:33.000Z">29 жовт. 2026 р.</time></p></div><div class="pagination-links print:hidden astro-kgi7sqvr" dir="ltr"><a href="/uk/configuration/secrets/" rel="prev" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-kgi7sqvr">Назад<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">Secrets</span></span></a><a href="/uk/configuration/phones/" rel="next" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-kgi7sqvr">Далі<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">Phone provider</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

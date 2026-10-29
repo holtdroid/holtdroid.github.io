@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="ru" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-hwk3awhx"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Recordings | Holtdroid</title><link rel="canonical" href="https://holtdroid.github.io/ru/concepts/recordings/"/><link rel="alternate" hreflang="en" href="https://holtdroid.github.io/concepts/recordings/"/><link rel="alternate" hreflang="uk" href="https://holtdroid.github.io/uk/concepts/recordings/"/><link rel="alternate" hreflang="ru" href="https://holtdroid.github.io/ru/concepts/recordings/"/><link rel="alternate" hreflang="x-default" href="https://holtdroid.github.io/concepts/recordings/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="Recordings"/><meta property="og:type" content="article"/><meta property="og:url" content="https://holtdroid.github.io/ru/concepts/recordings/"/><meta property="og:locale" content="ru"/><meta property="og:description" content="Sessions recorded on the server with logcat, the WebViews' network, console and WebSockets, device, network and load next to the screen, to watch, download or share."/><meta property="og:site_name" content="Holtdroid"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Sessions recorded on the server with logcat, the WebViews' network, console and WebSockets, device, network and load next to the screen, to watch, download or share."/><script type="module" src="/_astro/MermaidZoom.astro_astro_type_script_index_0_lang.DpUBnOV7.js"></script><script>
+  document.documentElement.dataset.theme = "dark"
+  window.StarlightThemeProvider = { updatePickers() {} }
+</script><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><style>@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-cyrillic-ext-wght-normal.DjL33-gN.woff2)format("woff2-variations");unicode-range:U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-cyrillic-wght-normal.BEAKL7Jp.woff2)format("woff2-variations");unicode-range:U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-vietnamese-wght-normal.6IgcOCM7.woff2)format("woff2-variations");unicode-range:U+102-103,U+110-111,U+128-129,U+168-169,U+1A0-1A1,U+1AF-1B0,U+300-301,U+303-304,U+308-309,U+323,U+329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-latin-ext-wght-normal.DC-KSUi6.woff2)format("woff2-variations");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Geist Variable;font-style:normal;font-display:swap;font-weight:100 900;src:url(/_astro/geist-latin-wght-normal.BgDaEnEv.woff2)format("woff2-variations");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.hd-ai:where(.astro-jxl35hpc){color:#f4f1ea;background:radial-gradient(18rem 10rem at 3.5rem,#f5b4462e,#0000 70%),linear-gradient(135deg,#15110a,#0d0e0b);border:1px solid #f5b44666;border-radius:1.1rem;align-items:center;gap:1.25rem;margin-block:1.5rem;padding:1.25rem 1.5rem;font-family:Geist Variable,ui-sans-serif,system-ui,sans-serif;display:flex;position:relative;overflow:hidden}.box:where(.astro-jxl35hpc){flex-shrink:0;width:4.5rem;height:4.5rem}.lid:where(.astro-jxl35hpc){transform-box:fill-box;transform-origin:0 100%;animation:4s ease-in-out infinite lid}.sparks:where(.astro-jxl35hpc){animation:4s ease-in-out infinite sparks}.halo:where(.astro-jxl35hpc){transform-box:fill-box;transform-origin:50%;animation:4s ease-in-out infinite halo}.copy:where(.astro-jxl35hpc){gap:.3rem;display:grid}.copy:where(.astro-jxl35hpc) p:where(.astro-jxl35hpc){margin:0}.label:where(.astro-jxl35hpc){color:#f5b446;letter-spacing:.12em;text-transform:uppercase;font-family:ui-monospace,SF Mono,Menlo,Consolas,monospace;font-size:.75rem}.title:where(.astro-jxl35hpc){letter-spacing:-.02em;font-size:1.15rem;font-weight:650}.text:where(.astro-jxl35hpc){color:#c9c2b4;font-size:.92rem;line-height:1.55}@keyframes lid{0%,to{transform:rotate(0)}45%,60%{transform:rotate(-9deg)}}@keyframes sparks{0%,to{opacity:.4;transform:translateY(2px)}50%{opacity:1;transform:translateY(-3px)}}@keyframes halo{50%{transform:scale(1.12)}}.compact:where(.astro-jxl35hpc){background:radial-gradient(6rem 4rem at 1.2rem 1.2rem,#f5b44629,#0000 70%),linear-gradient(135deg,#15110a,#0d0e0b);border-radius:.75rem;align-items:flex-start;gap:.6rem;margin-block:0;padding:.6rem .75rem}.compact:where(.astro-jxl35hpc) .box:where(.astro-jxl35hpc){width:1.9rem;height:1.9rem}.compact:where(.astro-jxl35hpc) .copy:where(.astro-jxl35hpc){gap:.1rem}.compact:where(.astro-jxl35hpc) .title:where(.astro-jxl35hpc){font-size:.8rem;line-height:1.3}.compact:where(.astro-jxl35hpc) .text:where(.astro-jxl35hpc){font-size:.72rem;line-height:1.35}@media (width<=36rem){.hd-ai:where(.astro-jxl35hpc):not(.compact){flex-direction:column;align-items:flex-start}}@media (prefers-reduced-motion:reduce){.lid:where(.astro-jxl35hpc),.sparks:where(.astro-jxl35hpc),.halo:where(.astro-jxl35hpc){animation:none}}
+</style><link rel="stylesheet" href="/_astro/common.DwkjWTIC.css"><style>@layer starlight.components{svg:where(.astro-hlzwxtvd){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em;overflow:visible}}
+@layer starlight.components{.sl-steps{--bullet-size:calc(var(--sl-line-height) * 1rem);--bullet-margin:.375rem;counter-reset:steps-counter var(--sl-steps-start,0);padding-inline-start:0;list-style:none}.sl-steps>li{counter-increment:steps-counter;padding-inline-start:calc(var(--bullet-size) + 1rem);min-height:calc(var(--bullet-size) + var(--bullet-margin));padding-bottom:1px;position:relative}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);top:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);box-shadow:inset 0 0 0 1px var(--sl-color-gray-5);border-radius:99rem;font-weight:600;position:absolute;inset-inline-start:0}.sl-steps>li:after{--guide-width:1px;content:"";top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);width:var(--guide-width);background-color:var(--sl-color-hairline-light);position:absolute;inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2)}}@layer starlight.content{.sl-steps>li>:first-child{--lh:calc(1em * var(--sl-line-height));--shift-y:calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh:calc(1em * var(--sl-line-height-headings))}@supports (--prop:1lh){.sl-steps>li>:first-child{--lh:1lh}}}
+</style><script type="module" src="/_astro/page.C6UiXXts.js"></script></head><body class="astro-hwk3awhx"><a class="sl-skip-link astro-ecdj6xll" href="#_top">Перейти к содержимому</a><div class="page sl-flex astro-xcg6nxcz"><header class="header astro-xcg6nxcz"><div class="header astro-azubnz3w"><div class="title-wrapper sl-flex astro-azubnz3w"><a href="/" class="site-title sl-flex astro-mjdjz25a"><img class="astro-mjdjz25a" alt src="/_astro/logo.BRLVoKOr.svg" width="64" height="64"><span class="astro-mjdjz25a" translate="no">Holtdroid</span></a></div><div class="sl-flex print:hidden astro-azubnz3w"><site-search class="astro-azubnz3w astro-n2w6z7vl" data-translations="{&quot;placeholder&quot;:&quot;Поиск&quot;}"><button data-open-modal disabled aria-label="Поиск" aria-keyshortcuts="Control+K" class="astro-n2w6z7vl"><svg aria-hidden="true" class="astro-n2w6z7vl astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-n2w6z7vl" aria-hidden="true">Поиск</span><kbd class="sl-hidden md:sl-flex astro-n2w6z7vl" style="display: none;"><kbd class="astro-n2w6z7vl">Ctrl</kbd><kbd class="astro-n2w6z7vl">K</kbd></kbd></button><dialog style="padding:0" aria-label="Поиск" class="astro-n2w6z7vl"><div class="dialog-frame sl-flex astro-n2w6z7vl"><button data-close-modal class="sl-flex md:sl-hidden astro-n2w6z7vl">Отменить</button><div class="search-container astro-n2w6z7vl"><div id="starlight__search" class="astro-n2w6z7vl"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.BOTS06Pe.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-azubnz3w"><div class="sl-flex social-icons astro-azubnz3w"><a href="https://github.com/holtdroid/holtdroid" rel="me" class="sl-flex astro-pacogggv"><span class="sr-only astro-pacogggv">GitHub</span><svg aria-hidden="true" class="astro-pacogggv astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div></div></div></header><nav class="sidebar print:hidden astro-xcg6nxcz" aria-label="Основное"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-qxlgrixp"><svg aria-hidden="true" class="open-menu astro-qxlgrixp astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-qxlgrixp astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-qxlgrixp">Меню</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-xcg6nxcz"><div class="sidebar-content sl-flex astro-xcg6nxcz"><ul class="hd-topics"><li><a href="/start/introduction/" aria-current="page"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.17 2.06A13.1 13.1 0 0 0 19 1.87a12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2 13.1 13.1 0 0 0-2.17.19 1 1 0 0 0-.83 1v12a1 1 0 0 0 1.17 1 10.9 10.9 0 0 1 8.25 1.91l.12.07h.11a.91.91 0 0 0 .7 0h.11l.12-.07A10.899 10.899 0 0 1 20.83 16 1 1 0 0 0 22 15V3a1 1 0 0 0-.83-.94ZM11 15.35a12.87 12.87 0 0 0-6-1.48H4v-10c.333-.02.667-.02 1 0a10.86 10.86 0 0 1 6 1.8v9.68Zm9-1.44h-1a12.87 12.87 0 0 0-6 1.48V5.67a10.86 10.86 0 0 1 6-1.8c.333-.02.667-.02 1 0v10.04Zm1.17 4.15a13.098 13.098 0 0 0-2.17-.19 12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2.05c-.727.003-1.453.066-2.17.19A1 1 0 0 0 2 19.21a1 1 0 0 0 1.17.79 10.9 10.9 0 0 1 8.25 1.91 1 1 0 0 0 1.16 0A10.9 10.9 0 0 1 20.83 20a1 1 0 0 0 1.17-.79 1 1 0 0 0-.83-1.15Z"/></svg></span>Документация</a></li><li><a href="/ru/guides/first-steps/launch-app/"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.72 8.79-4.29 4.3-1.65-1.65a1 1 0 1 0-1.41 1.41l2.35 2.36a1 1 0 0 0 1.41 0l5-5a1.002 1.002 0 1 0-1.41-1.42ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg></span>Гайды</a></li><li><a href="https://github.com/holtdroid" rel="noopener"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></span>GitHub</a></li><li><a href="/#repositories" rel="noopener"><span class="hd-topic-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg></span>Repositories</a></li></ul><p class="hd-nav-title">Документация</p><sl-sidebar-state-persist data-hash="05u5nls" class="astro-4xjstbt3"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="hd-nav"><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg><span>Start here</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/start/introduction/"><span>Introduction</span></a></li><li><a href="/ru/start/installation/"><span>Installation</span></a></li><li><a href="/ru/start/local-development/"><span>Local development</span></a></li></ul></details></li><li><details open><summary class="hd-has-current"><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg><span>Concepts</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/concepts/architecture/"><span>Architecture</span></a></li><li><a href="/ru/concepts/sessions/"><span>Sessions and slots</span></a></li><li><a href="/ru/concepts/devtools/"><span>WebView DevTools</span></a></li><li><a href="/ru/concepts/webview-versions/"><span>WebView versions</span></a></li><li><a href="/ru/concepts/vpn/"><span>Per-session VPN</span></a></li><li><a href="/ru/concepts/ssh/"><span>Connecting your computer</span></a></li><li><a href="/ru/concepts/adb/"><span>ADB tools</span></a></li><li><a href="/ru/concepts/recordings/" aria-current="page"><span>Recordings</span></a></li><li><a href="/ru/concepts/microphone/"><span>Microphone</span></a></li><li><a href="/ru/concepts/camera/"><span>Camera</span></a></li><li><a href="/ru/concepts/app-data/"><span>App data</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><span>Инструменты сессии</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/session-tools/overview/"><span>Overview</span></a></li><li><a href="/ru/session-tools/pixel-perfect/"><span>Pixel perfect</span></a></li><li><a href="/ru/session-tools/websockets/"><span>WebSockets</span></a></li><li><a href="/ru/session-tools/cache/"><span>Cache</span></a></li><li><a href="/ru/session-tools/images/"><span>Images</span></a></li><li><a href="/ru/session-tools/svg/"><span>SVG</span></a></li><li><a href="/ru/session-tools/network/"><span>Network</span></a></li><li><a href="/ru/session-tools/dns/"><span>DNS log and rewrites</span></a></li><li><a href="/ru/session-tools/routes/"><span>Routes</span></a></li><li><a href="/ru/session-tools/logcat/"><span>Logcat</span></a></li><li><a href="/ru/session-tools/files/"><span>Files</span></a></li><li><a href="/ru/session-tools/terminal/"><span>Terminal</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m21.32 9.55-1.89-.63.89-1.78A1 1 0 0 0 20.13 6L18 3.87a1 1 0 0 0-1.15-.19l-1.78.89-.63-1.89A1 1 0 0 0 13.5 2h-3a1 1 0 0 0-.95.68l-.63 1.89-1.78-.89A1 1 0 0 0 6 3.87L3.87 6a1 1 0 0 0-.19 1.15l.89 1.78-1.89.63a1 1 0 0 0-.68.94v3a1 1 0 0 0 .68.95l1.89.63-.89 1.78A1 1 0 0 0 3.87 18L6 20.13a1 1 0 0 0 1.15.19l1.78-.89.63 1.89a1 1 0 0 0 .95.68h3a1 1 0 0 0 .95-.68l.63-1.89 1.78.89a1 1 0 0 0 1.13-.19L20.13 18a1 1 0 0 0 .19-1.15l-.89-1.78 1.89-.63a1 1 0 0 0 .68-.94v-3a1 1 0 0 0-.68-.95ZM20 12.78l-1.2.4A2 2 0 0 0 17.64 16l.57 1.14-1.1 1.1-1.11-.6a2 2 0 0 0-2.79 1.16l-.4 1.2h-1.59l-.4-1.2A2 2 0 0 0 8 17.64l-1.14.57-1.1-1.1.6-1.11a2 2 0 0 0-1.16-2.82l-1.2-.4v-1.56l1.2-.4A2 2 0 0 0 6.36 8l-.57-1.11 1.1-1.1L8 6.36a2 2 0 0 0 2.82-1.16l.4-1.2h1.56l.4 1.2A2 2 0 0 0 16 6.36l1.14-.57 1.1 1.1-.6 1.11a2 2 0 0 0 1.16 2.79l1.2.4v1.59ZM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg><span>Configuration</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/configuration/overview/"><span>Configuration files</span></a></li><li><a href="/ru/configuration/storage/"><span>Artifact storage</span></a></li><li><a href="/ru/configuration/database/"><span>Database</span></a></li><li><a href="/ru/configuration/authentication/"><span>Authentication</span></a></li><li><a href="/ru/configuration/secrets/"><span>Secrets</span></a></li><li><a href="/ru/configuration/emulator/"><span>Emulator provider</span></a></li><li><a href="/ru/configuration/phones/"><span>Phone provider</span></a></li><li><a href="/ru/configuration/rooting/"><span>Rooting a phone</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M14.29 17.29 13 18.59V13a1 1 0 0 0-2 0v5.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l3 3a1 1 0 0 0 .33.21.94.94 0 0 0 .76 0 1 1 0 0 0 .33-.21l3-3a1 1 0 0 0-1.42-1.42Zm4.13-11.07A7 7 0 0 0 5.06 8.11 4 4 0 0 0 6 16a1 1 0 0 0 0-2 2 2 0 0 1 0-4 1 1 0 0 0 1-1 5 5 0 0 1 9.73-1.61 1 1 0 0 0 .78.67 3 3 0 0 1 .24 5.84 1 1 0 1 0 .5 1.94 5 5 0 0 0 .17-9.62Z"/></svg><span>APK sources</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/sources/overview/"><span>Overview</span></a></li><li><a href="/ru/sources/slack/"><span>Slack</span></a></li><li><a href="/ru/sources/s3/"><span>S3 bucket</span></a></li><li><a href="/ru/sources/github/"><span>GitHub releases</span></a></li><li><a href="/ru/sources/chromium/"><span>Chromium versions</span></a></li><li><a href="/ru/sources/custom/"><span>Writing your own</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m12.71 16.29-.15-.12-.18-.09-.18-.08a1 1 0 0 0-.91.27 1 1 0 0 0-.21.33 1 1 0 0 0 1.3 1.31l.33-.22a1 1 0 0 0 .21-1.09 1 1 0 0 0-.21-.31M16 2H8a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3m1 17a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1Z"/></svg><span>Tools</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/tools/webview/"><span>Holtdroid WebView</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M15 17a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9 0a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-3-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m0 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m4-6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 11v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 17v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a3 3 0 0 0-.78-2 3 3 0 0 0 .78-2v-2a3 3 0 0 0-.78-2A3 3 0 0 0 22 7Zm-2 14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm-5-2a1 1 0 1 0 1 1 1 1 0 0 0-1-1M9 5H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2"/></svg><span>Operations</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/operations/security/"><span>Security</span></a></li><li><a href="/ru/operations/troubleshooting/"><span>Troubleshooting</span></a></li><li><a href="/ru/operations/vpn-gateway/"><span>Shared VPN gateway</span></a></li><li><a href="/ru/operations/monitoring/"><span>Monitoring and audit</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg><span>Extending</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/ru/extending/contracts/"><span>Contracts</span></a></li><li><a href="/ru/extending/provider/"><span>Writing a provider</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="hd-sidebar-note"><aside class="hd-ai not-content compact astro-jxl35hpc" aria-label="Disclaimer"><svg class="box astro-jxl35hpc" viewBox="0 0 64 64" aria-hidden="true"><circle class="halo astro-jxl35hpc" cx="32" cy="24" r="20" fill="#f5b446" opacity=".18"></circle><circle cx="32" cy="26" r="11" fill="#f5b446" opacity=".22" class="astro-jxl35hpc"></circle><path d="M12 34h40v18a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z" fill="#8a5a3c" class="astro-jxl35hpc"></path><path d="M12 40h40v4H12z" fill="#6d4630" class="astro-jxl35hpc"></path><rect x="28.5" y="41" width="7" height="8" rx="1.5" fill="#d9b48f" class="astro-jxl35hpc"></rect><g class="lid astro-jxl35hpc"><path d="M10 31.5 45.5 17l2.4 5.6L12.4 37z" fill="#a06b48" class="astro-jxl35hpc"></path><path d="M10 31.5 45.5 17" stroke="#c4875c" stroke-width="1.4" stroke-linecap="round" class="astro-jxl35hpc"></path></g><g class="sparks astro-jxl35hpc"><circle cx="24" cy="14" r="1.8" fill="#f5b446" class="astro-jxl35hpc"></circle><circle cx="34" cy="7" r="1.4" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="40" cy="27" r="1.6" fill="#3ddc84" class="astro-jxl35hpc"></circle><circle cx="29" cy="21" r="1.2" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="19" cy="24" r="1" fill="#3ddc84" class="astro-jxl35hpc"></circle><path d="M44 9l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" fill="#ffe08a" class="astro-jxl35hpc"></path></g></svg><div class="copy astro-jxl35hpc"><p class="title astro-jxl35hpc">Fully AI-generated. Use at your own risk.</p><p class="text astro-jxl35hpc">Not written or reviewed by a human.</p></div></aside></div><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-wiurj2sw"><div class="social-icons astro-wiurj2sw"><a href="https://github.com/holtdroid/holtdroid" rel="me" class="sl-flex astro-pacogggv"><span class="sr-only astro-pacogggv">GitHub</span><svg aria-hidden="true" class="astro-pacogggv astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-xcg6nxcz"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-a422hx3e"><aside class="right-sidebar-container print:hidden astro-a422hx3e"><div class="right-sidebar astro-a422hx3e"><div class="lg:sl-hidden astro-rflzrhp5"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-uccvt52g"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-uccvt52g"><details id="starlight__mobile-toc" class="astro-uccvt52g"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-uccvt52g"><span class="toggle sl-flex astro-uccvt52g">На этой странице<svg aria-hidden="true" class="caret astro-uccvt52g astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-uccvt52g"></span></summary><div class="dropdown astro-uccvt52g"><ul class="isMobile astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Обзор</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#recording-a-session" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Recording a session</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-recordings-list" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The recordings list</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-player" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The player</span></a><ul class="isMobile astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#timeline-and-controls" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Timeline and controls</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#markers" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Markers</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#logcat" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Logcat</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#network-console-and-websockets" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Network, console and WebSockets</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#cache-images-and-svg" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Cache, Images and SVG</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#pixel-perfect" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Pixel perfect</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#dns-and-routes" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">DNS and Routes</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#downloads" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Downloads</span></a><ul class="isMobile astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#video-mp4" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Video (.mp4)</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#recording-file-holtdroid" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Recording file (.holtdroid)</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#naming" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Naming</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#sharing" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Sharing</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#keeping-and-space" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Keeping and space</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#configuration" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Configuration</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-rflzrhp5"><div class="sl-container astro-rflzrhp5"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">На этой странице</h2><ul class="astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Обзор</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#recording-a-session" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Recording a session</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-recordings-list" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The recordings list</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-player" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The player</span></a><ul class="astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#timeline-and-controls" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Timeline and controls</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#markers" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Markers</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#logcat" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Logcat</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#network-console-and-websockets" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Network, console and WebSockets</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#cache-images-and-svg" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Cache, Images and SVG</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#pixel-perfect" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Pixel perfect</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#dns-and-routes" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">DNS and Routes</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#downloads" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Downloads</span></a><ul class="astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#video-mp4" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Video (.mp4)</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#recording-file-holtdroid" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Recording file (.holtdroid)</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#naming" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Naming</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#sharing" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Sharing</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#keeping-and-space" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Keeping and space</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#configuration" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Configuration</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-a422hx3e"><main data-pagefind-body class="astro-hwk3awhx" lang="en" dir="ltr"><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="hd-title"><p class="hd-eyebrow">Concepts</p><h1 id="_top">Recordings</h1><p class="hd-description">Sessions recorded on the server with logcat, the WebViews&#39; network, console and WebSockets, device, network and load next to the screen, to watch, download or share.</p></div><p class="sl-flex astro-dvjxtoj3"><svg aria-hidden="true" class="astro-dvjxtoj3 astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-color: var(--sl-color-orange-high);--sl-icon-size: 1.5em;"><path d="M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z"/></svg><span class="astro-dvjxtoj3">Это содержимое пока не доступно на вашем языке.</span></p></div></div><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="sl-markdown-content"><p>With recordings turned on, the server records sessions while they run. A
+recording keeps more than the picture:</p>
+<ul>
+<li>the <strong>screen</strong>, as the device encoded it;</li>
+<li><strong>logcat</strong> of the whole device, every line stamped with the time since the
+recording started;</li>
+<li>the app’s <strong>WebViews</strong>, as DevTools would show them: every request with its
+headers, body, response and timing, console messages and uncaught
+exceptions with their objects, and WebSocket and event-stream messages
+(see <a href="#network-console-and-websockets">Network, console and WebSockets</a>);</li>
+<li>the <strong>device</strong>: model, Android, build, the WebView version, screen size and
+density, language, theme, battery;</li>
+<li>the <strong>network</strong>: the VPN location with its external IP and country, the
+emulated network conditions (throttling: added delay, bandwidth, loss,
+scenarios; a region with what it adds to CDN and server round trips) and
+which links are on;</li>
+<li>the <strong>DNS</strong> log: every query with its answers and TTLs, and when rewrites,
+the TTL limit or the cache changed (see <a href="/session-tools/dns/">DNS log and rewrites</a>);</li>
+<li>the <strong>connections</strong>: every server the device talked to, through which
+location, with its bytes (see <a href="/session-tools/routes/">Routes</a>);</li>
+<li>the <strong>time</strong>: real time next to the device clock, with its time zone and
+how far it was set off real time;</li>
+<li>the <strong>load</strong> every two seconds: device and app CPU, memory, frames and
+jank, traffic, the container’s CPU and throttling, temperatures;</li>
+<li>whether the app was running, and when another build was installed;</li>
+<li>what the person at the screen did: taps, long presses and swipes, and the
+buttons of the phone beside the screen (Back, Home, Recents, volume, rotate,
+the notification shade and so on). Only what was done in the portal is seen;
+input from <code dir="auto">adb</code> over SSH or from the app itself isn’t. Typed text and
+other keys are never recorded.</li>
+</ul>
+<p>Nothing is rendered on the server: the agent copies the video the device
+already encodes and writes the rest as small text files next to it. The
+portal draws the page from that data like a session’s page: small dark
+cards on the left for the device clock, the app, the device, the network and
+the load (hover one for its details), the phone in the middle, and on the
+right a panel like the session’s DevTools panel with logcat and the WebViews’
+network, console and WebSockets in tabs.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="recording-a-session">Recording a session</h2><a class="sl-anchor-link" href="#recording-a-session"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Recording a session”</span></a></div>
+<p>What gets recorded is set by <code dir="auto">recordings.mode</code>:</p>
+<ul>
+<li><strong><code dir="auto">always</code></strong> (the default): every session is recorded from the moment it is
+ready, and a recording can’t be stopped. There is no switch in the launch
+dialog and no Stop button.</li>
+<li><strong><code dir="auto">auto</code></strong>: sessions are recorded unless you turn <strong>Record the session</strong> off
+in the launch dialog (the choice is remembered in the browser and used by
+the quick launch button). A recording can be stopped from the session page.</li>
+<li><strong><code dir="auto">manual</code></strong>: sessions are recorded only when you switch it on at launch or
+start it from the session page.</li>
+</ul>
+<p>On the session page the <strong>Recording</strong> card is among the cards beside the
+screen. While a recording runs it shows the elapsed time, and <strong>a click on the
+card pins a marker</strong> on the recording’s timeline at that moment. Hover it for
+the rest: how long it has run, its size and how much of your space is used;
+<strong>Keep forever</strong>, which exempts the recording from the retention period; <strong>Share</strong>,
+which makes a link and copies it (sharing keeps the recording too); a button
+to open the recording; and, unless the mode is <code dir="auto">always</code>, to stop or start
+recording. Stopping and starting again makes a new recording. A recording
+ends when the session stops; the last few seconds are uploaded before the
+device goes away.</p>
+<p>The screen is taken from what a viewer of the session already streams in
+H.264, so watching and recording cost one encoder on the device. When nobody
+watches, or the viewer picked H.265 or AV1, the agent runs a stream of its
+own for the recording: H.264, at most 1280 pixels on the long side, 30 fps,
+2 Mbit/s. A static screen costs next to nothing either way.</p>
+<p>The sound is taken the same way: the stream of a viewer who listens, or a
+capture of its own for the recording when nobody does (phones capture sound all
+session long anyway). It is written as a separate track, 10 seconds a
+segment, 40 to 60 MB an hour, as Opus, or as AAC on Android 11, whose Opus
+encoder doesn’t start. A device that can’t capture sound is asked once and
+then left alone: its recordings are silent.
+When the device is silent, the recording is too.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-recordings-list">The recordings list</h2><a class="sl-anchor-link" href="#the-recordings-list"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The recordings list”</span></a></div>
+<p><strong>Recordings</strong> in the header (the clapperboard) lists your recordings,
+newest first. Each card has a preview, the app, the length, the size, when it
+was made and when retention deletes it (or <strong>kept</strong> and <strong>shared</strong>). The
+preview is the screen just before the touch nearest to the fifth second of the
+recording, so it shows what someone was about to tap, or the screen at the
+fifth second when nobody touched it. A recording still in progress is marked
+and can be watched while it grows.</p>
+<p>The buttons on a card <strong>keep</strong> the recording past the retention period (or let
+it expire again), make and copy a <strong>share link</strong>, stop sharing, and
+<strong>delete</strong> it. The <strong>Storage</strong> box beside the list shows how much of your
+space is used and the server’s rules: how long recordings are kept, the
+shortest one that is kept and whether share links are allowed. <strong>Open a file</strong>
+plays a <code dir="auto">.holtdroid</code> file from your disk (see <a href="#recording-file-holtdroid">Recording file</a>).</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-player">The player</h2><a class="sl-anchor-link" href="#the-player"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The player”</span></a></div>
+<p>A recording opens on a page laid out like the session it came from:</p>
+<ul>
+<li><strong>cards on the left</strong>, as on the session page: <strong>Time</strong> (the place in the
+recording; hover for the device clock, its time zone and offset next to
+real time), <strong>App</strong> (its name, package, version and whether it runs),
+<strong>Device</strong> (the battery on the card; the model, Android, screen and the
+quick settings that were on in its panel), <strong>Network</strong> (the VPN location,
+the network conditions and the traffic) and <strong>Load</strong> (CPU and memory on the
+card, the rest in its panel). They change as the video plays, a card that
+differs from normal is highlighted, and hovering one shows its details at
+that moment;</li>
+<li><strong>the phone</strong> in the middle, playing the screen, with taps and swipes drawn
+over it;</li>
+<li><strong>the tools on the right</strong>: Logcat, and, when the app had WebViews,
+Network, Console, WebSockets, Cache, Images and SVG, plus DNS and Routes
+when the session had them and Pixel perfect for signed-in viewers. Every tab
+shows what had happened up to the moment you are at.</li>
+</ul>
+<p>Everything beside the phone is ordinary page text, so you can select and
+copy it.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="timeline-and-controls">Timeline and controls</h3><a class="sl-anchor-link" href="#timeline-and-controls"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Timeline and controls”</span></a></div>
+<p>The timeline under the phone shows the whole recording:</p>
+<ul>
+<li><strong>grey</strong> where there is video;</li>
+<li><strong>red marks</strong> where the app closed or crashed;</li>
+<li><strong>violet marks</strong> where DNS rewrites or the TTL limit changed or the DNS
+cache was cleared;</li>
+<li><strong>pins</strong> for markers (see <a href="#markers">Markers</a>).</li>
+</ul>
+<p>Hover the timeline to see the time under the pointer; click or drag to go
+there. Hover a mark for what happened.</p>
+<p>Next to it are play and pause, five seconds back and forward, the speeds
+<strong>0.5×</strong>, <strong>1×</strong>, <strong>2×</strong> and <strong>4×</strong>, <strong>Marker</strong>, and on the right <strong>Keep</strong>,
+<strong>Share</strong>, <strong>Download</strong>, the pointer button and full screen.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>Space</kbd> or <kbd>K</kbd></td>
+<td>play or pause</td>
+</tr>
+<tr>
+<td><kbd>←</kbd> / <kbd>→</kbd></td>
+<td>five seconds back / forward</td>
+</tr>
+<tr>
+<td><kbd>M</kbd></td>
+<td>pin a marker here (your own recordings)</td>
+</tr>
+</tbody>
+</table>
+<p>Taps and swipes show on the phone as green circles with a fading trail, and
+the navigation keys as a label at the bottom. The pointer button hides them
+(it only appears when something was touched); the downloaded video always has
+them.</p>
+<p>When a recording has sound, a speaker button next to the speeds turns it on
+or off. It plays at 1× only, since at other speeds it would change its pitch;
+at 0.5×, 2× and 4× the player is silent. The downloaded video carries the
+sound (AAC, or Opus where the browser has no AAC encoder) and so does the
+<code dir="auto">.holtdroid</code> file.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="markers">Markers</h3><a class="sl-anchor-link" href="#markers"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Markers”</span></a></div>
+<p>A marker is a pin on the timeline with an icon (pin, bug, flag, star, warning
+or done) and a short note. Click the <strong>Recording</strong> card on the session page
+while it records, or press <strong>Marker</strong> (or <kbd>M</kbd>) in the player to pin
+the moment you are at. Click a pin to jump there, rename it, change its icon
+or delete it. Anyone with a share link sees the markers but can’t change them.
+The downloaded video shows each marker as a label over the phone for a few
+seconds, and a recording with a marker is never deleted for being too short.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="logcat">Logcat</h3><a class="sl-anchor-link" href="#logcat"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Logcat”</span></a></div>
+<p>The <strong>Logcat</strong> tab has the whole device’s logcat, each line with its time in
+the recording:</p>
+<ul>
+<li>the level menu hides quieter lines (for example <strong>Warnings and above</strong>) and
+the filter box searches tags and messages;</li>
+<li>click a line’s time to jump to it in the recording;</li>
+<li>while you hold a selection the panel stops following the video, so the text
+doesn’t scroll away; click elsewhere to follow again;</li>
+<li>the copy button puts the lines on screen on the clipboard.</li>
+</ul>
+<p>The live tab is described in <a href="/session-tools/logcat/">Logcat</a>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="network-console-and-websockets">Network, console and WebSockets</h3><a class="sl-anchor-link" href="#network-console-and-websockets"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Network, console and WebSockets”</span></a></div>
+<p>The agent watches the app’s WebViews over a DevTools connection of its own,
+whether or not anyone has DevTools open: every tab, every iframe (nested
+ones too) and every worker and service worker, from their very first
+request. It follows them for the whole session, so a socket the app opened
+before the recording started is still recorded from then on, with its
+address. The tabs next to <strong>Logcat</strong> show what it saw up to the moment you
+are at; when there is more than one tab, iframe or worker, a menu narrows
+Network and Console to one of them, and lines from iframes and workers say
+where they came from. Android’s WebView runs an iframe in its page’s
+process, even one from another site, so it is not a context of its own:
+its requests, console and sockets are recorded with the page’s. In a live
+session’s DevTools you reach it the same way, through the page: pick it in
+the Console’s context menu (<code dir="auto">top ▾</code>), or find it in Elements and Sources. Counters on the tabs
+turn red when requests failed or the page logged errors.</p>
+<ul>
+<li><strong>Network</strong> lists requests as they were sent: status (pending until the
+response is complete at that moment), method, name, host, size and time.
+Filter by URL, by type (Fetch/XHR, Doc, JS and so on) or to errors only.
+Click a request for its headers, query string and body (<strong>Payload</strong>), the
+<strong>Response</strong> and its <strong>Timing</strong>, or copy it as cURL or as a <code dir="auto">fetch()</code> call.
+<strong>Timing</strong> splits the request’s time into <strong>Queued, stalled</strong>, <strong>DNS</strong>,
+<strong>Connect</strong> (TLS included), <strong>Send</strong>, <strong>Waiting (TTFB)</strong> and <strong>Download</strong>,
+so you can tell a slow server from a slow network or a queue in the app. Bodies are kept up to
+1 MB and images up to 512 KB; media and fonts are recorded without theirs.</li>
+<li><strong>Console</strong> has <code dir="auto">console.*</code> calls, uncaught exceptions with their stack and
+the WebView’s own messages (failed loads, violations, deprecations), with
+level filters and search. Click a message to open the objects it logged
+and its stack.</li>
+<li><strong>WebSockets</strong> lists the sockets and event streams; pick one for its frames,
+sent ↑ and received ↓, and click a frame for its contents. A socket that
+carries video or another media stream (its frames look like H.264, MP4,
+WebM, JPEG and the like, or it moves a steady flow of data) is marked
+<strong>media stream</strong>: from then on its frames are counted but not recorded.</li>
+<li><strong>Cache</strong> checks how the requests up to that moment use the WebView’s
+cache and a CDN in front of the server (see <a href="/session-tools/cache/">Cache</a>).</li>
+<li><strong>Images</strong> checks the images loaded up to that moment against how the
+pages drew them (see <a href="/session-tools/images/">Images</a>).</li>
+<li><strong>SVG</strong> checks the SVG paths in the recorded scripts, pages, stylesheets,
+SVG files and inline SVGs (see <a href="/session-tools/svg/">SVG paths</a>).</li>
+</ul>
+<p>JSON is shown as a tree you can open and close, also when it sits in a
+string field. Messages and bodies in common framings are split into their
+parts, each a tree: <strong>Socket.IO</strong> and <strong>Engine.IO</strong> packets (the event name
+as a label, <code dir="auto">2</code>/<code dir="auto">3</code> as ping and pong), <strong>SignalR</strong> and Engine.IO polling
+records separated by <code dir="auto">\x1e</code>, <strong>Server-Sent Events</strong> and <strong>JSON Lines</strong>.
+Frames show their label and a one-line preview in the list; a binary frame
+is marked <strong>bin</strong>, and one that holds UTF-8 text shows that text (and parses
+it) rather than base64. Forms are name
+and value pairs, binary payloads a hex dump. <strong>Pretty</strong> and <strong>Raw</strong> switch
+between the parsed view and the text as it was sent, and the copy button
+copies it.</p>
+<p>Values that look like a point in time get two chips: the first (a clock
+with an arrow back) says how far they were from the <strong>device clock when the
+line was recorded</strong>, the second how far they are from it <strong>at the player’s
+position</strong> (“now”, “3.2 s ago”, “in 1 h”), so a timestamp that was “now”
+when it arrived keeps “now” in the first chip and reads “3 s ago” in the
+second three seconds of video later. The live WebSockets tab of a session
+shows the same two chips, the second against the clock right now. Times are
+found in Unix time in seconds, milliseconds, microseconds or
+nanoseconds, ISO 8601 and HTTP dates. Hover it for its distance from the
+device clock both now and when it was recorded, the same moment in UTC, in
+the device’s time zone and in yours, as Unix seconds and milliseconds (click
+one to copy), and, when the device clock was set off real time, how it
+compares with real time. When that moment lies within the recording,
+<strong>Go to 00:12</strong> jumps there, back or ahead. A value without a time zone is
+read as UTC. Plain numbers count as seconds only when the field’s name
+says it is a time (<code dir="auto">expiresAt</code>, <code dir="auto">created_at</code>, <code dir="auto">exp</code>, <code dir="auto">ts</code>…) or they fall
+within five years of the recording.</p>
+<aside aria-label="Caution" class="starlight-aside starlight-aside--caution"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z"/></svg>Caution</p><div class="starlight-aside__content"><p>Headers, cookies and bodies are recorded as the app sent and received them,
+tokens included, and anyone with a share link or the <code dir="auto">.holtdroid</code> file sees
+them.</p></div></aside>
+<div class="sl-heading-wrapper level-h3"><h3 id="cache-images-and-svg">Cache, Images and SVG</h3><a class="sl-anchor-link" href="#cache-images-and-svg"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Cache, Images and SVG”</span></a></div>
+<p>These tabs run the same checks as in a live session, on what was recorded up
+to the moment you are at:</p>
+<ul>
+<li><strong>Cache</strong> reads the recorded requests’ headers and says where caching goes
+wrong: the request time in the URL, parameters that change on every
+request, the same file downloaded again, CDN misses and hits that shouldn’t
+be, and weak headers. See <a href="/session-tools/cache/">Cache</a>.</li>
+<li><strong>Images</strong> compares the recorded image files with how the pages drew them:
+images not on screen within 10 seconds of loading, bigger than they are
+drawn, in PNG, JPEG, GIF or BMP, or barely compressed. See
+<a href="/session-tools/images/">Images</a>.</li>
+<li><strong>SVG</strong> finds path data with too many decimals, longer commands than needed
+and paths shipped more than once. See <a href="/session-tools/svg/">SVG</a>.</li>
+</ul>
+<p>In a finding, a request’s time seeks there and <strong>Open in Network</strong> shows it
+on the Network tab. A recording keeps image bodies up to 512 KB; bigger ones,
+and recordings made before images were kept, are judged by a guess that is
+marked so. How pages drew their images is recorded only when <strong>Check how
+pages draw their images</strong> was on (at launch or in the session’s Images tab);
+without it only the files themselves are checked. A recording that starts in
+the middle of a session makes the pages report everything again, and images
+that loaded before the pages were first scanned aren’t judged by when they
+showed up.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="pixel-perfect">Pixel perfect</h3><a class="sl-anchor-link" href="#pixel-perfect"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Pixel perfect”</span></a></div>
+<p>Signed-in viewers get a <strong>Pixel perfect</strong> tab next to the others, with the
+same panel as in a session (see <a href="/session-tools/pixel-perfect/">Pixel perfect</a>):
+the reference is laid over the video, and <strong>Find differences</strong> pauses
+playback and compares the frame at the playhead. <strong>Skip what moves</strong> takes
+the next few frames of the recording. A recording has no device behind it,
+so differences aren’t named by native views or WebView elements, Detect only
+finds plain bars, and there is no Freeze: the paused frame is already still.
+Frames come from the stream’s video, so a higher stream quality while
+recording gives a cleaner comparison. Recordings made since this was added
+keep the device’s screen size and density, so dp are exact; older ones take
+the screen as 360 dp wide.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="dns-and-routes">DNS and Routes</h3><a class="sl-anchor-link" href="#dns-and-routes"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “DNS and Routes”</span></a></div>
+<p><strong>DNS</strong> lists the names the device looked up up to that moment, with their
+answers, and <strong>Routes</strong> where the connections went, as in a session (see
+<a href="/session-tools/dns/#recordings">DNS log and rewrites</a> and
+<a href="/session-tools/routes/#in-recordings">Routes</a>).</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="downloads">Downloads</h2><a class="sl-anchor-link" href="#downloads"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Downloads”</span></a></div>
+<p><strong>Download</strong> under the player offers:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What you get</th>
+<th>Who has it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Video (.mp4)</strong></td>
+<td>the screen with the device’s cards beside it, rendered in your browser</td>
+<td>your own recordings, once they have ended</td>
+</tr>
+<tr>
+<td><strong>Recording file (.holtdroid)</strong></td>
+<td>everything in one file, to watch again without the server</td>
+<td>your own and shared recordings</td>
+</tr>
+<tr>
+<td><strong>Network (.har)</strong></td>
+<td>the WebViews’ requests with their bodies and the WebSocket messages</td>
+<td>when the app had WebViews</td>
+</tr>
+<tr>
+<td><strong>Logcat, colored (.log)</strong></td>
+<td>the whole logcat with levels and colours as ANSI codes</td>
+<td>everyone</td>
+</tr>
+<tr>
+<td><strong>Logcat, plain text (.txt)</strong></td>
+<td>the same lines without colour codes</td>
+<td>everyone</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>HAR</strong> file opens in Chrome DevTools’ Network panel (drop it there), and
+in Charles, Fiddler or HAR viewers.</p>
+<p>In both logcat files each line starts with its time in the recording,
+followed by the usual <code dir="auto">threadtime</code> line. The colored one keeps the level
+letter in bold and colours tags and the lines of warnings and errors, so it
+reads well with <code dir="auto">less -R</code>, <code dir="auto">bat</code>, <code dir="auto">lnav</code> or an editor with ANSI support.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="video-mp4">Video (.mp4)</h3><a class="sl-anchor-link" href="#video-mp4"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Video (.mp4)”</span></a></div>
+<p><strong>Download → Video (.mp4)</strong> renders the recording into an MP4 file in your browser,
+frame by frame, with the Holtdroid logo on top (the text is part of the
+picture, so it can’t be selected). It opens with a three-second card about
+the app (name, version, package) and the device (model, Android, WebView,
+screen), when it was recorded and how long it is; then the phone plays with
+a narrow column beside it for what changes: the device clock and the
+recording time, whether the app runs, the battery, quick settings, the
+network and the load. Logcat and the WebViews’ tabs stay on the page, where
+they can be read and searched. It is 1296 pixels tall and 30 fps: 1262×1296
+for a phone held upright. If the screen turned sideways in the recording or
+it is a tablet, the phone’s column is made wider and so is the video (up to
+about 2160 pixels), so the picture
+stays readable; the phone’s frame turns smoothly when the device does. A
+progress bar over the recording’s timeline shows how far it got, how fast it
+goes and how long is left; keep the tab open until it finishes.</p>
+<p>The video is never held in memory. In Chrome and Edge you first pick where to
+save it and it is written straight into that file as it renders; cancelling
+removes the half-written file. Other browsers collect it in their private
+storage as they go and download it at the end. It needs a browser with
+WebCodecs (Chrome, Edge, Safari 17+, Firefox 130+) that can encode a video this
+size.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="recording-file-holtdroid">Recording file (.holtdroid)</h3><a class="sl-anchor-link" href="#recording-file-holtdroid"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Recording file (.holtdroid)”</span></a></div>
+<p>This saves everything in one file: the
+video segments, the events (device state, network, load, taps), the logcat, the
+WebViews’ requests, console and WebSockets, the markers, the preview and the app’s icon. It is an ordinary ZIP archive whose
+video and logs are stored as they are, so any archiver opens it. It points back
+at nothing on the server.</p>
+<p>Open it again, on any machine and without signing in, on the <strong>Open</strong> page
+(<strong>Recordings → Open a file</strong>, or <code dir="auto">/open</code>): drop the file on the page or pick
+it. It plays exactly like a recording on the server, with the logcat, panels,
+taps, markers and the video download, and <strong>nothing is uploaded</strong>. The browser
+reads only the pieces it plays (the segment under the playhead, the logcat
+around it) from your disk, so the file never sits in memory whole, however
+big it is. Keep, sharing and editing markers are only for recordings on the
+server.</p>
+<p>In the archive: <code dir="auto">holtdroid.json</code> (the format, the recording’s details and
+its markers), <code dir="auto">manifest.json</code>, <code dir="auto">init-N.mp4</code> and <code dir="auto">seg-N.m4s</code> (the video, as fragmented MP4),
+<code dir="auto">ainit-N.mp4</code> and <code dir="auto">aseg-N.m4s</code> (the sound, as Opus or AAC in fragmented MP4),
+<code dir="auto">events-N.jsonl.gz</code> (one JSON event per line), <code dir="auto">logcat-N.log.gz</code>,
+<code dir="auto">devtools-N.jsonl.gz</code> (one JSON line per request, console message, socket
+change or frame),
+<code dir="auto">thumb.jpg</code> and <code dir="auto">icon.png</code>. To get a plain video of a recording without
+a new epoch (the screen didn’t turn or restart), join an init file and its segments
+in order: <code dir="auto">cat init-0.mp4 seg-1.m4s seg-2.m4s … &gt; video.mp4</code>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="naming">Naming</h2><a class="sl-anchor-link" href="#naming"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Naming”</span></a></div>
+<p>A recording is named after its app. The pencil next to the name, on a
+recording’s card and on its page, gives it a name of your own (up to 120
+characters); leaving it empty goes back to the app’s. The name shows to
+anyone with the share link, in the <code dir="auto">.holtdroid</code> file and in the video’s
+header.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="sharing">Sharing</h2><a class="sl-anchor-link" href="#sharing"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Sharing”</span></a></div>
+<p><strong>Share</strong> (or the link button on a card) makes a link that opens the
+recording without signing in, and copies it. Asking again gives the same
+link; <strong>Stop sharing</strong> turns it off. A shared recording is kept, so the link
+doesn’t die after <code dir="auto">recordings.maxAge</code>; it stays kept when you stop sharing,
+until you let it expire yourself. People with the link can watch and
+download the logcat, but the page has no video download.</p>
+<p>The link you copy carries the moment you are at, like a video link with a
+time: <code dir="auto">#t=46.2&amp;tab=network&amp;request=…</code> opens the recording there, on the same
+tab (Logcat, Network, Console, WebSockets, DNS, Routes, Cache, Images or SVG), with the request,
+console message, socket frame, name or finding you had open opened and scrolled to. <code dir="auto">t</code> also takes
+<code dir="auto">1m20s</code>. On a shared recording, <strong>Link to 00:46</strong> copies such a link for the
+page you are on. Someone signed in to the portal who opens a share link sees it inside the
+portal, with its header and menus.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="keeping-and-space">Keeping and space</h2><a class="sl-anchor-link" href="#keeping-and-space"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Keeping and space”</span></a></div>
+<p>A recording that ends in under <code dir="auto">recordings.minDuration</code> (20 seconds by default)
+is deleted as soon as it ends: a session stopped at once or one that failed to
+start leaves nothing to watch. A recording you kept or shared, or one with a
+marker on it, stays.</p>
+<p>Recordings are deleted <code dir="auto">recordings.maxAge</code> after they were made unless you
+<strong>Keep</strong> them. Each user has <code dir="auto">recordings.quota</code> bytes: when a new recording
+doesn’t fit, the oldest recordings that aren’t kept are deleted first; when
+only kept ones are left, new sessions start without a recording and a
+running one stops. Kept recordings count against the quota too.</p>
+<p>As a rough guide, a recording takes 0.2 to 2 GB per hour of an app in use (the viewer’s stream quality decides),
+less for mostly static screens; logcat and the device data add a few
+megabytes per hour, and the WebViews’ traffic as much as its bodies weigh
+(a page busy with JSON APIs can add tens of megabytes).</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="configuration">Configuration</h2><a class="sl-anchor-link" href="#configuration"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Configuration”</span></a></div>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.31loo.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="yaml"><code><div class="ec-line"><div class="code"><span style="--0:#7EE787">recordings</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">enabled</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">mode</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">always</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># always: every session, can't be stopped; auto: unless the launch says no; manual: only on request</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">maxAge</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">168h</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># deleted this long after recording unless kept; 0 = never</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">minDuration</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">20s</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># a finished recording shorter than this is deleted unless kept or marked; 0 = keep all</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">quota</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">50GiB</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># per user; 0 = no limit</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">share</span><span style="--0:#E6EDF3">: </span><span style="--0:#79C0FF">true</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># allow share links</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">maxFileSize</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">64MiB</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># largest file an agent may upload</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">sweepInterval</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">10m</span><span style="--0:#E6EDF3"> </span><span style="--0:#8B949E"># how often retention runs</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787">storage</span><span style="--0:#E6EDF3">: </span><span style="--0:#8B949E"># optional: where recordings go; default is the shared storage under recordings/</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">type</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">s3</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7EE787">s3</span><span style="--0:#E6EDF3">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">endpoint</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">https://s3.example.com</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">bucket</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">holtdroid</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">prefix</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">recordings</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">accessKey</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">env:S3_ACCESS_KEY</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7EE787">secretKey</span><span style="--0:#E6EDF3">: </span><span style="--0:#A5D6FF">env:S3_SECRET_KEY</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="recordings:  enabled: true  mode: always # always: every session, can&#x27;t be stopped; auto: unless the launch says no; manual: only on request  maxAge: 168h # deleted this long after recording unless kept; 0 = never  minDuration: 20s # a finished recording shorter than this is deleted unless kept or marked; 0 = keep all  quota: 50GiB # per user; 0 = no limit  share: true # allow share links  maxFileSize: 64MiB # largest file an agent may upload  sweepInterval: 10m # how often retention runs  storage: # optional: where recordings go; default is the shared storage under recordings/    type: s3    s3:      endpoint: https://s3.example.com      bucket: holtdroid      prefix: recordings      accessKey: env:S3_ACCESS_KEY      secretKey: env:S3_SECRET_KEY"><div></div></button></div></figure></div>
+<p>Agents upload to the api’s internal listener (<code dir="auto">internalURL</code>), so session
+Pods need to reach it, as they already do for APKs. Each upload URL carries a
+secret only that session’s agent knows.</p>
+</div><footer class="sl-flex astro-k7w37ldv"><div class="meta sl-flex astro-k7w37ldv"><a href="https://github.com/holtdroid/holtdroid/edit/main/docs/src/content/docs/concepts/recordings.md" class="sl-flex print:hidden astro-brmikds2"><svg aria-hidden="true" class="astro-brmikds2 astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Редактировать страницу</a><p>Последнее обновление: <time datetime="2026-10-29T19:46:33.000Z">29 окт. 2026 г.</time></p></div><div class="pagination-links print:hidden astro-kgi7sqvr" dir="ltr"><a href="/ru/concepts/adb/" rel="prev" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-kgi7sqvr">Предыдущая<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">ADB tools</span></span></a><a href="/ru/concepts/microphone/" rel="next" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-kgi7sqvr">Следующая<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">Microphone</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
