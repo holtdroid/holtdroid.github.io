@@ -1,0 +1,673 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-hwk3awhx"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Network | Holtdroid</title><link rel="canonical" href="https://holtdroid.github.io/session-tools/network/"/><link rel="alternate" hreflang="en" href="https://holtdroid.github.io/session-tools/network/"/><link rel="alternate" hreflang="uk" href="https://holtdroid.github.io/uk/session-tools/network/"/><link rel="alternate" hreflang="ru" href="https://holtdroid.github.io/ru/session-tools/network/"/><link rel="alternate" hreflang="x-default" href="https://holtdroid.github.io/session-tools/network/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.0"/><meta name="generator" content="Starlight v0.42.6"/><meta property="og:title" content="Network"/><meta property="og:type" content="article"/><meta property="og:url" content="https://holtdroid.github.io/session-tools/network/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Slow, lossy or dropping networks for the whole device, and a region's round trips to CDNs and servers, on top of the session's own route."/><meta property="og:site_name" content="Holtdroid"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Slow, lossy or dropping networks for the whole device, and a region's round trips to CDNs and servers, on top of the session's own route."/><meta property="og:image" content="https://github.com/holtdroid/.github/raw/main/profile/assets/social-holtdroid.png"/><meta name="twitter:image" content="https://github.com/holtdroid/.github/raw/main/profile/assets/social-holtdroid.png"/><script type="module" src="/_astro/MermaidZoom.astro_astro_type_script_index_0_lang.DpUBnOV7.js"></script><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/AiDisclaimer.DhzaBH_n.css"><link rel="stylesheet" href="/_astro/common.DtgUTaa6.css"><style>@layer starlight.components{svg:where(.astro-hlzwxtvd){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em;overflow:visible}}
+@layer starlight.components{.sl-steps{--bullet-size:calc(var(--sl-line-height) * 1rem);--bullet-margin:.375rem;counter-reset:steps-counter var(--sl-steps-start,0);padding-inline-start:0;list-style:none}.sl-steps>li{counter-increment:steps-counter;padding-inline-start:calc(var(--bullet-size) + 1rem);min-height:calc(var(--bullet-size) + var(--bullet-margin));padding-bottom:1px;position:relative}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);top:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);box-shadow:inset 0 0 0 1px var(--sl-color-gray-5);border-radius:99rem;font-weight:600;position:absolute;inset-inline-start:0}.sl-steps>li:after{--guide-width:1px;content:"";top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);width:var(--guide-width);background-color:var(--sl-color-hairline-light);position:absolute;inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2)}}@layer starlight.content{.sl-steps>li>:first-child{--lh:calc(1em * var(--sl-line-height));--shift-y:calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh:calc(1em * var(--sl-line-height-headings))}@supports (--prop:1lh){.sl-steps>li>:first-child{--lh:1lh}}}
+</style><script type="module" src="/_astro/page.BBqThP7k.js"></script></head><body class="astro-hwk3awhx"><a class="sl-skip-link astro-ecdj6xll" href="#_top">Skip to content</a><div class="page sl-flex astro-xcg6nxcz"><header class="header astro-xcg6nxcz"><div class="hd-header"><site-search class=" astro-n2w6z7vl" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-n2w6z7vl"><svg aria-hidden="true" class="astro-n2w6z7vl astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-n2w6z7vl" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-n2w6z7vl" style="display: none;"><kbd class="astro-n2w6z7vl">Ctrl</kbd><kbd class="astro-n2w6z7vl">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-n2w6z7vl"><div class="dialog-frame sl-flex astro-n2w6z7vl"><button data-close-modal class="sl-flex md:sl-hidden astro-n2w6z7vl">Cancel</button><div class="search-container astro-n2w6z7vl"><div id="starlight__search" class="astro-n2w6z7vl"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.BOTS06Pe.js"></script></div></header><nav class="sidebar print:hidden astro-xcg6nxcz" aria-label="Main"><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=document.querySelector(`[data-hd-filter]`),t=document.querySelector(`.sidebar-content .hd-nav`);function n(e){if(!t)return;let n=e.trim().toLowerCase();for(let e of t.querySelectorAll(`li`)){let t=e.querySelector(`:scope > a`);t&&(e.hidden=n!==``&&!t.textContent?.toLowerCase().includes(n))}for(let e of[...t.querySelectorAll(`details`)].reverse()){let t=e.parentElement,r=e.querySelector(`:scope > summary`)?.textContent?.toLowerCase()??``,i=n!==``&&r.includes(n);if(i)for(let t of e.querySelectorAll(`li`))t.hidden=!1;let a=i||[...e.querySelectorAll(`:scope > ul > li`)].some(e=>!e.hidden);t&&(t.hidden=n!==``&&!a),n===``?e.dataset.hdOpen&&(e.open=e.dataset.hdOpen===`1`,delete e.dataset.hdOpen):(e.dataset.hdOpen??=e.open?`1`:`0`,e.open=a)}}e?.addEventListener(`input`,()=>n(e.value));</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-xcg6nxcz"><div class="sidebar-content sl-flex astro-xcg6nxcz"><div class="hd-sheet-head md:sl-hidden"><span class="hd-sheet-grip"></span></div><div class="hd-switch-row"><nav class="hd-switch" aria-label="Sections"><a href="/start/introduction/" aria-current="page"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"></path><path d="M4 19V5"></path></svg>Docs</a><a href="/guides/first-steps/launch-app/"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M8 12l3 3 5-6"></path></svg>Guides</a></nav><a class="hd-btn hd-sheet-home md:sl-hidden" href="/" aria-label="Home"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"></path><path d="M10 20v-6h4v6"></path></svg></a></div><label class="hd-filter"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M20 20l-3.5-3.5"></path></svg><input type="search" placeholder="Filter pages" aria-label="Filter pages" data-hd-filter></label><sl-sidebar-state-persist data-hash="1vmtnyt" class="astro-4xjstbt3"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="hd-nav"><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg><span>Start here</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/start/introduction/"><span>Introduction</span></a></li><li><a href="/start/alternatives/"><span>Alternatives</span></a></li><li><a href="/start/installation/"><span>Installation</span></a></li><li><a href="/start/local-development/"><span>Local development</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg><span>Concepts</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/concepts/architecture/"><span>Architecture</span></a></li><li><a href="/concepts/sessions/"><span>Sessions and slots</span></a></li><li><a href="/concepts/devtools/"><span>WebView DevTools</span></a></li><li><a href="/concepts/webview-versions/"><span>WebView versions</span></a></li><li><a href="/concepts/vpn/"><span>Per-session VPN</span></a></li><li><a href="/concepts/ssh/"><span>Connecting your computer</span></a></li><li><a href="/concepts/adb/"><span>ADB tools</span></a></li><li><a href="/concepts/recordings/"><span>Recordings</span></a></li><li><a href="/concepts/microphone/"><span>Microphone</span></a></li><li><a href="/concepts/camera/"><span>Camera</span></a></li><li><a href="/concepts/app-data/"><span>App data</span></a></li></ul></details></li><li><details open><summary class="hd-has-current"><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><span>Session tools</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/session-tools/overview/"><span>Overview</span></a></li><li><a href="/session-tools/pixel-perfect/"><span>Pixel perfect</span></a></li><li><a href="/session-tools/websockets/"><span>WebSockets</span></a></li><li><a href="/session-tools/cache/"><span>Cache</span></a></li><li><a href="/session-tools/network/" aria-current="page"><span>Network</span></a></li><li><a href="/session-tools/dns/"><span>DNS log and rewrites</span></a></li><li><a href="/session-tools/routes/"><span>Routes</span></a></li><li><a href="/session-tools/logcat/"><span>Logcat</span></a></li><li><a href="/session-tools/files/"><span>Files</span></a></li><li><a href="/session-tools/terminal/"><span>Terminal</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m21.32 9.55-1.89-.63.89-1.78A1 1 0 0 0 20.13 6L18 3.87a1 1 0 0 0-1.15-.19l-1.78.89-.63-1.89A1 1 0 0 0 13.5 2h-3a1 1 0 0 0-.95.68l-.63 1.89-1.78-.89A1 1 0 0 0 6 3.87L3.87 6a1 1 0 0 0-.19 1.15l.89 1.78-1.89.63a1 1 0 0 0-.68.94v3a1 1 0 0 0 .68.95l1.89.63-.89 1.78A1 1 0 0 0 3.87 18L6 20.13a1 1 0 0 0 1.15.19l1.78-.89.63 1.89a1 1 0 0 0 .95.68h3a1 1 0 0 0 .95-.68l.63-1.89 1.78.89a1 1 0 0 0 1.13-.19L20.13 18a1 1 0 0 0 .19-1.15l-.89-1.78 1.89-.63a1 1 0 0 0 .68-.94v-3a1 1 0 0 0-.68-.95ZM20 12.78l-1.2.4A2 2 0 0 0 17.64 16l.57 1.14-1.1 1.1-1.11-.6a2 2 0 0 0-2.79 1.16l-.4 1.2h-1.59l-.4-1.2A2 2 0 0 0 8 17.64l-1.14.57-1.1-1.1.6-1.11a2 2 0 0 0-1.16-2.82l-1.2-.4v-1.56l1.2-.4A2 2 0 0 0 6.36 8l-.57-1.11 1.1-1.1L8 6.36a2 2 0 0 0 2.82-1.16l.4-1.2h1.56l.4 1.2A2 2 0 0 0 16 6.36l1.14-.57 1.1 1.1-.6 1.11a2 2 0 0 0 1.16 2.79l1.2.4v1.59ZM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg><span>Configuration</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/configuration/overview/"><span>Configuration files</span></a></li><li><a href="/configuration/storage/"><span>Artifact storage</span></a></li><li><a href="/configuration/database/"><span>Database</span></a></li><li><a href="/configuration/authentication/"><span>Authentication</span></a></li><li><a href="/configuration/secrets/"><span>Secrets</span></a></li><li><a href="/configuration/emulator/"><span>Emulator provider</span></a></li><li><a href="/configuration/phones/"><span>Phone provider</span></a></li><li><a href="/configuration/rooting/"><span>Rooting a phone</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M14.29 17.29 13 18.59V13a1 1 0 0 0-2 0v5.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l3 3a1 1 0 0 0 .33.21.94.94 0 0 0 .76 0 1 1 0 0 0 .33-.21l3-3a1 1 0 0 0-1.42-1.42Zm4.13-11.07A7 7 0 0 0 5.06 8.11 4 4 0 0 0 6 16a1 1 0 0 0 0-2 2 2 0 0 1 0-4 1 1 0 0 0 1-1 5 5 0 0 1 9.73-1.61 1 1 0 0 0 .78.67 3 3 0 0 1 .24 5.84 1 1 0 1 0 .5 1.94 5 5 0 0 0 .17-9.62Z"/></svg><span>APK sources</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/sources/overview/"><span>Overview</span></a></li><li><a href="/sources/slack/"><span>Slack</span></a></li><li><a href="/sources/s3/"><span>S3 bucket</span></a></li><li><a href="/sources/github/"><span>GitHub releases</span></a></li><li><a href="/sources/chromium/"><span>Chromium versions</span></a></li><li><a href="/sources/custom/"><span>Writing your own</span></a></li><li><a href="/sources/archives/"><span>Browsers from release archives</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m12.71 16.29-.15-.12-.18-.09-.18-.08a1 1 0 0 0-.91.27 1 1 0 0 0-.21.33 1 1 0 0 0 1.3 1.31l.33-.22a1 1 0 0 0 .21-1.09 1 1 0 0 0-.21-.31M16 2H8a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3m1 17a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1Z"/></svg><span>Tools</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/tools/webview/"><span>Holtdroid WebView</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M15 17a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9 0a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-3-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m-6 0H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2m9-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m0 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1m4-6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 11v2a3 3 0 0 0 .78 2A3 3 0 0 0 2 17v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a3 3 0 0 0-.78-2 3 3 0 0 0 .78-2v-2a3 3 0 0 0-.78-2A3 3 0 0 0 22 7Zm-2 14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm0-6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Zm-5-2a1 1 0 1 0 1 1 1 1 0 0 0-1-1M9 5H6a1 1 0 0 0 0 2h3a1 1 0 0 0 0-2"/></svg><span>Operations</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/operations/security/"><span>Security</span></a></li><li><a href="/operations/emulator-security/"><span>Emulator isolation</span></a></li><li><a href="/operations/troubleshooting/"><span>Troubleshooting</span></a></li><li><a href="/operations/vpn-gateway/"><span>Shared VPN gateway</span></a></li><li><a href="/operations/monitoring/"><span>Monitoring and audit</span></a></li></ul></details></li><li><details><summary><svg aria-hidden="true" class="hd-nav-icon astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg><span>Extending</span><svg aria-hidden="true" class="hd-caret astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="hd-nav hd-nav-nested"><li><a href="/extending/contracts/"><span>Contracts</span></a></li><li><a href="/extending/provider/"><span>Writing a provider</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="hd-sidebar-note"><aside class="hd-ai not-content compact astro-jxl35hpc" aria-label="Disclaimer"><svg class="box astro-jxl35hpc" viewBox="0 0 64 64" aria-hidden="true"><circle class="halo astro-jxl35hpc" cx="32" cy="24" r="20" fill="#f5b446" opacity=".18"></circle><circle cx="32" cy="26" r="11" fill="#f5b446" opacity=".22" class="astro-jxl35hpc"></circle><path d="M12 34h40v18a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z" fill="#8a5a3c" class="astro-jxl35hpc"></path><path d="M12 40h40v4H12z" fill="#6d4630" class="astro-jxl35hpc"></path><rect x="28.5" y="41" width="7" height="8" rx="1.5" fill="#d9b48f" class="astro-jxl35hpc"></rect><g class="lid astro-jxl35hpc"><path d="M10 31.5 45.5 17l2.4 5.6L12.4 37z" fill="#a06b48" class="astro-jxl35hpc"></path><path d="M10 31.5 45.5 17" stroke="#c4875c" stroke-width="1.4" stroke-linecap="round" class="astro-jxl35hpc"></path></g><g class="sparks astro-jxl35hpc"><circle cx="24" cy="14" r="1.8" fill="#f5b446" class="astro-jxl35hpc"></circle><circle cx="34" cy="7" r="1.4" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="40" cy="27" r="1.6" fill="#3ddc84" class="astro-jxl35hpc"></circle><circle cx="29" cy="21" r="1.2" fill="#ffe08a" class="astro-jxl35hpc"></circle><circle cx="19" cy="24" r="1" fill="#3ddc84" class="astro-jxl35hpc"></circle><path d="M44 9l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z" fill="#ffe08a" class="astro-jxl35hpc"></path></g></svg><div class="copy astro-jxl35hpc"><p class="title astro-jxl35hpc">Fully AI-generated. Use at your own risk.</p><p class="text astro-jxl35hpc">Not written or reviewed by a human.</p></div></aside></div><div class="hd-sheet-foot md:sl-hidden"><button class="hd-btn" type="button" data-hd-theme><svg class="hd-i hd-theme-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5"></path></svg><svg class="hd-i hd-theme-light" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg><span class="hd-truncate">Switch theme</span></button></div></div></sl-sidebar-pane></nav><div class="main-frame astro-xcg6nxcz"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-a422hx3e"><aside class="right-sidebar-container print:hidden astro-a422hx3e"><div class="right-sidebar astro-a422hx3e"><div class="lg:sl-hidden astro-rflzrhp5"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-uccvt52g"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-uccvt52g"><details id="starlight__mobile-toc" class="astro-uccvt52g"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-uccvt52g"><span class="toggle sl-flex astro-uccvt52g">On this page<svg aria-hidden="true" class="caret astro-uccvt52g astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-uccvt52g"></span></summary><div class="dropdown astro-uccvt52g"><ul class="isMobile astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Overview</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#where-to-find-it" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Where to find it</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#what-it-affects" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">What it affects</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-picker" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The picker</span></a><ul class="isMobile astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#the-sessions-route" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">The session’s route</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#networks" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Networks</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#scenarios" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Scenarios</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#region" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Region</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#backends-behind-a-cdn" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Backends behind a CDN</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#common-tasks" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Common tasks</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#measuring-the-effect" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Measuring the effect</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#in-recordings" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">In recordings</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#limits" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Limits</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-rflzrhp5"><div class="sl-container astro-rflzrhp5"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-hpmugdwk" style="--depth: 0;"><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#_top" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Overview</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#where-to-find-it" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Where to find it</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#what-it-affects" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">What it affects</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#the-picker" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">The picker</span></a><ul class="astro-hpmugdwk" style="--depth: 1;"><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#the-sessions-route" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">The session’s route</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#networks" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Networks</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#scenarios" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Scenarios</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#region" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Region</span></a></li><li style="--depth: 1;" class="astro-hpmugdwk"><a href="#backends-behind-a-cdn" style="--depth: 1;" class="astro-hpmugdwk"><span style="--depth: 1;" class="astro-hpmugdwk">Backends behind a CDN</span></a></li></ul></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#common-tasks" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Common tasks</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#measuring-the-effect" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Measuring the effect</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#in-recordings" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">In recordings</span></a></li><li style="--depth: 0;" class="astro-hpmugdwk"><a href="#limits" style="--depth: 0;" class="astro-hpmugdwk"><span style="--depth: 0;" class="astro-hpmugdwk">Limits</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-a422hx3e"><main data-pagefind-body class="astro-hwk3awhx" lang="en" dir="ltr"><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="hd-title"><nav class="hd-crumbs" aria-label="Breadcrumbs"><span>Docs</span><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg><span>Session tools</span></nav><div class="hd-title-row"><span class="hd-title-icon"><svg aria-hidden="true" class=" astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></span><h1 id="_top">Network</h1></div><p class="hd-description">Slow, lossy or dropping networks for the whole device, and a region&#39;s round trips to CDNs and servers, on top of the session&#39;s own route.</p></div></div></div><div class="content-panel astro-mvf4xpmr"><div class="sl-container astro-mvf4xpmr"><div class="sl-markdown-content"><p>Apps are built on fast office Wi-Fi and used on a train. <strong>Network
+conditions</strong> put the device on a slower network: a named link such as 3G or weak 4G, a
+scenario that changes the link over time (a subway ride, an elevator), and
+optionally a <strong>region</strong>, the round trips that users in a country have to a
+CDN and to your servers. Use it to see whether the app shows loaders,
+retries and clear errors instead of a blank screen.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="where-to-find-it">Where to find it</h2><a class="sl-anchor-link" href="#where-to-find-it"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Where to find it”</span></a></div>
+<p>Network conditions are there in emulator sessions with a
+<a href="/concepts/vpn/">VPN</a>: the conditions are applied to the VPN tunnel, so
+without VPN locations configured there are none. Phones don’t have them (see
+<a href="/configuration/phones/">Phones</a>).</p>
+<p>The <strong>Network</strong> row of the <strong>Device</strong> panel (tab <strong>Environment</strong>) shows the
+current conditions and, opened, everything for a quick change:</p>
+<ul>
+<li><strong>Conditions</strong>: chips for <strong>No limits</strong>, <strong>Typical 4G</strong>, <strong>3G</strong>, <strong>2G
+(EDGE)</strong> and <strong>Subway</strong> (plus the current network when it is another
+one), and <strong>All…</strong>, which opens the picker;</li>
+<li><strong>Ping</strong>, <strong>Mbit/s</strong> and <strong>Loss</strong> of what is applied right now: the
+network’s own numbers, or the current step’s while a scenario runs
+(<code dir="auto">Subway · step 2 of 3: 3G</code>);</li>
+<li><strong>VPN exit</strong>, the <a href="/concepts/vpn/">VPN location</a> with the external
+address;</li>
+<li><strong>Wi-Fi</strong>, <strong>Mobile data</strong> and <strong>Airplane mode</strong>, and the device’s
+traffic;</li>
+<li><strong>Network conditions</strong>, a row with the current summary that opens the
+picker too.</li>
+</ul>
+<p>The row is marked <strong>Changed</strong> while anything is emulated or a radio is off;
+<strong>Reset</strong> in it turns everything back.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-it-affects">What it affects</h2><a class="sl-anchor-link" href="#what-it-affects"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “What it affects”</span></a></div>
+<p>The conditions apply to <strong>the whole device</strong>: every app, the WebView, native
+code, DNS lookups. They are not DevTools’ throttling, which slows down one
+page only. What Holtdroid itself uses to reach the device (the screen,
+DevTools, ADB, the agent) isn’t slowed down, and neither are the addresses
+in <code dir="auto">vpn.bypassCIDRs</code>.</p>
+<p>An outage in a scenario drops every packet while Android still sees a
+connected network, so requests hang until they time out, as on a dead cell.
+For a network that Android knows is gone, turn on <strong>Airplane mode</strong>, or turn
+<strong>Wi-Fi</strong> and <strong>Mobile data</strong> off, in the Network row.</p>
+<p>The conditions stay when you switch the VPN location; the agent then
+measures the new route (see <a href="#the-sessions-route">The session’s route</a>).</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-picker">The picker</h2><a class="sl-anchor-link" href="#the-picker"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The picker”</span></a></div>
+<p>The picker opens over the session. Its header says what is on: a running
+scenario and its step (<code dir="auto">Subway · step 2 of 3</code>), or the network’s name, or
+the region with its link (<code dir="auto">🇩🇪 Germany · typical mobile</code>). <strong>No emulation</strong>
+next to it turns everything off; the cross or Esc closes the picker, and
+every pick applies at once.</p>
+<p>Below the header are three tabs, <strong>Networks</strong>, <strong>Scenarios</strong> and
+<strong>Region</strong>, each with how many it offers, and on the right the <strong>Session
+route</strong>: the CDN edge round trip, the nearest server location and the
+route’s bandwidth (<code dir="auto">CDN 18 ms · Frankfurt 34 ms · ↓ 94 Mbit/s</code>).</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="the-sessions-route">The session’s route</h3><a class="sl-anchor-link" href="#the-sessions-route"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The session’s route”</span></a></div>
+<p><strong>The session’s own route</strong> (in the <strong>Region</strong> tab while no region is
+picked, and in short next to the tabs) shows what the session’s network
+already takes before any emulation:</p>
+<ul>
+<li><code dir="auto">CDN edge 23 ms</code>: the round trip to Cloudflare’s nearest edge;</li>
+<li><code dir="auto">↓ 48 Mbit/s</code>: the route’s download bandwidth;</li>
+<li>the round trip to each server location (<code dir="auto">Frankfurt 31 ms · N. Virginia 112 ms · …</code>);</li>
+<li>how old a measurement is, when it is over two minutes (<code dir="auto">12 min ago</code>).</li>
+</ul>
+<p>Every emulated network comes on top of it: a network adds its delay to
+these round trips, and can’t be faster than the route’s bandwidth. Round
+trips are measured every minute; the bandwidth after a location change, or
+when the last test is over six hours old. A new session starts from the last
+route measured through its location. Until the first measurement it says
+<strong>Measuring…</strong>. How the agent measures is described under
+<a href="/configuration/emulator/#the-sessions-route">Network conditions</a>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="networks">Networks</h3><a class="sl-anchor-link" href="#networks"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Networks”</span></a></div>
+<p>The <strong>Networks</strong> tab is the access link: one row per network with its
+name, a short description, the delay it adds with its jitter (<strong>RTT</strong>), the
+download and upload in kbit/s, the packet loss and a <strong>Speed</strong> meter (green,
+amber or red, from GPRS to 5G on a log scale, less for delay and loss). The
+picked row has its radio filled. <strong>Filter</strong> narrows the list by name or
+description. Without a region, hovering a row’s RTT shows the round trip it
+means to a CDN edge (<code dir="auto">≈ 93 ms to a CDN edge</code>), the route’s plus its own
+delay, and hovering the loss of a bursty network says how long its runs
+are.</p>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>Delay</th>
+<th>Download</th>
+<th>Upload</th>
+<th>Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No limits</strong></td>
+<td>the session’s own network, nothing emulated</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>5G</strong></td>
+<td>+25 ±5 ms</td>
+<td>150 Mbit/s</td>
+<td>30 Mbit/s</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Good 4G</strong></td>
+<td>+45 ±10 ms</td>
+<td>30 Mbit/s</td>
+<td>10 Mbit/s</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Typical 4G</strong></td>
+<td>+70 ±20 ms</td>
+<td>10 Mbit/s</td>
+<td>3 Mbit/s</td>
+<td>0.5%</td>
+</tr>
+<tr>
+<td><strong>Weak 4G</strong></td>
+<td>+150 ±60 ms</td>
+<td>1.5 Mbit/s</td>
+<td>500 kbit/s</td>
+<td>2%, in bursts</td>
+</tr>
+<tr>
+<td><strong>3G</strong></td>
+<td>+200 ±50 ms</td>
+<td>1.5 Mbit/s</td>
+<td>400 kbit/s</td>
+<td>1%</td>
+</tr>
+<tr>
+<td><strong>2G (EDGE)</strong></td>
+<td>+500 ±150 ms</td>
+<td>200 kbit/s</td>
+<td>80 kbit/s</td>
+<td>2%</td>
+</tr>
+<tr>
+<td><strong>GPRS</strong></td>
+<td>+800 ±200 ms</td>
+<td>50 kbit/s</td>
+<td>25 kbit/s</td>
+<td>3%</td>
+</tr>
+<tr>
+<td><strong>Busy public Wi-Fi</strong></td>
+<td>+120 ±80 ms</td>
+<td>3 Mbit/s</td>
+<td>1 Mbit/s</td>
+<td>3%, in bursts</td>
+</tr>
+<tr>
+<td><strong>Crowded venue</strong></td>
+<td>+400 ±250 ms</td>
+<td>500 kbit/s</td>
+<td>150 kbit/s</td>
+<td>8%, in bursts</td>
+</tr>
+<tr>
+<td><strong>Satellite (GEO)</strong></td>
+<td>+650 ±40 ms</td>
+<td>10 Mbit/s</td>
+<td>2 Mbit/s</td>
+<td>0.5%</td>
+</tr>
+<tr>
+<td><strong>Slow upload</strong></td>
+<td>+60 ±10 ms</td>
+<td>20 Mbit/s</td>
+<td>300 kbit/s</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Lossy link</strong></td>
+<td>+60 ±10 ms</td>
+<td>10 Mbit/s</td>
+<td>5 Mbit/s</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><strong>Far away server</strong></td>
+<td>+300 ±10 ms</td>
+<td>unlimited</td>
+<td>unlimited</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Loss is per direction. “In bursts” means lost packets come in runs, as on a
+weak cell or a busy hotspot, rather than one at a time. The numbers are rough
+medians from public mobile network reports, rounded to be easy to remember,
+not measurements of a specific operator. There are no custom values: pick
+the closest network.</p>
+<p>Amber notes under a network say where the route spoils it:</p>
+<ul>
+<li><strong>The VPN route’s N ms is more than this network’s own N ms</strong>: the route
+is already slower than the network would be (5G behind a far VPN
+location), so the delay ends up larger than named;</li>
+<li><strong>Capped at about N Mbit/s by the VPN</strong>: the network is faster than the
+route’s bandwidth.</li>
+</ul>
+<p>The network can still be picked: loss, jitter and slower links are
+unaffected.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="scenarios">Scenarios</h3><a class="sl-anchor-link" href="#scenarios"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Scenarios”</span></a></div>
+<p>Scenarios loop through networks, holding each for a random time within the
+range given. The <strong>Scenarios</strong> tab shows one card per scenario with its
+loop length (<code dir="auto">20–60 s ↻</code>) and a strip of its steps, each named and
+roughly as wide as its average hold, with its hold range under it:
+networks in grey, outages light red and hatched, and the step running now
+outlined in blue. The running scenario has a <strong>Running</strong> badge.</p>
+<p>Picking a card shows its steps on the right: the link of each, its RTT,
+download and upload, and how long it is held. While that scenario runs, its
+current step is highlighted, with a bar and how long it has been held
+(<code dir="auto">7 s of 10–20 s, then Outage</code>). <strong>Start scenario</strong> applies it;
+<strong>Restart scenario</strong> on the running one starts it again from the first
+step.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Satellite (Starlink)</strong></td>
+<td>its own link (+45 ±15 ms, 100 Mbit/s down, 15 Mbit/s up, 0.5% loss) for 14 to 15 s, then an outage of 0.5 to 1.5 s</td>
+</tr>
+<tr>
+<td><strong>Subway</strong></td>
+<td>Typical 4G for 20 to 40 s, 3G for 10 to 20 s, an outage of 5 to 20 s</td>
+</tr>
+<tr>
+<td><strong>Driving</strong></td>
+<td>Typical 4G for 40 to 80 s, Weak 4G for 15 to 30 s, 3G for 10 to 20 s, an outage of 2 to 6 s</td>
+</tr>
+<tr>
+<td><strong>Elevator</strong></td>
+<td>Typical 4G for 45 to 75 s, an outage of 8 to 15 s</td>
+</tr>
+<tr>
+<td><strong>Fading signal</strong></td>
+<td>Typical 4G, Weak 4G, 3G, 2G (EDGE) and an outage, 20 s each, then from the start</td>
+</tr>
+<tr>
+<td><strong>Flapping</strong></td>
+<td>Typical 4G for 3 s, an outage of 3 s</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h3"><h3 id="region">Region</h3><a class="sl-anchor-link" href="#region"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Region”</span></a></div>
+<p><strong>Region</strong> stands in for the app’s users in a country. Pick one of Germany,
+the United States, Ukraine, Kazakhstan, Bangladesh, India, Pakistan,
+Indonesia, the Philippines, Nigeria, Kenya, Egypt or Brazil (or <strong>No
+region</strong>) in the list on the <strong>Region</strong> tab; each row shows the region’s
+typical mobile link, its CDN edge and the edge round trip. A region the
+route is slower to is marked <strong>VPN slower:</strong> with <code dir="auto">CDN</code>, <code dir="auto">servers</code> or
+<code dir="auto">bandwidth</code>. Then pick where your servers run under <strong>Servers in</strong> on the
+right: Frankfurt (the default), N. Virginia, N. California, São Paulo,
+Mumbai, Singapore or Tokyo. Each server location shows the region’s round
+trip to it, and the route’s in amber when the route is slower (<code dir="auto">160 ms · VPN 210 ms</code>).</p>
+<p>A region splits the device’s traffic into two paths. The <strong>Paths</strong> table
+shows them:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>CDN edge and DNS</strong> (the address ranges of Cloudflare, Fastly and Google, served from the edge the region’s users reach, and every DNS query), or <strong>Servers in …</strong> (your backends and everything not on a CDN)</td>
+</tr>
+<tr>
+<td><strong>Region</strong></td>
+<td>the round trip the region’s users have on that path, beyond their access link</td>
+</tr>
+<tr>
+<td><strong>Route</strong></td>
+<td>what the session’s route already takes on it; amber when that is more than the region’s</td>
+</tr>
+<tr>
+<td><strong>Added</strong></td>
+<td>what is added: the region’s round trip less the route’s, never below 0</td>
+</tr>
+</tbody>
+</table>
+<p>The access link comes on top of both paths. With <strong>No limits</strong> picked as
+the access link, the first network becomes <strong>Typical mobile in</strong> the region,
+the region’s median mobile connection, and that link is used.</p>
+<p>When the route is already slower than the region on a path, a warning says
+so: emulation can only add delay, so a VPN location closer to the servers,
+or none, gets nearer.</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Typical mobile link</th>
+<th>CDN edge</th>
+<th>Edge round trip</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Germany</td>
+<td>+30 ±8 ms, 60 / 12 Mbit/s, 0.2%</td>
+<td>Frankfurt</td>
+<td>5 ms</td>
+</tr>
+<tr>
+<td>United States</td>
+<td>+35 ±10 ms, 100 / 12 Mbit/s, 0.3%</td>
+<td>the nearest metro</td>
+<td>10 ms</td>
+</tr>
+<tr>
+<td>Ukraine</td>
+<td>+35 ±10 ms, 30 / 12 Mbit/s, 0.5%</td>
+<td>Kyiv</td>
+<td>8 ms</td>
+</tr>
+<tr>
+<td>Kazakhstan</td>
+<td>+40 ±12 ms, 35 / 12 Mbit/s, 0.5%</td>
+<td>Almaty</td>
+<td>10 ms</td>
+</tr>
+<tr>
+<td>Bangladesh</td>
+<td>+55 ±25 ms, 15 / 6 Mbit/s, 1%</td>
+<td>Dhaka or Singapore, by operator</td>
+<td>30 ms</td>
+</tr>
+<tr>
+<td>India</td>
+<td>+45 ±20 ms, 90 / 10 Mbit/s, 0.5%</td>
+<td>Mumbai, Chennai, Delhi and others</td>
+<td>15 ms</td>
+</tr>
+<tr>
+<td>Pakistan</td>
+<td>+60 ±25 ms, 20 / 9 Mbit/s, 1%</td>
+<td>Karachi or the Middle East, by operator</td>
+<td>35 ms</td>
+</tr>
+<tr>
+<td>Indonesia</td>
+<td>+45 ±20 ms, 30 / 12 Mbit/s, 0.5%</td>
+<td>Jakarta</td>
+<td>15 ms</td>
+</tr>
+<tr>
+<td>Philippines</td>
+<td>+50 ±25 ms, 30 / 8 Mbit/s, 1%</td>
+<td>Manila</td>
+<td>20 ms</td>
+</tr>
+<tr>
+<td>Nigeria</td>
+<td>+65 ±30 ms, 25 / 9 Mbit/s, 1.5%</td>
+<td>Lagos</td>
+<td>20 ms</td>
+</tr>
+<tr>
+<td>Kenya</td>
+<td>+55 ±30 ms, 25 / 9 Mbit/s, 1.5%</td>
+<td>Nairobi or Mombasa</td>
+<td>15 ms</td>
+</tr>
+<tr>
+<td>Egypt</td>
+<td>+50 ±20 ms, 20 / 8 Mbit/s, 1%</td>
+<td>Cairo</td>
+<td>25 ms</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>+40 ±15 ms, 45 / 12 Mbit/s, 0.5%</td>
+<td>São Paulo and other metros</td>
+<td>10 ms</td>
+</tr>
+</tbody>
+</table>
+<p>Round trips from each region to the server locations, in milliseconds:</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Frankfurt</th>
+<th>N. Virginia</th>
+<th>N. California</th>
+<th>São Paulo</th>
+<th>Mumbai</th>
+<th>Singapore</th>
+<th>Tokyo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Germany</td>
+<td>10</td>
+<td>90</td>
+<td>150</td>
+<td>200</td>
+<td>120</td>
+<td>160</td>
+<td>230</td>
+</tr>
+<tr>
+<td>United States</td>
+<td>100</td>
+<td>30</td>
+<td>50</td>
+<td>130</td>
+<td>220</td>
+<td>190</td>
+<td>130</td>
+</tr>
+<tr>
+<td>Ukraine</td>
+<td>35</td>
+<td>120</td>
+<td>180</td>
+<td>230</td>
+<td>150</td>
+<td>180</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Kazakhstan</td>
+<td>75</td>
+<td>160</td>
+<td>220</td>
+<td>270</td>
+<td>120</td>
+<td>160</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Bangladesh</td>
+<td>170</td>
+<td>240</td>
+<td>230</td>
+<td>340</td>
+<td>60</td>
+<td>50</td>
+<td>110</td>
+</tr>
+<tr>
+<td>India</td>
+<td>120</td>
+<td>200</td>
+<td>220</td>
+<td>300</td>
+<td>20</td>
+<td>50</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Pakistan</td>
+<td>130</td>
+<td>210</td>
+<td>260</td>
+<td>310</td>
+<td>50</td>
+<td>90</td>
+<td>160</td>
+</tr>
+<tr>
+<td>Indonesia</td>
+<td>180</td>
+<td>230</td>
+<td>180</td>
+<td>330</td>
+<td>70</td>
+<td>20</td>
+<td>90</td>
+</tr>
+<tr>
+<td>Philippines</td>
+<td>200</td>
+<td>220</td>
+<td>160</td>
+<td>330</td>
+<td>90</td>
+<td>40</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Nigeria</td>
+<td>100</td>
+<td>160</td>
+<td>220</td>
+<td>230</td>
+<td>200</td>
+<td>260</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Kenya</td>
+<td>130</td>
+<td>210</td>
+<td>270</td>
+<td>280</td>
+<td>110</td>
+<td>180</td>
+<td>260</td>
+</tr>
+<tr>
+<td>Egypt</td>
+<td>60</td>
+<td>140</td>
+<td>200</td>
+<td>230</td>
+<td>110</td>
+<td>150</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>200</td>
+<td>120</td>
+<td>170</td>
+<td>15</td>
+<td>300</td>
+<td>330</td>
+<td>260</td>
+</tr>
+</tbody>
+</table>
+<p>These are rounded estimates from public speed reports and latency maps,
+plausible rather than measured per operator.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="backends-behind-a-cdn">Backends behind a CDN</h3><a class="sl-anchor-link" href="#backends-behind-a-cdn"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Backends behind a CDN”</span></a></div>
+<p>An API behind Cloudflare has a CDN address, but its requests go through to
+your servers. List such hosts under <strong>Backends behind a CDN</strong>, one per line
+(or separated by commas): a host name, <code dir="auto">*.example.com</code> for every name below
+it, or an IPv4 address. <strong>Save backends</strong> appears when the list changed.</p>
+<p>Their traffic then takes the servers’ path. The agent answers the device’s
+DNS, so it picks up the addresses the device gets when it looks a backend
+up, and shapes them about a second later; the addresses found so far are
+listed under the field. Other hosts on the same CDN addresses take the servers’ path too.</p>
+<p>The list is kept per app: in your account when the portal’s
+<a href="/configuration/database/">database</a> is persistent, in this
+browser otherwise. It is filled in when you pick a region in the app’s next
+session.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="common-tasks">Common tasks</h2><a class="sl-anchor-link" href="#common-tasks"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Common tasks”</span></a></div>
+<p><strong>Check the app on a slow network.</strong> Pick <strong>3G</strong> or <strong>Weak 4G</strong> and go
+through the main screens: loaders should show, and nothing should be
+tapped twice while a request is slow.</p>
+<p><strong>Check that the app survives drops.</strong> Pick <strong>Subway</strong>, <strong>Elevator</strong> or
+<strong>Flapping</strong>. Requests made during an outage hang until they time out; the
+app should retry or say what happened. The
+<a href="/session-tools/websockets/">WebSockets</a> tab shows each reconnect
+of a socket as a new row.</p>
+<p><strong>Test for users in a country.</strong> Pick the country as the region, your
+servers’ location in <strong>Servers in</strong>, and list your API under <strong>Backends
+behind a CDN</strong>. A <a href="/concepts/vpn/">VPN location</a> in or near the
+same country keeps the route short, so the region’s full round trips can
+be added; the IP address then also matches the country.</p>
+<p><strong>Find out why the emulated network is faster than promised.</strong> Read the
+amber notes: the route is already slower than the network, or the network
+faster than the route’s bandwidth. Pick a closer VPN location.</p>
+<p><strong>See how long requests took.</strong> The picker only sets the conditions; the
+timings are elsewhere (see <a href="#measuring-the-effect">Measuring the effect</a>).</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="measuring-the-effect">Measuring the effect</h2><a class="sl-anchor-link" href="#measuring-the-effect"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Measuring the effect”</span></a></div>
+<p>Holtdroid has no separate load-speed report. Request timings are in these
+places:</p>
+<ul>
+<li>live, in the <strong>DevTools</strong> tab’s Network panel: Chrome’s own timing for
+each request of the WebView;</li>
+<li>in a <a href="/concepts/recordings/#network-console-and-websockets">recording</a>,
+a request’s <strong>Timing</strong> on the Network tab: queued and stalled, DNS,
+connect (with TLS), send, <strong>Waiting (TTFB)</strong>, download and the total;</li>
+<li>in a recording’s <a href="/session-tools/routes/">Routes</a> tab, the
+median connect, TLS and waiting times of the WebView’s requests to each
+name, and how many of them opened a new connection;</li>
+<li>the Network row’s <strong>Device traffic</strong>: download and upload of the whole
+device every two seconds over the last minute.</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="in-recordings">In recordings</h2><a class="sl-anchor-link" href="#in-recordings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “In recordings”</span></a></div>
+<p>A <a href="/concepts/recordings/#the-player">recording</a> keeps the
+conditions as they changed: the player’s <strong>Network</strong> card shows the VPN
+location, <strong>Throttling</strong> with the network’s name and numbers (or <strong>Full
+speed</strong>), the <strong>Region</strong> with what it added to the CDN and the servers
+(<code dir="auto">CDN +5 ms · Frankfurt +40 ms</code>) and the device’s traffic, each as it was
+at the moment you are at.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="limits">Limits</h2><a class="sl-anchor-link" href="#limits"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Limits”</span></a></div>
+<ul>
+<li>Only emulator sessions with VPN locations have network conditions;
+phones don’t.</li>
+<li>Emulation can only add delay and take bandwidth away, never make the
+session’s route faster.</li>
+<li>Addresses are IPv4 only; the CDN ranges are Cloudflare’s, Fastly’s and
+Google’s published lists.</li>
+<li>There are no custom networks: the networks and scenarios are fixed.</li>
+<li>The step shown for a running scenario is the agent’s; the portal reads it
+again when the step’s shortest hold is over, so it can lag a step’s
+change by a couple of seconds.</li>
+</ul>
+</div><footer class="sl-flex astro-k7w37ldv"><div class="meta sl-flex astro-k7w37ldv"><a href="https://github.com/holtdroid/holtdroid/edit/main/docs/src/content/docs/session-tools/network.md" class="sl-flex print:hidden astro-brmikds2"><svg aria-hidden="true" class="astro-brmikds2 astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a><p>Last updated: <time datetime="2026-11-11T15:42:02.000Z">Nov 11, 2026</time></p></div><div class="pagination-links print:hidden astro-kgi7sqvr" dir="ltr"><a href="/session-tools/cache/" rel="prev" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-kgi7sqvr">Previous<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">Cache</span></span></a><a href="/session-tools/dns/" rel="next" class="astro-kgi7sqvr"><svg aria-hidden="true" class="astro-kgi7sqvr astro-hlzwxtvd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-kgi7sqvr">Next<br class="astro-kgi7sqvr"><span class="link-title astro-kgi7sqvr">DNS log and rewrites</span></span></a></div></footer></div></div></main></div></div></div></div><div class="hd-dock-wrap"><nav class="hd-dock hd-dock-sheet" aria-label="Documentation"><a class="hd-dk hd-dk-icon" href="/" aria-label="Holtdroid"><img src="/_astro/logo.BRLVoKOr.svg" alt="" width="28" height="28"></a><span class="hd-dsep"></span><a class="hd-dk" href="/" aria-label="Home"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"></path><path d="M10 20v-6h4v6"></path></svg><span class="hd-dk-label">Home</span></a><a class="hd-dk" href="/start/introduction/" aria-current="page" aria-label="Docs"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"></path><path d="M4 19V5"></path></svg><span class="hd-dk-label">Docs</span></a><a class="hd-dk" href="/guides/first-steps/launch-app/" aria-label="Guides"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M8 12l3 3 5-6"></path></svg><span class="hd-dk-label">Guides</span></a><a class="hd-dk hd-dk-wide" href="/#repositories" aria-label="Repos"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3h4v3a2 2 0 1 0 4 0V3h3v7h-3a2 2 0 1 0 0 4h3v7h-7v-3a2 2 0 1 0-4 0v3H3v-7h3a2 2 0 1 0 0-4H3V3z"></path></svg><span class="hd-dk-label">Repos</span></a><span class="hd-dsep"></span><button class="hd-dk hd-dock-search" type="button" data-hd-search data-href="/start/introduction/" aria-label="Search docs" aria-keyshortcuts="Meta+K Control+K"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M20 20l-3.5-3.5"></path></svg><span class="hd-dk-label">Search docs</span><span class="hd-kbd" aria-hidden="true">⌘K</span></button><button class="hd-dk hd-dk-pages" type="button" popovertarget="starlight__sidebar" aria-label="Pages"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg></button><span class="hd-dsep hd-dock-tools"></span><button class="hd-dk hd-dk-icon hd-dock-tools hd-theme" type="button" data-hd-theme aria-label="Switch theme"><svg class="hd-i hd-theme-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5"></path></svg><svg class="hd-i hd-theme-light" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg></button><a class="hd-dk hd-dk-icon hd-dock-tools hd-dock-gh" href="https://github.com/holtdroid/holtdroid" aria-label="GitHub"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path><path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path><path d="M16 7a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path><path d="M6 7v10M18 9c0 4-4 5-10 8"></path></svg></a><a class="hd-btn hd-btn-p hd-dock-portal" data-hd-portal hidden aria-label="Open the portal"><svg class="hd-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5l12 7-12 7z"></path></svg><span class="hd-dk-label">Open the portal</span></a></nav></div><script type="module">var e=document.documentElement,t=()=>e.classList.toggle(`dark`,e.dataset.theme===`dark`);t(),new MutationObserver(t).observe(e,{attributes:!0,attributeFilter:[`data-theme`]});</script><script type="module">var e=`hd-return-url`;function t(e,t){if(typeof e!=`string`||e.length===0||e.length>2048)return null;let n;try{n=new URL(e)}catch{return null}return n.protocol!==`http:`&&n.protocol!==`https:`||n.username||n.password||n.origin===t||n.href.length>2048?null:n.href}function n(e){let t=e.replace(/^#/,``).split(`&`),n=t.findIndex(e=>e.startsWith(`returnUrl=`));if(n<0)return null;let r=t[n].slice(10);t.splice(n,1);let i=t.filter(Boolean).join(`&`);if(r.length>6144)return{returnUrl:null,rest:i};try{return{returnUrl:decodeURIComponent(r),rest:i}}catch{return{returnUrl:null,rest:i}}}function r(t){try{return t.sessionStorage.getItem(e)}catch{return null}}function i(t,n){try{n?t.sessionStorage.setItem(e,n):t.sessionStorage.removeItem(e)}catch{}}function a(e){let{location:a}=e,o=n(a.hash);if(o){let n=t(o.returnUrl,a.origin);n&&i(e,n);try{e.history.replaceState(e.history.state,``,`${a.pathname}${a.search}${o.rest?`#${o.rest}`:``}`)}catch{}if(n)return n}let s=t(r(e),a.origin);return s||i(e,null),s}var o={getItem:()=>null,setItem:()=>{},removeItem:()=>{}};function s(e,t){let n=o;try{n=e.sessionStorage}catch{}c(t,a({location:e.location,history:e.history,sessionStorage:n}))}function c(e,t){for(let n of e.querySelectorAll(`a[data-hd-portal]`))t?(n.href=t,n.rel=`noopener`,n.hidden=!1):(n.removeAttribute(`href`),n.hidden=!0)}var l=`hd-open-search`;s(window,document);var u=()=>document.querySelector(`site-search button[data-open-modal]`);function d(e){try{e?sessionStorage.setItem(l,`1`):sessionStorage.removeItem(l)}catch{}}function f(){try{return sessionStorage.getItem(l)===`1`}catch{return!1}}function p(){let e=document.documentElement,t=e.dataset.theme===`dark`?`light`:`dark`;e.dataset.theme=t;try{localStorage.setItem(`starlight-theme`,t)}catch{}}if(document.addEventListener(`click`,e=>{let t=e.target instanceof Element?e.target:null;if(t?.closest(`[data-hd-theme]`)){p();return}let n=t?.closest(`[data-hd-search]`);if(!n)return;e.preventDefault(),e.stopPropagation();let r=u();r?r.click():n.dataset.href&&(d(!0),location.assign(n.dataset.href))}),addEventListener(`keydown`,e=>{if(!(e.metaKey||e.ctrlKey)||e.key!==`k`||u())return;let t=document.querySelector(`[data-hd-search]`);t?.dataset.href&&(e.preventDefault(),d(!0),location.assign(t.dataset.href))}),f()){d(!1);let e=u();e&&customElements.whenDefined(`site-search`).then(()=>e.click())}</script></body></html>
