@@ -1,0 +1,140 @@
+# Holtdroid
+
+> Holtdroid is a self-hosted, open-source (Apache-2.0) web portal that launches Android devices on demand for testing APKs. Each device opens in a browser tab with its screen, Chrome DevTools for the app's WebViews (enabled at runtime, the APK is never modified), Logcat, files, a terminal, network shaping, GPS, a VPN country per device, recordings and bug reports.
+
+- Runs on Kubernetes (Helm chart): virtual devices are redroid Pods (Android 11–16), real phones plug into a host over USB.
+- Builds come from sources: folders or S3 buckets that sync jobs fill from Slack, S3, GitHub releases, Chromium and browser release archives, plus uploads.
+- Not a cloud service: there is no hosted instance to sign up for; you install it on your own cluster. No iOS.
+- Sign-in: anonymous, a shared password, OIDC, a forward-auth header, or users with passkeys.
+- Source code: https://github.com/holtdroid/holtdroid. The portal's HTTP API is described by OpenAPI at `/api/docs` on every installation.
+
+Pages of the documentation, each with what it covers:
+
+Start here:
+
+- [Introduction](https://holtdroid.github.io/start/introduction/): What Holtdroid is, who it is for, and how a session looks from the user's side.
+- [A self-hosted alternative to BrowserStack, Appetize and Genymotion](https://holtdroid.github.io/start/alternatives/): How Holtdroid compares with BrowserStack, Appetize, Genymotion, DeviceFarmer STF, docker-android, redroid and an emulator on your own machine.
+- [Installation](https://holtdroid.github.io/start/installation/): Install Holtdroid on Kubernetes with the Helm chart.
+- [Local development](https://holtdroid.github.io/start/local-development/): Toolchain and day-to-day commands for working on Holtdroid.
+
+Concepts:
+
+- [Architecture](https://holtdroid.github.io/concepts/architecture/): The services that make up Holtdroid and how a request flows through them.
+- [Sessions and slots](https://holtdroid.github.io/concepts/sessions/): Session states, activity, idle timeout, TTL and slot accounting.
+- [WebView DevTools](https://holtdroid.github.io/concepts/devtools/): How Holtdroid enables WebView debugging without touching the APK, and how DevTools reaches your browser.
+- [WebView versions](https://holtdroid.github.io/concepts/webview-versions/): Start a virtual device with a chosen Chromium or Google WebView instead of the one built into Android.
+- [Per-session VPN](https://holtdroid.github.io/concepts/vpn/): How each device gets its own switchable egress location.
+- [Connecting your computer](https://holtdroid.github.io/concepts/ssh/): Publish your computer's ports on your devices and reach their ADB with the holtdroid client.
+- [ADB tools](https://holtdroid.github.io/concepts/adb/): Logcat, files, a terminal and the app and device cards in the session page, over ADB in the browser.
+- [Recordings](https://holtdroid.github.io/concepts/recordings/): Sessions recorded on the server with logcat, the WebViews' network, console and WebSockets, device, network and load next to the screen, to watch, download or share.
+- [Microphone](https://holtdroid.github.io/concepts/microphone/): Make the device's microphone hear a test signal, a file from your media library or your own microphone.
+- [Camera](https://holtdroid.github.io/concepts/camera/): Give the device a camera that shows a test card, an image or video from your media library, or your own camera.
+- [App data](https://holtdroid.github.io/concepts/app-data/): Keep an app's sign-in, settings and WebView storage between sessions.
+
+Session tools:
+
+- [Overview](https://holtdroid.github.io/session-tools/overview/): The tool tabs to the right of a session's screen, what each one is for and when it appears.
+- [Pixel perfect](https://holtdroid.github.io/session-tools/pixel-perfect/): Lay a design mockup over the device screen, find where the app differs from it and export a report.
+- [WebSockets](https://holtdroid.github.io/session-tools/websockets/): The WebSockets and event streams of the app's WebViews, frame by frame, with JSON and common protocols taken apart, kept for the whole session.
+- [Cache](https://holtdroid.github.io/session-tools/cache/): How the WebViews' requests use the HTTP cache and a CDN in front of the server, as findings with the requests and headers behind each.
+- [Network](https://holtdroid.github.io/session-tools/network/): Slow, lossy or dropping networks for the whole device, and a region's round trips to CDNs and servers, on top of the session's own route.
+- [DNS log and rewrites](https://holtdroid.github.io/session-tools/dns/): Every name a session's device looks up, rewrites of names to other addresses, a TTL limit and saved sets of rewrites.
+- [Routes](https://holtdroid.github.io/session-tools/routes/): Where a session's connections go — the servers behind each name, their country and network, the VPN location they left through, and what makes a path slower than it needs to be.
+- [Logcat](https://holtdroid.github.io/session-tools/logcat/): The device's log in the session page, filtered to your app by default, with levels, search, pause, download and a notice when the app crashes.
+- [Files](https://holtdroid.github.io/session-tools/files/): Browse the device's file system from the session page, download and upload files, and, where ADB runs any command, create folders and delete.
+- [Terminal](https://holtdroid.github.io/session-tools/terminal/): An interactive ADB shell on the session's device, in a tab of the session page.
+
+Configuration:
+
+- [Configuration files](https://holtdroid.github.io/configuration/overview/): How every Holtdroid service is configured, and the api's options.
+- [Artifact storage](https://holtdroid.github.io/configuration/storage/): Where downloaded APKs and their metadata are cached — a directory or S3.
+- [Database](https://holtdroid.github.io/configuration/database/): The api's SQL database — in memory, or a SQLite file replicated to S3 with Litestream.
+- [Authentication](https://holtdroid.github.io/configuration/authentication/): Sign-in modes — anonymous names, a shared password, OIDC, a forward-auth proxy, or users with passkeys and invite links.
+- [Secrets](https://holtdroid.github.io/configuration/secrets/): Secret references and the supported backends — environment, files and OpenBao/Vault.
+- [Emulator provider](https://holtdroid.github.io/configuration/emulator/): Run sessions as redroid Pods (Android on the node's kernel) on Kubernetes, several per node.
+- [Phone provider](https://holtdroid.github.io/configuration/phones/): Run sessions on real Android phones plugged into a host over USB, with or without root.
+- [Rooting a phone](https://holtdroid.github.io/configuration/rooting/): How one test phone was bootloader-unlocked and rooted with Magisk, for the record, with the sites and repositories that were used.
+
+APK sources:
+
+- [Overview](https://holtdroid.github.io/sources/overview/): Folders and S3 buckets with APKs, the optional .meta.json sidecar, change tracking, uploads and launch links.
+- [Slack](https://holtdroid.github.io/sources/slack/): Copy APKs posted in Slack channels, threads and forwards into a source with holtdroid-slack-sync.
+- [S3 bucket](https://holtdroid.github.io/sources/s3/): Builds from an existing S3 bucket — copied with holtdroid-s3-sync, or read directly with temporary AWS SSO credentials.
+- [GitHub releases](https://holtdroid.github.io/sources/github/): Copy APKs attached to GitHub releases into a source with holtdroid-github-sync.
+- [Chromium versions](https://holtdroid.github.io/sources/chromium/): Keep Chromium browser builds of many milestones in a source with holtdroid-chromium-sync, to reproduce bugs on the version they were reported on.
+- [Writing your own](https://holtdroid.github.io/sources/custom/): Principles for a sync job that publishes builds from CI, releases or anywhere else into a source.
+- [Browsers from release archives](https://holtdroid.github.io/sources/archives/): Keep Opera, Firefox and other browsers in a source with holtdroid-archive-sync, from the public archives their makers publish.
+
+Tools:
+
+- [Holtdroid WebView](https://holtdroid.github.io/tools/webview/): A WebView test browser with DevTools unlocked, presets, several engines and live control over adb.
+
+Operations:
+
+- [Security](https://holtdroid.github.io/operations/security/): Threat model and hardening notes for running Holtdroid.
+- [Emulator isolation](https://holtdroid.github.io/operations/emulator-security/): What the redroid session Pod can do on its node, what that risks, what Holtdroid enforces and what to add yourself.
+- [Troubleshooting](https://holtdroid.github.io/operations/troubleshooting/): Common problems with redroid nodes, ARM translation, Frida, DevTools and VPN.
+- [Shared VPN gateway](https://holtdroid.github.io/operations/vpn-gateway/): One sing-box that holds the VPN tunnels for all sessions, so one WireGuard key serves any number of devices.
+- [Monitoring and audit](https://holtdroid.github.io/operations/monitoring/): Prometheus metrics, OpenTelemetry tracing and the audit log — who did what, when.
+
+Extending:
+
+- [Contracts](https://holtdroid.github.io/extending/contracts/): The HTTP APIs between Holtdroid services, and how to feed builds in or implement your own provider.
+- [Writing a provider](https://holtdroid.github.io/extending/provider/): Plug a new kind of device into Holtdroid by implementing the provider and agent APIs.
+
+First steps:
+
+- [Launch an app on a device](https://holtdroid.github.io/guides/first-steps/launch-app/): Pick a build, choose the Android version, screen and country, and get a working phone in your browser in under a minute.
+- [Find your way around a session](https://holtdroid.github.io/guides/first-steps/session-tour/): What every part of the session page is for, from the header to the Device panel, the screen with its toolbar and the tools on the right.
+- [Launch in one click](https://holtdroid.github.io/guides/first-steps/quick-launch/): The lightning button starts a device right away with your last settings, fresh or from your saved app data.
+- [Upload your own APK](https://holtdroid.github.io/guides/first-steps/upload-apk/): Put a build from your computer into Holtdroid, decide who sees it and how long it stays, and launch it right away.
+- [Time limits and how many devices you get](https://holtdroid.github.io/guides/first-steps/limits/): When a device is taken back, how to keep it with Extend, and what the device pool and per-person limits mean.
+
+Debugging web content:
+
+- [Inspect the web inside an app with DevTools](https://holtdroid.github.io/guides/web/devtools/): See the requests, console errors and HTML of the web pages inside an app, with Chrome's own developer tools, right next to the phone.
+- [Follow live updates in the WebSockets tab](https://holtdroid.github.io/guides/web/websockets/): Read the messages a web page and its server push to each other, and find the one that broke the screen.
+- [Test on another WebView version](https://holtdroid.github.io/guides/web/webview-version/): Start a device with an older, newer or built-in WebView to catch bugs that only one browser engine version has.
+
+Real-world conditions:
+
+- [Switch the country (VPN)](https://holtdroid.github.io/guides/conditions/vpn/): Make the device look like it is in another country, on the fly, to test regional prices, content and restrictions.
+- [Slow or unstable internet](https://holtdroid.github.io/guides/conditions/network/): Put the device on 3G, a weak signal or a subway ride and see how the app copes with delays, losses and drops.
+- [GPS location and routes](https://holtdroid.github.io/guides/conditions/gps/): Put the device anywhere on the map or send it along a route, to test maps, delivery and anything that asks for the location.
+- [Language, time, theme and battery](https://holtdroid.github.io/guides/conditions/device-settings/): Switch the device to a dark theme, another language or time zone, and a nearly empty battery, without digging through Android settings.
+- [Clipboard between computer and phone](https://holtdroid.github.io/guides/conditions/clipboard/): Copy on your computer, paste on the device, and the other way round, so test data and links never have to be typed by hand.
+- [See where the app's traffic goes](https://holtdroid.github.io/guides/conditions/dns-routes/): Read every DNS lookup, point a name at a staging server, and find far servers and wasted connections in the routes.
+
+Working with the app:
+
+- [Keep sign-in between sessions](https://holtdroid.github.io/guides/app/app-data/): Save the app's data when you stop a session and start the next one already signed in, past onboarding.
+- [Deep links, permissions and a clean slate](https://holtdroid.github.io/guides/app/app-actions/): Open a deep link, grant or revoke a permission, force-stop the app or wipe its data from the App row.
+- [Install another build in the same session](https://holtdroid.github.io/guides/app/switch-version/): Switch the running device to another build of the app, with or without its data, without launching a new device.
+- [The app crashed: find out why](https://holtdroid.github.io/guides/app/crash/): Go from the crash notification to the exact error in Logcat, filter it and download it for the bug report.
+- [Files on the device](https://holtdroid.github.io/guides/app/files/): Look into the app's private folder, download its settings and databases, and put test files on the device for file pickers.
+
+Design:
+
+- [Compare the screen with the design mockup](https://holtdroid.github.io/guides/design/pixel-perfect/): Lay a Figma mockup over the phone screen, let Holtdroid find every difference and send the designer a report.
+
+Recordings and bug reports:
+
+- [Record a session and share it](https://holtdroid.github.io/guides/recordings/record-share/): Pin markers while you test, watch the recording with its logs and network, and send a link that opens the exact moment.
+- [A bug report in a minute](https://holtdroid.github.io/guides/recordings/bug-report/): One click in the Device row bundles a screenshot, the logs and the device details into a zip for the ticket.
+
+For developers:
+
+- [Connect your computer](https://holtdroid.github.io/guides/developers/connect-computer/): Run one command from the Computers page and the devices you launch show up in adb and Android Studio on your own machine.
+- [Open your local dev server on the phone](https://holtdroid.github.io/guides/developers/local-server/): Publish a port from your computer, and the app or browser on the device reaches it as localhost, with hot reload.
+
+## Documentation Sets
+
+- [Abridged documentation](https://holtdroid.github.io/llms-small.txt): a compact version of the documentation for Holtdroid, with non-essential content removed
+- [Complete documentation](https://holtdroid.github.io/llms-full.txt): the full documentation for Holtdroid
+- [Guides](https://holtdroid.github.io/_llms-txt/guides.txt): task-by-task guides for testers using the portal
+- [Running Holtdroid](https://holtdroid.github.io/_llms-txt/running-holtdroid.txt): installation, configuration, APK sources and operations for administrators
+
+## Notes
+
+- The complete documentation includes all content from the official documentation
+- The content is automatically generated from the same source as the official documentation
